@@ -8,7 +8,15 @@ import java.beans.VetoableChangeSupport;
 
 import javax.xml.bind.annotation.XmlSeeAlso;
 
-@XmlSeeAlso({Book.class})
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+
+@XmlSeeAlso({ Book.class })
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonTypeName("media")
+@JsonSubTypes({ @Type(value = Media.class, name = "media"), @Type(value = Book.class, name = "book")})
 public class Media {
 	private String title;
 

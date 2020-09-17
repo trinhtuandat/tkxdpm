@@ -6,12 +6,14 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.filter.LoggingFilter;
 
+import com.oms.bean.media.Book;
 import com.oms.bean.media.Media;
 
 public class ApiConnector {
@@ -22,7 +24,7 @@ public class ApiConnector {
 		Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
 		Response response = invocationBuilder.get();
 
-		ArrayList<Media> res = response.readEntity(ArrayList.class);
+		ArrayList<Media> res = response.readEntity(new GenericType<ArrayList<Media>>(){});
 		for (Media media : res) {
 			System.out.println(res);
 		}
@@ -35,15 +37,19 @@ public class ApiConnector {
 
 		Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
 		Response response = invocationBuilder.get();
+		System.out.println(response);
 
 		Media res = response.readEntity(Media.class);
 		System.out.println(res.getTitle() + " " + res.getCategory());
+		if (res instanceof Book) {
+			 System.out.println(((Book) res).getAuthors());
+		}
 		return res;
 	}
 
 	public static void main(String[] args) {
 		ApiConnector apiConnector = new ApiConnector();
-		apiConnector.getAllMedias();
+//		apiConnector.getAllMedias();
 		apiConnector.getMedia();
 	}
 }

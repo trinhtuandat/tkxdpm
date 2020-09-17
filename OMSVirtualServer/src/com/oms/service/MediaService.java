@@ -26,12 +26,12 @@ public class MediaService {
     @Path("/{param}")
     @Produces(MediaType.APPLICATION_JSON)
     public Media getMedia(@PathParam("param") String name) {
-    	Book b = new Book();
-    	b.setCategory("IT");
-    	b.setTitle("DATTT");
-    	b.addAuthor("NVD");
-    	b.addAuthor("NVA");
-//        return new Media(name, "IT", 45000);
-    	return b;
+//    	Book b = new Book();
+//    	b.setCategory("IT");
+//    	b.setTitle("DATTT");
+//    	b.addAuthor("NVD");
+//    	b.addAuthor("NVA");
+        return new Media(name, "IT", 45000);
+//    	return b;
     }
 }

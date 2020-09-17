@@ -5,7 +5,7 @@ import javax.swing.JLabel;
 import com.oms.bean.media.Book;
 
 @SuppressWarnings("serial")
-public class BookVisualizationPane extends MediaVisualizationPane{
+public class BookVisualizationPane extends MediaVisualizationPane {
 	@Override
 	public void visualize(Object object) {
 		super.visualize(object);

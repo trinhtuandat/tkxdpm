@@ -2,6 +2,9 @@ package com.oms.bean.media;
 
 import java.util.ArrayList;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Book extends Media implements Comparable {
 
 	private java.util.ArrayList<String> authors = new java.util.ArrayList<String>();
