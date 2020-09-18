@@ -28,6 +28,11 @@ public class MediaService {
     	b.setCategory("IT");
     	b.setTitle("Book3");
     	res.add(b);
+    	
+    	Media m = new Media();
+    	m.setCategory("IT");
+    	m.setTitle("Media");
+    	res.add(m);
         return res;
     }
     
