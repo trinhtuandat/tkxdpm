@@ -1,19 +1,12 @@
 package com.oms.bean.media;
 
-import javax.xml.bind.annotation.XmlSeeAlso;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
-import org.codehaus.jackson.annotate.JsonSubTypes;
-import org.codehaus.jackson.annotate.JsonSubTypes.Type;
-import org.codehaus.jackson.annotate.JsonTypeInfo;
-
-//import com.fasterxml.jackson.annotation.JsonSubTypes;
-//import com.fasterxml.jackson.annotation.JsonTypeInfo;
-//import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
-
-@XmlSeeAlso({ Book.class })
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
-@JsonSubTypes({ @Type(value = CompactDisc.class, name = "disc"), @Type(value = DigitalVideoDisc.class, name = "dvd"), @Type(value = Book.class, name = "book")})
-public abstract class Media {
+@JsonSubTypes({ @Type(value = PhysicalMedia.class, name = "phmedia") })
+public class Media {
 	private String id;
 	
 	private String title;

@@ -1,6 +1,12 @@
 package com.oms.bean.media;
 
-public abstract class PhysicalMedia extends Media{
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({ @Type(value = CompactDisc.class, name = "disc"), @Type(value = DigitalVideoDisc.class, name = "dvd"), @Type(value = Book.class, name = "book")})
+public class PhysicalMedia extends Media{
 	private String barcode;
 	private String description;
 	private int quantity;
