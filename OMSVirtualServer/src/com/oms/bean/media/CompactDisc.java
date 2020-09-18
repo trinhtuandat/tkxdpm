@@ -1,53 +1,27 @@
 package com.oms.bean.media;
 
-public class CompactDisc extends Media implements Playable, Comparable {
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+
+public class CompactDisc extends PhysicalMedia implements Playable {
 
 	private String artist;
 
 	private int length;
+	
+	private Date dateOfIssue;
 
-	private java.util.ArrayList tracks = new java.util.ArrayList();
+	private ArrayList<Track> tracks = new ArrayList<Track>();
 
-	/**
-	 *  
-	 */
 	public CompactDisc() {
 		super();
 	}
-
-	/**
-	 * Gets the artist
-	 */
-	public String getArtist() {
-		return artist;
-	}
-
-	/**
-	 * Sets the artist
-	 */
-	public void setArtist(String artist) {
-		this.artist = artist;
-	}
-
-	public void addTrack(Track track1) {
-		// ensure that the track is not already in the
-		// ArrayList before adding
-		if (!(tracks.contains(track1))) {
-			tracks.add(track1);
-		}
-	}
-
-	public void removeTrack(Track track1) {
-		// ensure that the track is present in the
-		// ArrayList before removing
-		if ((tracks.contains(track1))) {
-			tracks.remove(track1);
-		}
-	}
+	
 
 	public int getLength() {
 		int total = 0;
-		java.util.Iterator iter = tracks.iterator();
+		Iterator<Track> iter = tracks.iterator();
 		Track nextTrack;
 		while (iter.hasNext()) {
 			nextTrack = (Track) iter.next();
@@ -65,7 +39,7 @@ public class CompactDisc extends Media implements Playable, Comparable {
 		System.out.println("Playing CD: " + this.getTitle());
 		System.out.println("CD length:" + this.getLength());
 
-		java.util.Iterator iter = tracks.iterator();
+		Iterator<Track> iter = tracks.iterator();
 		Track nextTrack;
 
 		while (iter.hasNext()) {
@@ -78,8 +52,38 @@ public class CompactDisc extends Media implements Playable, Comparable {
 		}
 	}
 
-	public int compareTo(Object obj) {
-		Media media = (Media)obj;
-		return(this.getTitle()).compareTo(media.getTitle());
+
+	public String getArtist() {
+		return artist;
+	}
+
+
+	public void setArtist(String artist) {
+		this.artist = artist;
+	}
+
+
+	public Date getDateOfIssue() {
+		return dateOfIssue;
+	}
+
+
+	public void setDateOfIssue(Date dateOfIssue) {
+		this.dateOfIssue = dateOfIssue;
+	}
+
+
+	public ArrayList<Track> getTracks() {
+		return tracks;
+	}
+
+
+	public void setTracks(ArrayList<Track> tracks) {
+		this.tracks = tracks;
+	}
+
+
+	public void setLength(int length) {
+		this.length = length;
 	}
 }

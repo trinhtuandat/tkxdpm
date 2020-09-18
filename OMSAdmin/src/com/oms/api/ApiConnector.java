@@ -26,7 +26,10 @@ public class ApiConnector {
 
 		ArrayList<Media> res = response.readEntity(new GenericType<ArrayList<Media>>(){});
 		for (Media media : res) {
-			System.out.println(res);
+			System.out.println(media.getTitle() + " " + media.getCategory());
+			if (media instanceof Book) {
+				 System.out.println(((Book) media).getAuthors());
+			}
 		}
 		return res;
 	}
@@ -49,7 +52,7 @@ public class ApiConnector {
 
 	public static void main(String[] args) {
 		ApiConnector apiConnector = new ApiConnector();
-//		apiConnector.getAllMedias();
-		apiConnector.getMedia();
+		apiConnector.getAllMedias();
+//		apiConnector.getMedia();
 	}
 }
