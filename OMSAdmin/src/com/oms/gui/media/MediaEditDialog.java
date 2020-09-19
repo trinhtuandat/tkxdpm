@@ -1,9 +1,11 @@
-package com.oms.gui;
+package com.oms.gui.media;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import com.oms.bean.media.Media;
+import com.oms.gui.ADataEditDialog;
+import com.oms.gui.IDataActionListener;
 
 @SuppressWarnings("serial")
 public class MediaEditDialog extends ADataEditDialog<Media>{
@@ -17,7 +19,7 @@ public class MediaEditDialog extends ADataEditDialog<Media>{
 	}
 
 	@Override
-	public void visualize() {
+	public void buildControls() {
 		int row = getLastRowIndex();
 		JLabel titleLabel = new JLabel("Title");
 		c.gridx = 0;

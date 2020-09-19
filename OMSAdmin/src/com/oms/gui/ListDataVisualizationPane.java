@@ -12,6 +12,8 @@ import javax.swing.JScrollPane;
 import com.oms.api.JerseyMediaApi;
 import com.oms.bean.media.Book;
 import com.oms.bean.media.Media;
+import com.oms.gui.book.BookEditDialog;
+import com.oms.gui.book.BookVisualizationPane;
 
 @SuppressWarnings("serial")
 public class ListDataVisualizationPane<T> extends JScrollPane {
@@ -48,7 +50,7 @@ public class ListDataVisualizationPane<T> extends JScrollPane {
 				visualizationPane.addAction("Edit", new IDataActionListener<T>() {
 					@Override
 					public void onAct(T t) {
-						new MediaEditDialog((Book) t, new IDataActionListener<Media>() {
+						new BookEditDialog((Book) t, new IDataActionListener<Media>() {
 							@Override
 							public void onAct(Media t) {
 								System.out.println(t);

@@ -1,9 +1,10 @@
-package com.oms.gui;
+package com.oms.gui.book;
 
 import javax.swing.JLabel;
 
 import com.oms.bean.media.Book;
 import com.oms.bean.media.Media;
+import com.oms.gui.media.PhysicalMediaVisualizationPane;
 
 @SuppressWarnings("serial")
 public class BookVisualizationPane extends PhysicalMediaVisualizationPane {

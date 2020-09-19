@@ -1,8 +1,9 @@
-package com.oms.gui;
+package com.oms.gui.media;
 
 import javax.swing.JLabel;
 
 import com.oms.bean.media.Media;
+import com.oms.gui.ADataVisualizationPane;
 
 @SuppressWarnings("serial")
 public class MediaVisualizationPane extends ADataVisualizationPane<Media>{

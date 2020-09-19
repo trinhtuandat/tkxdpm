@@ -26,7 +26,7 @@ public abstract class ADataEditDialog<T> extends JDialog {
 		getContentPane().setLayout(layout);
 
 		
-		this.visualize();
+		this.buildControls();
 		
 		JButton saveButton = new JButton("Save");
 		saveButton.addActionListener(new ActionListener() {
@@ -56,7 +56,7 @@ public abstract class ADataEditDialog<T> extends JDialog {
 	    return rows;
 	}
 	
-	public abstract void visualize();
+	public abstract void buildControls();
 	
 	public abstract T getNewData();
 }

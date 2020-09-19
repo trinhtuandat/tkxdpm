@@ -1,4 +1,4 @@
-package com.oms.gui;
+package com.oms.gui.media;
 
 import javax.swing.JLabel;
 
