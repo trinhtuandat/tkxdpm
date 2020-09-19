@@ -41,6 +41,6 @@ public class Dimension {
 	
 	@Override
 	public String toString() {
-		return "(" + width + ", " + height + ", " + depth + ")";
+		return width + "cm x " + height + "cm x " + depth + "cm";
 	}
 }

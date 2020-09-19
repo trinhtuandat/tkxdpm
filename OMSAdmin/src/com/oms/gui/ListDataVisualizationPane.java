@@ -13,10 +13,9 @@ import com.oms.bean.media.Book;
 import com.oms.bean.media.Media;
 
 @SuppressWarnings("serial")
-public class ListDataVisualizationPane extends JPanel {
+public class ListDataVisualizationPane extends JScrollPane {
 	private ArrayList<?> list;
 	private LayoutManager layout;
-	private JScrollPane scrollPane;
 	private JPanel pane;
 
 	public ListDataVisualizationPane() {
@@ -24,10 +23,11 @@ public class ListDataVisualizationPane extends JPanel {
 		layout = new BoxLayout(pane, BoxLayout.Y_AXIS);
 		pane.setLayout(layout);
 		
-		scrollPane = new JScrollPane(pane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		this.add(scrollPane);
-		this.setSize(new Dimension(400, 400));
-		scrollPane.setPreferredSize(new Dimension(400, 400));
+		this.setViewportView(pane);
+		this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		this.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		this.getVerticalScrollBar().setUnitIncrement(20);
+		this.getHorizontalScrollBar().setUnitIncrement(20);
 	}
 	
 	public ListDataVisualizationPane(ArrayList<?> list) {
@@ -36,7 +36,6 @@ public class ListDataVisualizationPane extends JPanel {
 	}
 
 	public void visualize() {
-		// TODO: Use factory
 		for (Object object: list) {
 			ADataVisualizationPane visualizationPane = null;
 			if (object instanceof Book) {

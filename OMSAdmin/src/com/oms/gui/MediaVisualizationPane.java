@@ -11,13 +11,13 @@ public class MediaVisualizationPane extends ADataVisualizationPane{
 	public void visualize(Object object) {
 		if (object instanceof Media) {
 			Media media = (Media) object;
-			JLabel label = new JLabel(media.getTitle());
+			JLabel label = new JLabel("Title: " + media.getTitle());
 			add(label);
 			
-			label = new JLabel(media.getCategory());
+			label = new JLabel("Category: " + media.getCategory());
 			add(label);
 			
-			label = new JLabel(media.getCost() + "");
+			label = new JLabel("Cost: " + media.getCost() + "");
 			add(label);
 		}
 	}

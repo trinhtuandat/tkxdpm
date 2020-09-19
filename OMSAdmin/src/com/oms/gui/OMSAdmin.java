@@ -1,14 +1,12 @@
 package com.oms.gui;
 
 import java.awt.*;
-import java.awt.event.*;
 import java.util.ArrayList;
 
 import javax.swing.*;
 
 import com.oms.api.JerseyMediaApi;
 import com.oms.bean.media.Book;
-import com.oms.bean.media.Media;
 import com.oms.gui.search.MediaSearchPane;
 
 @SuppressWarnings("serial")
@@ -18,21 +16,39 @@ public class OMSAdmin extends JFrame {
 	public static final int WINDOW_HEIGHT = 550;
 
 	public OMSAdmin() {
-		Container cp = this.getContentPane();
+		JPanel rootPanel = new JPanel();
+		SpringLayout layout = new SpringLayout();
+		rootPanel.setLayout(layout);
+		rootPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+		setContentPane(rootPanel);
 		
-		cp.setLayout(new BorderLayout());
+		
+		
 		
 		MediaSearchPane mediaSearchPane = new MediaSearchPane();
-		cp.add(mediaSearchPane, BorderLayout.NORTH);
-
+		mediaSearchPane.setPreferredSize(new Dimension(-1, 100));
+		rootPanel.add(mediaSearchPane);
+		mediaSearchPane.setBorder(BorderFactory.createLineBorder(Color.blue));
+		
+		
 		
 		ArrayList<Book> list = JerseyMediaApi.singleton().getBooks(null);
-		
-		
 		ListDataVisualizationPane dataVisualizationPane = new ListDataVisualizationPane(list);
 		dataVisualizationPane.visualize();
-		cp.add(dataVisualizationPane);
-//
+		rootPanel.add(dataVisualizationPane);
+		dataVisualizationPane.setBorder(BorderFactory.createLineBorder(Color.red));
+		
+		
+		layout.putConstraint(SpringLayout.WEST, mediaSearchPane, 5, SpringLayout.WEST, rootPanel);
+		layout.putConstraint(SpringLayout.NORTH, mediaSearchPane, 5, SpringLayout.NORTH, rootPanel);
+		layout.putConstraint(SpringLayout.EAST, mediaSearchPane, -5, SpringLayout.EAST, rootPanel);
+		
+		layout.putConstraint(SpringLayout.WEST, dataVisualizationPane, 5, SpringLayout.WEST, rootPanel);
+		layout.putConstraint(SpringLayout.NORTH, dataVisualizationPane, 5, SpringLayout.SOUTH, mediaSearchPane);
+		layout.putConstraint(SpringLayout.EAST, dataVisualizationPane, -5, SpringLayout.EAST, rootPanel);
+		layout.putConstraint(SpringLayout.SOUTH, dataVisualizationPane, -5, SpringLayout.SOUTH, rootPanel);
+		
+
 //		JScrollPane scrollPane = new JScrollPane(dataVisualizationPane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 //		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 //		scrollPane.setPreferredSize(new Dimension(300, 300));
@@ -46,7 +62,18 @@ public class OMSAdmin extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		// Run GUI codes in the Event-Dispatching thread for thread safety
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
+		
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				new OMSAdmin(); // Let the constructor do the job

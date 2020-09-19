@@ -11,7 +11,7 @@ public class MediaSearchPane extends JPanel {
 
 	public MediaSearchPane() {
 		layout = new SpringLayout();
-//		this.setLayout(layout);
+		this.setLayout(layout);
 
 		JLabel titleLabel = new JLabel("Title");
 		JTextField titleField = new JTextField(15);
