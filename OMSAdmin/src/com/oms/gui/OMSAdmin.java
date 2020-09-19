@@ -7,6 +7,7 @@ import javax.swing.*;
 
 import com.oms.api.JerseyMediaApi;
 import com.oms.bean.media.Book;
+import com.oms.gui.search.BookSearchPane;
 import com.oms.gui.search.MediaSearchPane;
 
 @SuppressWarnings("serial")
@@ -25,7 +26,7 @@ public class OMSAdmin extends JFrame {
 		
 		
 		
-		MediaSearchPane mediaSearchPane = new MediaSearchPane();
+		BookSearchPane mediaSearchPane = new BookSearchPane();
 		mediaSearchPane.setPreferredSize(new Dimension(-1, 100));
 		rootPanel.add(mediaSearchPane);
 		mediaSearchPane.setBorder(BorderFactory.createLineBorder(Color.blue));
