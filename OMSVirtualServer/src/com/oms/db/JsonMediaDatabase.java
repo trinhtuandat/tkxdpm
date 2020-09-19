@@ -31,27 +31,27 @@ public class JsonMediaDatabase implements IMediaDatabase{
 	}
 
 	@Override
-	public boolean addMedia(Media media) {
+	public Media addMedia(Media media) {
 		for (Media m: medias) {
 			if (m.equals(media)) {
-				return false;
+				return null;
 			}
 		}
 		
 		medias.add(media);
-		return true;
+		return media;
 	}
 	
 	@Override
-	public boolean updateMedia(Media media) {
+	public Media updateMedia(Media media) {
 		for (Media m: medias) {
 			if (m.equals(media)) {
 				medias.remove(m);
 				medias.add(media);
-				return true;
+				return media;
 			}
 		}
-		return false;
+		return null;
 	}
 
 	@Override

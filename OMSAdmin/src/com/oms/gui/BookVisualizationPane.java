@@ -3,29 +3,47 @@ package com.oms.gui;
 import javax.swing.JLabel;
 
 import com.oms.bean.media.Book;
+import com.oms.bean.media.Media;
 
 @SuppressWarnings("serial")
 public class BookVisualizationPane extends PhysicalMediaVisualizationPane {
-	@Override
-	public void visualize(Object object) {
-		super.visualize(object);
+	private JLabel labelPublisher;
+	private JLabel labelPublicationDate;
+	private JLabel labelAuthors;
+	private JLabel labelNumberOfPages;
+	private JLabel labelLanguage;
+	
+	public BookVisualizationPane(Media media) {
+		super(media);
 		
-		if (object instanceof Book) {
-			Book book = (Book) object;
-			JLabel label = new JLabel("Publisher: " + book.getPublisher());
-			add(label);
+		labelPublisher = new JLabel();
+		add(labelPublisher);
+		
+		labelPublicationDate = new JLabel();
+		add(labelPublicationDate);
+		
+		labelAuthors = new JLabel();
+		add(labelAuthors);
+		
+		labelNumberOfPages = new JLabel();
+		add(labelNumberOfPages);
+		
+		labelLanguage = new JLabel();
+		add(labelLanguage);
+	}
+	
+	@Override
+	public void visualize() {
+		super.visualize();
+		
+		if (t instanceof Book) {
+			Book book = (Book) t;
 			
-			label = new JLabel("Publication date: " + book.getPublicationDate());
-			add(label);
-			
-			label = new JLabel("Authors: " + book.getAuthors().toString());
-			add(label);
-			
-			label = new JLabel("Number Of Pages: " + book.getNumberOfPages());
-			add(label);
-			
-			label = new JLabel("Language: " + book.getLanguage());
-			add(label);
+			labelPublisher.setText("Publisher: " + book.getPublisher());
+			labelPublicationDate.setText("Publication date: " + book.getPublicationDate());
+			labelAuthors.setText("Authors: " + book.getAuthors().toString());
+			labelNumberOfPages.setText("Number Of Pages: " + book.getNumberOfPages());
+			labelLanguage.setText("Language: " + book.getLanguage());
 		}
 	}
 }

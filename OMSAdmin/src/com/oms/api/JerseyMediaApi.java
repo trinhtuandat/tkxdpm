@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
@@ -64,6 +65,18 @@ public class JerseyMediaApi implements IMediaApi{
 	}
 	
 
+	@Override
+	public Book updateBook(Book book) {
+		Client client = ClientBuilder.newClient();
+		WebTarget webTarget = client.target(PATH).path("books").path(book.getId());
+		
+		Invocation.Builder invocationBuilder =  webTarget.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.post(Entity.entity(book, MediaType.APPLICATION_JSON));
+		
+		Book res = response.readEntity(Book.class);
+		return res;
+	}
+	
 
 	@Override
 	public ArrayList<CompactDisc> getCds(Map<String, String> queryParams) {

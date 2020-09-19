@@ -9,12 +9,13 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import com.oms.api.JerseyMediaApi;
 import com.oms.bean.media.Book;
 import com.oms.bean.media.Media;
 
 @SuppressWarnings("serial")
-public class ListDataVisualizationPane extends JScrollPane {
-	private ArrayList<?> list;
+public class ListDataVisualizationPane<T> extends JScrollPane {
+	private ArrayList<T> list;
 	private LayoutManager layout;
 	private JPanel pane;
 
@@ -30,25 +31,37 @@ public class ListDataVisualizationPane extends JScrollPane {
 		this.getHorizontalScrollBar().setUnitIncrement(20);
 	}
 	
-	public ListDataVisualizationPane(ArrayList<?> list) {
+	public ListDataVisualizationPane(ArrayList<T> list) {
 		this();
 		this.list = list;
 	}
 
+	//TODO: Factory
+
+	@SuppressWarnings("unchecked")
 	public void visualize() {
-		for (Object object: list) {
-			ADataVisualizationPane visualizationPane = null;
-			if (object instanceof Book) {
-				visualizationPane = new BookVisualizationPane();
-			} else if (object instanceof Media) {
-				visualizationPane = new MediaVisualizationPane();
-			}
-			if (visualizationPane != null) {
-				visualizationPane.visualize(object);
+		for (T t: list) {
+			
+			if (t instanceof Book) {
+				final ADataVisualizationPane visualizationPane = new BookVisualizationPane((Media) t);
+				visualizationPane.visualize();
+				visualizationPane.addAction("Edit", new IDataActionListener<T>() {
+					@Override
+					public void onAct(T t) {
+						new MediaEditDialog((Book) t, new IDataActionListener<Media>() {
+							@Override
+							public void onAct(Media t) {
+								System.out.println(t);
+								Book newBook = JerseyMediaApi.singleton().updateBook((Book) t);
+								visualizationPane.updateData(newBook);
+							}
+						});
+					}
+				});
+				
 				pane.add(visualizationPane);
-				
-				
-				pane.add(Box.createRigidArea(new Dimension(0, 20)));
+				pane.add(Box.createRigidArea(new Dimension(0, 40)));
+			} else if (t instanceof Media) {
 			}
 		}
 	}

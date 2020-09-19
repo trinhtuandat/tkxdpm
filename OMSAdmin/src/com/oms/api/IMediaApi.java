@@ -10,7 +10,16 @@ import com.oms.bean.media.Media;
 
 public interface IMediaApi {
 	public ArrayList<Media> getAllMedias();
+	
+	
 	public ArrayList<Book> getBooks(Map<String, String> queryStrings);
+	public Book updateBook(Book book);
+	
+	
+	
 	public ArrayList<CompactDisc> getCds(Map<String, String> queryStrings);
+	
+	
+	
 	public ArrayList<DigitalVideoDisc> getDvds(Map<String, String> queryStrings);
 }

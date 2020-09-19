@@ -29,4 +29,12 @@ public class BookService {
 		ArrayList<Media> res = mediaDatabase.searchMedia(book);
 		return res;
 	}
+	
+	@POST
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Media updateBook(@PathParam("id") String id, Book book) {
+		return mediaDatabase.updateMedia(book);
+	}
 }
