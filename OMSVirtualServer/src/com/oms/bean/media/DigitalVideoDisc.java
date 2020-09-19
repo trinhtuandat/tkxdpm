@@ -11,6 +11,21 @@ public class DigitalVideoDisc extends PhysicalMedia implements Playable {
 		super();
 	}
 	
+	public DigitalVideoDisc(String id, String title, String category, float cost) {
+		super(id, title, category, cost);
+	}
+	
+	public DigitalVideoDisc(String id, String title, String category, float cost, String barcode, String description, int quantity, float weight, Dimension dimension, String director, String studio, String language, int length) {
+		super(id, title, category, cost, barcode, description, quantity, weight, dimension);
+		
+		this.director = director;
+		this.studio = studio;
+		this.language = language;
+		this.length = length;
+	}
+
+
+
 	public void play() throws PlayerException {
 		if (this.getLength() <= 0) {
 			System.err.println("ERROR: DVD length is 0");
@@ -50,5 +65,36 @@ public class DigitalVideoDisc extends PhysicalMedia implements Playable {
 
 	public void setLength(int length) {
 		this.length = length;
+	}
+	
+	@Override
+	public boolean search(Media media) {
+		if (media == null)
+			return true;
+		
+		
+		boolean res = super.search(media);
+		if (!res) {
+			return false;
+		}
+		
+		
+		if (!(media instanceof DigitalVideoDisc))
+			return false;
+		DigitalVideoDisc dvd = (DigitalVideoDisc) media;
+		
+		if (dvd.director != null && !dvd.director.equals("") && !this.director.contains(dvd.director)) {
+			return false;
+		}
+		if (dvd.studio != null && !dvd.studio.equals("") && !this.studio.contains(dvd.studio)) {
+			return false;
+		}
+		if (dvd.length != 0 && this.length != dvd.length) {
+			return false;
+		}
+		if (dvd.language != null && !this.language.equals(dvd.language)) {
+			return false;
+		}
+		return true;
 	}
 }

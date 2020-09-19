@@ -1,47 +1,105 @@
 package com.oms.bean.media;
 
 import java.util.ArrayList;
+import java.util.Date;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-public class Book extends Media implements Comparable {
-
-	private java.util.ArrayList<String> authors = new java.util.ArrayList<String>();
+public class Book extends PhysicalMedia {
+	private String publisher;
+	private Date publicationDate;
+	private ArrayList<String> authors = new ArrayList<String>();
+	private int numberOfPages;
+	private String language;
 	
-	/**
-	 *  
-	 */
 	public Book() {
 		super();
 	}
+	
+	public Book(String id, String title, String category, float cost) {
+		super(id, title, category, cost);
+	}
 
+	public Book(String id, String title, String category, float cost, String barcode, String description, int quantity, float weight, Dimension dimension, String publisher, Date publicationDate, ArrayList<String> authors, int numberOfPages, String language) {
+		super(id, title, category, cost, barcode, description, quantity, weight, dimension);
+		this.publisher = publisher;
+		this.publicationDate = publicationDate;
+		this.authors = authors;
+		this.numberOfPages = numberOfPages;
+		this.language = language;
+	}
 
-	public void addAuthor(String authorName) {
-		// ensure that the author is not already in
-		// the ArrayList before adding
-		if (!(authors.contains(authorName))) {
-			authors.add(authorName);
+	public String getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+
+	public Date getPublicationDate() {
+		return publicationDate;
+	}
+
+	public void setPublicationDate(Date publicationDate) {
+		this.publicationDate = publicationDate;
+	}
+
+	public ArrayList<String> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(ArrayList<String> authors) {
+		this.authors = authors;
+	}
+
+	public int getNumberOfPages() {
+		return numberOfPages;
+	}
+
+	public void setNumberOfPages(int numberOfPages) {
+		this.numberOfPages = numberOfPages;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+	
+	@Override
+	public String toString() {
+		return super.toString() + ", publisher: " + publisher + ", publication date: " + publicationDate;
+	}
+	
+	@Override
+	public boolean search(Media media) {
+		if (media == null)
+			return true;
+		
+		
+		boolean res = super.search(media);
+		if (!res) {
+			return false;
 		}
-	}
-
-	public void removeAuthor(String authorName) {
-		// ensure that the author is present in the
-		// ArrayList before removing
-		if ((authors.contains(authorName))) {
-			authors.remove(authorName);
+		
+		
+		if (!(media instanceof Book))
+			return false;
+		Book book = (Book) media;
+		
+		if (book.publisher != null && !book.publisher.equals("") && !this.publisher.contains(book.publisher)) {
+			return false;
 		}
-	}
-	
-	public int compareTo(Object obj) {
-		Media media = (Media)obj;
-		return(this.getTitle()).compareTo(media.getTitle());
-	}
-	
-	public ArrayList<String> getAuthors(){
-		return this.authors;
-	}
-	
-	public void setAuthors(ArrayList<String> authors){
-		this.authors = authors;;
+		if (book.publicationDate != null && !this.publicationDate.equals(book.publicationDate)) {
+			return false;
+		}
+		if (book.numberOfPages != 0 && this.numberOfPages != book.numberOfPages) {
+			return false;
+		}
+		if (book.language != null && !this.language.equals(book.language)) {
+			return false;
+		}
+		return true;
 	}
 }

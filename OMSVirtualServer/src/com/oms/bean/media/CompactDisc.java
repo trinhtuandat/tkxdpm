@@ -18,6 +18,17 @@ public class CompactDisc extends PhysicalMedia implements Playable {
 		super();
 	}
 	
+	public CompactDisc(String id, String title, String category, float cost) {
+		super(id, title, category, cost);
+	}
+
+	public CompactDisc(String id, String title, String category, float cost, String barcode, String description, int quantity, float weight, Dimension dimension, String artist, int length, Date dateOfIssue, ArrayList<Track> tracks) {
+		super(id, title, category, cost, barcode, description, quantity, weight, dimension);
+		this.artist = artist;
+		this.length = length;
+		this.dateOfIssue = dateOfIssue;
+		this.tracks = tracks;
+	}
 
 	public int getLength() {
 		int total = 0;
@@ -85,5 +96,33 @@ public class CompactDisc extends PhysicalMedia implements Playable {
 
 	public void setLength(int length) {
 		this.length = length;
+	}
+	
+	@Override
+	public boolean search(Media media) {
+		if (media == null)
+			return true;
+		
+		
+		boolean res = super.search(media);
+		if (!res) {
+			return false;
+		}
+		
+		
+		if (!(media instanceof CompactDisc))
+			return false;
+		CompactDisc cd = (CompactDisc) media;
+		
+		if (cd.artist != null && !cd.artist.equals("") && !this.artist.contains(cd.artist)) {
+			return false;
+		}
+		if (cd.length != 0 && this.length != cd.length) {
+			return false;
+		}
+		if (cd.dateOfIssue != null && !this.dateOfIssue.equals(cd.dateOfIssue)) {
+			return false;
+		}
+		return true;
 	}
 }

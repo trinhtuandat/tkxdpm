@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import com.oms.api.JerseyMediaApi;
 import com.oms.bean.media.Book;
 import com.oms.bean.media.Media;
 import com.oms.gui.search.MediaSearchPane;
@@ -25,15 +26,7 @@ public class OMSAdmin extends JFrame {
 		cp.add(mediaSearchPane, BorderLayout.NORTH);
 
 		
-		Book b = new Book();
-		b.setCategory("IT");
-		b.setTitle("DATTT");
-		b.addAuthor("NVD");
-		b.addAuthor("NVA");
-		Media m = new Media("Sach IT", "IT", 54000);
-		ArrayList<Media> list = new ArrayList<Media>();
-		list.add(b);
-		list.add(m);
+		ArrayList<Book> list = JerseyMediaApi.singleton().getBooks(null);
 		
 		
 		ListDataVisualizationPane dataVisualizationPane = new ListDataVisualizationPane(list);

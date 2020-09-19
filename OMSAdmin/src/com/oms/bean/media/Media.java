@@ -1,113 +1,97 @@
 package com.oms.bean.media;
 
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
-import java.beans.PropertyVetoException;
-import java.beans.VetoableChangeListener;
-import java.beans.VetoableChangeSupport;
-
-import javax.xml.bind.annotation.XmlSeeAlso;
-
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
-@XmlSeeAlso({ Book.class })
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonTypeName("media")
-@JsonSubTypes({ @Type(value = Media.class, name = "media"), @Type(value = Book.class, name = "book")})
+@JsonSubTypes({ @Type(value = PhysicalMedia.class, name = "phmedia") })
 public class Media {
+	private String id;
+	
 	private String title;
 
-	private String category = "No category";
+	private String category;
 
 	private float cost;
-
-	private PropertyChangeSupport changes = new PropertyChangeSupport(this);
-
-	private VetoableChangeSupport vetoes = new VetoableChangeSupport(this);
-
-	/**
-	 *  
-	 */
+	
 	public Media() {
 		super();
 	}
-	
-	
 
-	public Media(String title, String category, float cost) {
+	public Media(String id, String title, String category, float cost) {
 		super();
+		this.id = id;
 		this.title = title;
 		this.category = category;
 		this.cost = cost;
 	}
 
-
-
-	/**
-	 * Returns the category.
-	 */
-	public String getCategory() {
-		return category;
+	public String getId() {
+		return id;
 	}
 
-	/**
-	 * Returns the cost.
-	 */
-	public float getCost() {
-		return cost;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	/**
-	 * Returns the title.
-	 */
 	public String getTitle() {
 		return title;
 	}
 
-	/**
-	 * Sets the category.
-	 */
-	public void setCategory(String category) {
-		try {
-			String oldCategory = new String(this.category);
-			this.category = category;
-			vetoes.fireVetoableChange("category", oldCategory, this.category);
-		} catch (PropertyVetoException e) {
-			System.out.println(e.getMessage());
-		}
-	}
-
-	/**
-	 * Sets the cost.
-	 */
-	public void setCost(float cost) {
-		this.cost = cost;
-		changes.firePropertyChange("cost", cost, this.cost);
-	}
-
-	/**
-	 * Sets the title.
-	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
-	public void addPropertyChangeListener(PropertyChangeListener p) {
-		changes.addPropertyChangeListener(p);
+	public String getCategory() {
+		return category;
 	}
 
-	public void removePropertyChangeListener(PropertyChangeListener p) {
-		changes.removePropertyChangeListener(p);
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
-	public void addVetoableChangeListener(VetoableChangeListener v) {
-		vetoes.addVetoableChangeListener(v);
+	public float getCost() {
+		return cost;
 	}
 
-	public void removeVetoableChangeListener(VetoableChangeListener v) {
-		vetoes.removeVetoableChangeListener(v);
+	public void setCost(float cost) {
+		this.cost = cost;
+	}
+	
+	@Override
+	public String toString() {
+		return "id: " + this.id + ", title: " + this.title + ", category: " + this.category + ", cost: " + this.cost;
+	}
+	
+	
+	public boolean search(Media media) {
+		if (media == null)
+			return true;
+		
+		
+		if (media.id != null && !media.id.equals("") && !this.id.contains(media.id)) {
+			return false;
+		}
+		if (media.title != null && !media.title.equals("") && !this.title.contains(media.title)) {
+			return false;
+		}
+		if (media.category != null && !media.category.equals("") && !this.category.contains(media.category)) {
+			return false;
+		}
+		if (media.cost != 0 && this.cost != media.cost) {
+			return false;
+		}
+		return true;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Media) {
+			return this.id.equals(((Media) obj).id);
+		}
+		return false;
 	}
 }

@@ -1,44 +1,18 @@
 package com.oms.bean.media;
 
-public class Track implements Playable, Comparable {
+public class Track implements Playable {
 
 	private String title;
-
 	private int length;
 
-	/**
-	 * Constructor for Track
-	 */
 	public Track() {
 		super();
 	}
 
-	/**
-	 * Returns the length.
-	 */
-	public int getLength() {
-		return length;
-	}
-
-	/**
-	 * Returns the title.
-	 */
-	public String getTitle() {
-		return title;
-	}
-
-	/**
-	 * Sets the length.
-	 */
-	public void setLength(int length) {
-		this.length = length;
-	}
-
-	/**
-	 * Sets the title.
-	 */
-	public void setTitle(String title) {
+	public Track(String title, int length) {
+		super();
 		this.title = title;
+		this.length = length;
 	}
 
 	public void play() throws PlayerException {
@@ -50,8 +24,19 @@ public class Track implements Playable, Comparable {
 		System.out.println("Track length: " + this.getLength());
 	}
 
-	public int compareTo(Object obj) {
-		Media media = (Media) obj;
-		return (this.getTitle()).compareTo(media.getTitle());
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public int getLength() {
+		return length;
+	}
+
+	public void setLength(int length) {
+		this.length = length;
 	}
 }

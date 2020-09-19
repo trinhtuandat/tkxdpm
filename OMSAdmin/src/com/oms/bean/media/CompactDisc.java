@@ -1,53 +1,38 @@
 package com.oms.bean.media;
 
-public class CompactDisc extends Media implements Playable, Comparable {
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+
+public class CompactDisc extends PhysicalMedia implements Playable {
 
 	private String artist;
 
 	private int length;
+	
+	private Date dateOfIssue;
 
-	private java.util.ArrayList tracks = new java.util.ArrayList();
+	private ArrayList<Track> tracks = new ArrayList<Track>();
 
-	/**
-	 *  
-	 */
 	public CompactDisc() {
 		super();
 	}
-
-	/**
-	 * Gets the artist
-	 */
-	public String getArtist() {
-		return artist;
+	
+	public CompactDisc(String id, String title, String category, float cost) {
+		super(id, title, category, cost);
 	}
 
-	/**
-	 * Sets the artist
-	 */
-	public void setArtist(String artist) {
+	public CompactDisc(String id, String title, String category, float cost, String barcode, String description, int quantity, float weight, Dimension dimension, String artist, int length, Date dateOfIssue, ArrayList<Track> tracks) {
+		super(id, title, category, cost, barcode, description, quantity, weight, dimension);
 		this.artist = artist;
-	}
-
-	public void addTrack(Track track1) {
-		// ensure that the track is not already in the
-		// ArrayList before adding
-		if (!(tracks.contains(track1))) {
-			tracks.add(track1);
-		}
-	}
-
-	public void removeTrack(Track track1) {
-		// ensure that the track is present in the
-		// ArrayList before removing
-		if ((tracks.contains(track1))) {
-			tracks.remove(track1);
-		}
+		this.length = length;
+		this.dateOfIssue = dateOfIssue;
+		this.tracks = tracks;
 	}
 
 	public int getLength() {
 		int total = 0;
-		java.util.Iterator iter = tracks.iterator();
+		Iterator<Track> iter = tracks.iterator();
 		Track nextTrack;
 		while (iter.hasNext()) {
 			nextTrack = (Track) iter.next();
@@ -65,7 +50,7 @@ public class CompactDisc extends Media implements Playable, Comparable {
 		System.out.println("Playing CD: " + this.getTitle());
 		System.out.println("CD length:" + this.getLength());
 
-		java.util.Iterator iter = tracks.iterator();
+		Iterator<Track> iter = tracks.iterator();
 		Track nextTrack;
 
 		while (iter.hasNext()) {
@@ -78,8 +63,66 @@ public class CompactDisc extends Media implements Playable, Comparable {
 		}
 	}
 
-	public int compareTo(Object obj) {
-		Media media = (Media)obj;
-		return(this.getTitle()).compareTo(media.getTitle());
+
+	public String getArtist() {
+		return artist;
+	}
+
+
+	public void setArtist(String artist) {
+		this.artist = artist;
+	}
+
+
+	public Date getDateOfIssue() {
+		return dateOfIssue;
+	}
+
+
+	public void setDateOfIssue(Date dateOfIssue) {
+		this.dateOfIssue = dateOfIssue;
+	}
+
+
+	public ArrayList<Track> getTracks() {
+		return tracks;
+	}
+
+
+	public void setTracks(ArrayList<Track> tracks) {
+		this.tracks = tracks;
+	}
+
+
+	public void setLength(int length) {
+		this.length = length;
+	}
+	
+	@Override
+	public boolean search(Media media) {
+		if (media == null)
+			return true;
+		
+		
+		boolean res = super.search(media);
+		if (!res) {
+			return false;
+		}
+		
+		
+		if (!(media instanceof CompactDisc))
+			return false;
+		CompactDisc cd = (CompactDisc) media;
+		
+		if (cd.artist != null && !cd.artist.equals("") && !this.artist.contains(cd.artist)) {
+			return false;
+		}
+		if (cd.length != 0 && this.length != cd.length) {
+			return false;
+		}
+		if (cd.dateOfIssue != null && !this.dateOfIssue.equals(cd.dateOfIssue)) {
+			return false;
+		}
+		return true;
 	}
 }

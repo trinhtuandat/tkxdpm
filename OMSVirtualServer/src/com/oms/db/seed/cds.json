@@ -1,11 +1,11 @@
 [
 	{
-		"type": "disc",
-		"id": "disc1",
+		"type": "cd",
+		"id": "cd1",
 		"title": "Selena Gomez 2020",
 		"category": "Pop",
 		"cost": "250000",
-		"barcode": "disc1",
+		"barcode": "cd1",
 		"description": "Many interesting songs",
 		"quantity": 100,
 		"weight": 1.2,
@@ -32,12 +32,12 @@
 		]
 	},
 	{
-		"type": "disc",
-		"id": "disc2",
+		"type": "cd",
+		"id": "cd2",
 		"title": "Miley Cyrus 2020",
 		"category": "R&B",
 		"cost": "550000",
-		"barcode": "disc2",
+		"barcode": "cd2",
 		"description": "Many interesting songs",
 		"quantity": 100,
 		"weight": 1.2,
@@ -64,12 +64,12 @@
 		]
 	},
 	{
-		"type": "disc",
-		"id": "disc3",
+		"type": "cd",
+		"id": "cd3",
 		"title": "Modern Talking 2020 collection",
 		"category": "Rock",
 		"cost": "250000",
-		"barcode": "disc3",
+		"barcode": "cd3",
 		"description": "Many interesting songs",
 		"quantity": 100,
 		"weight": 1.2,

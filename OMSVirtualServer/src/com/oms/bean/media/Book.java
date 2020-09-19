@@ -13,9 +13,13 @@ public class Book extends PhysicalMedia {
 	public Book() {
 		super();
 	}
+	
+	public Book(String id, String title, String category, float cost) {
+		super(id, title, category, cost);
+	}
 
-	public Book(String publisher, Date publicationDate, ArrayList<String> authors, int numberOfPages, String language) {
-		super();
+	public Book(String id, String title, String category, float cost, String barcode, String description, int quantity, float weight, Dimension dimension, String publisher, Date publicationDate, ArrayList<String> authors, int numberOfPages, String language) {
+		super(id, title, category, cost, barcode, description, quantity, weight, dimension);
 		this.publisher = publisher;
 		this.publicationDate = publicationDate;
 		this.authors = authors;
@@ -66,5 +70,36 @@ public class Book extends PhysicalMedia {
 	@Override
 	public String toString() {
 		return super.toString() + ", publisher: " + publisher + ", publication date: " + publicationDate;
+	}
+	
+	@Override
+	public boolean search(Media media) {
+		if (media == null)
+			return true;
+		
+		
+		boolean res = super.search(media);
+		if (!res) {
+			return false;
+		}
+		
+		
+		if (!(media instanceof Book))
+			return false;
+		Book book = (Book) media;
+		
+		if (book.publisher != null && !book.publisher.equals("") && !this.publisher.contains(book.publisher)) {
+			return false;
+		}
+		if (book.publicationDate != null && !this.publicationDate.equals(book.publicationDate)) {
+			return false;
+		}
+		if (book.numberOfPages != 0 && this.numberOfPages != book.numberOfPages) {
+			return false;
+		}
+		if (book.language != null && !this.language.equals(book.language)) {
+			return false;
+		}
+		return true;
 	}
 }

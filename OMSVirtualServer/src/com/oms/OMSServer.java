@@ -4,6 +4,9 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
+import com.oms.service.BookService;
+import com.oms.service.CompactDiscService;
+import com.oms.service.DigitalVideoDiscService;
 import com.oms.service.MediaService;
 
 public class OMSServer {
@@ -17,11 +20,13 @@ public class OMSServer {
 		ServletHolder jerseyServlet = context.addServlet(org.glassfish.jersey.servlet.ServletContainer.class, "/*");
 		jerseyServlet.setInitOrder(0);
 
-		// Tells the Jersey Servlet which REST service/class to load.
-		jerseyServlet.setInitParameter(
-			"jersey.config.server.provider.classnames", MediaService.class.getCanonicalName()
-		);
+		
+		jerseyServlet.setInitParameter("jersey.config.server.provider.classnames",
+				MediaService.class.getCanonicalName() + ", " + BookService.class.getCanonicalName() + ", "
+						+ CompactDiscService.class.getCanonicalName() + ", "
+						+ DigitalVideoDiscService.class.getCanonicalName());
 
+		
 		try {
 			jettyServer.start();
 			jettyServer.join();

@@ -1,47 +1,30 @@
 package com.oms.bean.media;
 
-public class DigitalVideoDisc extends Media implements Playable, Comparable {
+public class DigitalVideoDisc extends PhysicalMedia implements Playable {
 
 	private String director;
-
+	private String studio;
+	private  String language;
 	private int length;
 
-	/**
-	 * Constructor for DigitalVideoDisc
-	 */
 	public DigitalVideoDisc() {
 		super();
 	}
-
-	/**
-	 * @return Returns the director.
-	 */
-	public String getDirector() {
-		return director;
+	
+	public DigitalVideoDisc(String id, String title, String category, float cost) {
+		super(id, title, category, cost);
 	}
-
-	/**
-	 * @param director
-	 *            The director to set.
-	 */
-	public void setDirector(String director) {
+	
+	public DigitalVideoDisc(String id, String title, String category, float cost, String barcode, String description, int quantity, float weight, Dimension dimension, String director, String studio, String language, int length) {
+		super(id, title, category, cost, barcode, description, quantity, weight, dimension);
+		
 		this.director = director;
-	}
-
-	/**
-	 * @return Returns the length.
-	 */
-	public int getLength() {
-		return length;
-	}
-
-	/**
-	 * @param length
-	 *            The length to set.
-	 */
-	public void setLength(int length) {
+		this.studio = studio;
+		this.language = language;
 		this.length = length;
 	}
+
+
 
 	public void play() throws PlayerException {
 		if (this.getLength() <= 0) {
@@ -52,8 +35,66 @@ public class DigitalVideoDisc extends Media implements Playable, Comparable {
 		System.out.println("DVD length: " + this.getLength());
 	}
 
-	public int compareTo(Object obj) {
-		DigitalVideoDisc dvd = (DigitalVideoDisc) obj;
-		return (this.getTitle()).compareTo(dvd.getTitle());
+	public String getDirector() {
+		return director;
+	}
+
+	public void setDirector(String director) {
+		this.director = director;
+	}
+
+	public String getStudio() {
+		return studio;
+	}
+
+	public void setStudio(String studio) {
+		this.studio = studio;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public int getLength() {
+		return length;
+	}
+
+	public void setLength(int length) {
+		this.length = length;
+	}
+	
+	@Override
+	public boolean search(Media media) {
+		if (media == null)
+			return true;
+		
+		
+		boolean res = super.search(media);
+		if (!res) {
+			return false;
+		}
+		
+		
+		if (!(media instanceof DigitalVideoDisc))
+			return false;
+		DigitalVideoDisc dvd = (DigitalVideoDisc) media;
+		
+		if (dvd.director != null && !dvd.director.equals("") && !this.director.contains(dvd.director)) {
+			return false;
+		}
+		if (dvd.studio != null && !dvd.studio.equals("") && !this.studio.contains(dvd.studio)) {
+			return false;
+		}
+		if (dvd.length != 0 && this.length != dvd.length) {
+			return false;
+		}
+		if (dvd.language != null && !this.language.equals(dvd.language)) {
+			return false;
+		}
+		return true;
 	}
 }

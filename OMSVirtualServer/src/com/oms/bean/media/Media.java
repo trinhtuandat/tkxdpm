@@ -13,7 +13,7 @@ public class Media {
 	
 	private String title;
 
-	private String category = "No category";
+	private String category;
 
 	private float cost;
 	
@@ -64,5 +64,34 @@ public class Media {
 	@Override
 	public String toString() {
 		return "id: " + this.id + ", title: " + this.title + ", category: " + this.category + ", cost: " + this.cost;
+	}
+	
+	
+	public boolean search(Media media) {
+		if (media == null)
+			return true;
+		
+		
+		if (media.id != null && !media.id.equals("") && !this.id.contains(media.id)) {
+			return false;
+		}
+		if (media.title != null && !media.title.equals("") && !this.title.contains(media.title)) {
+			return false;
+		}
+		if (media.category != null && !media.category.equals("") && !this.category.contains(media.category)) {
+			return false;
+		}
+		if (media.cost != 0 && this.cost != media.cost) {
+			return false;
+		}
+		return true;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Media) {
+			return this.id.equals(((Media) obj).id);
+		}
+		return false;
 	}
 }
