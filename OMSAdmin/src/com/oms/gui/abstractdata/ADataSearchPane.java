@@ -15,8 +15,10 @@ import javax.swing.JPanel;
 public abstract class ADataSearchPane extends JPanel {
 	protected GridBagLayout layout;
 	protected GridBagConstraints c;
+	
+	private IDataActionListener<Map<String, String>> onSearchListener;
 
-	public ADataSearchPane(IDataActionListener<Map<String, String>> onSearchListener) {
+	public ADataSearchPane() {
 		layout = new GridBagLayout();
 		this.setLayout(layout);
 
@@ -45,6 +47,11 @@ public abstract class ADataSearchPane extends JPanel {
 		add(new JLabel(), c);
 	}
 	
+	public ADataSearchPane(IDataActionListener<Map<String, String>> onSearchListener) {
+		this();
+		this.onSearchListener = onSearchListener;
+	}
+	
 	public abstract void buildControls();
 	
 	public Map<String, String> getQueryParams() {
@@ -57,5 +64,14 @@ public abstract class ADataSearchPane extends JPanel {
 		int[][] dim = layout.getLayoutDimensions();
 	    int rows = dim[1].length;
 	    return rows;
+	}
+	
+	
+	public void setOnSearchListener(IDataActionListener<Map<String, String>> onSearchListener) {
+		this.onSearchListener = onSearchListener;
+	}
+	
+	public void fireSearchEvent() {
+		onSearchListener.onAct(getQueryParams());
 	}
 }

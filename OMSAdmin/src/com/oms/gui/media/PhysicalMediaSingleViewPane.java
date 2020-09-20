@@ -6,14 +6,14 @@ import com.oms.bean.media.Media;
 import com.oms.bean.media.PhysicalMedia;
 
 @SuppressWarnings("serial")
-public class PhysicalMediaVisualizationPane extends MediaVisualizationPane{
+public class PhysicalMediaSingleViewPane extends MediaSingleViewPane{
 	private JLabel labelBarcode;
 	private JLabel labelDescription;
 	private JLabel labelQuantity;
 	private JLabel labelWeight;
 	private JLabel labelDimension;
 	
-	public PhysicalMediaVisualizationPane() {
+	public PhysicalMediaSingleViewPane() {
 		super();
 
 		labelBarcode = new JLabel();
@@ -32,7 +32,7 @@ public class PhysicalMediaVisualizationPane extends MediaVisualizationPane{
 		add(labelDimension);
 	}
 	
-	public PhysicalMediaVisualizationPane(Media media) {
+	public PhysicalMediaSingleViewPane(Media media) {
 		this();
 		this.t = media;
 		

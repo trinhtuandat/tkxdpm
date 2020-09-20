@@ -13,6 +13,10 @@ public class MediaSearchPane extends ADataSearchPane {
 	private JTextField titleField;
 	private JTextField categoryField;
 
+	public MediaSearchPane() {
+		super();
+	}
+	
 	public MediaSearchPane(IDataActionListener<Map<String, String>> onSearchListener) {
 		super(onSearchListener);
 	}

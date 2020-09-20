@@ -3,15 +3,15 @@ package com.oms.gui.media;
 import javax.swing.JLabel;
 
 import com.oms.bean.media.Media;
-import com.oms.gui.abstractdata.ADataVisualizationPane;
+import com.oms.gui.abstractdata.ADataSingleViewPane;
 
 @SuppressWarnings("serial")
-public class MediaVisualizationPane extends ADataVisualizationPane<Media>{
+public class MediaSingleViewPane extends ADataSingleViewPane<Media>{
 	private JLabel labelTitle;
 	private JLabel labelCagegory;
 	private JLabel labelCost;
 	
-	public MediaVisualizationPane() {
+	public MediaSingleViewPane() {
 		super();
 
 		labelTitle = new JLabel();
@@ -24,7 +24,7 @@ public class MediaVisualizationPane extends ADataVisualizationPane<Media>{
 		add(labelCost);
 	}
 	
-	public MediaVisualizationPane(Media media) {
+	public MediaSingleViewPane(Media media) {
 		this();
 		this.t = media;
 		

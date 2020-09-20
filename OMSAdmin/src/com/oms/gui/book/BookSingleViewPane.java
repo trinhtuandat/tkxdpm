@@ -4,17 +4,17 @@ import javax.swing.JLabel;
 
 import com.oms.bean.media.Book;
 import com.oms.bean.media.Media;
-import com.oms.gui.media.PhysicalMediaVisualizationPane;
+import com.oms.gui.media.PhysicalMediaSingleViewPane;
 
 @SuppressWarnings("serial")
-public class BookVisualizationPane extends PhysicalMediaVisualizationPane {
+public class BookSingleViewPane extends PhysicalMediaSingleViewPane {
 	private JLabel labelPublisher;
 	private JLabel labelPublicationDate;
 	private JLabel labelAuthors;
 	private JLabel labelNumberOfPages;
 	private JLabel labelLanguage;
 	
-	public BookVisualizationPane() {
+	public BookSingleViewPane() {
 		super();
 		
 		labelPublisher = new JLabel();
@@ -33,7 +33,7 @@ public class BookVisualizationPane extends PhysicalMediaVisualizationPane {
 		add(labelLanguage);
 	}
 	
-	public BookVisualizationPane(Media media) {
+	public BookSingleViewPane(Media media) {
 		this();
 		this.t = media;
 

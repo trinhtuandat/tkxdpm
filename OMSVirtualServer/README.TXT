@@ -15,3 +15,5 @@ SV tự thêm các dữ liệu mới?, dùng SQL Lite?
 Singleton với interface
 
 Một nhiệm vụ: 1 phương thức 1 nhiệm vụ
+
+fireSearchEvent: tránh lặp code

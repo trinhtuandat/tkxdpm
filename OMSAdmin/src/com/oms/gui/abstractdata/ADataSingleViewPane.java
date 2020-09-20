@@ -8,14 +8,14 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public abstract class ADataVisualizationPane<T> extends JPanel {
+public abstract class ADataSingleViewPane<T> extends JPanel {
 	protected T t;
 
-	public ADataVisualizationPane() {
+	public ADataSingleViewPane() {
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 	}
 	
-	public ADataVisualizationPane(T t) {
+	public ADataSingleViewPane(T t) {
 		this();
 		this.t = t;
 		

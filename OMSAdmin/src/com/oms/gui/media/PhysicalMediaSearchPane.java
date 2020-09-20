@@ -11,6 +11,10 @@ import com.oms.gui.abstractdata.IDataActionListener;
 public class PhysicalMediaSearchPane extends MediaSearchPane {
 	private JTextField descriptionField;
 
+	public PhysicalMediaSearchPane() {
+		super();
+	}
+	
 	public PhysicalMediaSearchPane(IDataActionListener<Map<String, String>> onSearchListener) {
 		super(onSearchListener);
 	}

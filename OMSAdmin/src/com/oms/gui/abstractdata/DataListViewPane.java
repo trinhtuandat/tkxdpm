@@ -13,15 +13,15 @@ import com.oms.api.JerseyMediaApi;
 import com.oms.bean.media.Book;
 import com.oms.bean.media.Media;
 import com.oms.gui.book.BookEditDialog;
-import com.oms.gui.book.BookVisualizationPane;
+import com.oms.gui.book.BookSingleViewPane;
 
 @SuppressWarnings("serial")
-public class ListDataVisualizationPane<T> extends JScrollPane {
+public class DataListViewPane<T> extends JScrollPane {
 	private List<T> list;
 	private LayoutManager layout;
 	private JPanel pane;
 
-	public ListDataVisualizationPane() {
+	public DataListViewPane() {
 		pane = new JPanel();
 		layout = new BoxLayout(pane, BoxLayout.Y_AXIS);
 		pane.setLayout(layout);
@@ -33,7 +33,7 @@ public class ListDataVisualizationPane<T> extends JScrollPane {
 		this.getHorizontalScrollBar().setUnitIncrement(20);
 	}
 	
-	public ListDataVisualizationPane(List<T> list) {
+	public DataListViewPane(List<T> list) {
 		this();
 		this.list = list;
 	}
@@ -44,7 +44,7 @@ public class ListDataVisualizationPane<T> extends JScrollPane {
 		for (T t: list) {
 			
 			if (t instanceof Book) {
-				final ADataVisualizationPane visualizationPane = new BookVisualizationPane((Media) t);
+				final ADataSingleViewPane visualizationPane = new BookSingleViewPane((Media) t);
 				visualizationPane.addAction("Edit", new IDataActionListener<T>() {
 					@Override
 					public void onAct(T t) {

@@ -13,10 +13,13 @@ public class BookSearchPane extends PhysicalMediaSearchPane {
 	private JTextField publisherField;
 	private JTextField languageField;
 
+	public BookSearchPane() {
+		super();
+	}
+	
 	public BookSearchPane(IDataActionListener<Map<String, String>> onSearchListener) {
 		super(onSearchListener);
 	}
-	
 	
 	@Override
 	public void buildControls() {
