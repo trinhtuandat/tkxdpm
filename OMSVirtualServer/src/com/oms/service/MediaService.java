@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-import com.oms.bean.media.Media;
+import com.oms.bean.Media;
 import com.oms.db.IMediaDatabase;
 import com.oms.db.JsonMediaDatabase;
 

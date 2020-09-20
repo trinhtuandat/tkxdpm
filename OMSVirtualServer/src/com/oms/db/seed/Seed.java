@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.oms.bean.media.Media;
-import com.oms.bean.media.Order;
+import com.oms.bean.Media;
+import com.oms.bean.Order;
 
 public class Seed {
 	private ArrayList<Media> medias;

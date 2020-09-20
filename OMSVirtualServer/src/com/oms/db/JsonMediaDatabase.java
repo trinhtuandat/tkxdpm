@@ -2,8 +2,8 @@ package com.oms.db;
 
 import java.util.ArrayList;
 
-import com.oms.bean.media.Media;
-import com.oms.bean.media.Order;
+import com.oms.bean.Media;
+import com.oms.bean.Order;
 import com.oms.db.seed.Seed;
 
 public class JsonMediaDatabase implements IMediaDatabase{
