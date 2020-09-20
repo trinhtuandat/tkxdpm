@@ -6,7 +6,7 @@ import javax.swing.JTextField;
 import com.oms.bean.media.Dimension;
 import com.oms.bean.media.Media;
 import com.oms.bean.media.PhysicalMedia;
-import com.oms.gui.IDataActionListener;
+import com.oms.gui.abstractdata.IDataActionListener;
 
 @SuppressWarnings("serial")
 public class PhysicalMediaEditDialog extends MediaEditDialog{

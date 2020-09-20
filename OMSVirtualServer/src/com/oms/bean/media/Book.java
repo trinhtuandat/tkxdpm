@@ -97,7 +97,7 @@ public class Book extends PhysicalMedia {
 		if (book.numberOfPages != 0 && this.numberOfPages != book.numberOfPages) {
 			return false;
 		}
-		if (book.language != null && !this.language.equals(book.language)) {
+		if (book.language != null && !book.language.equals("") && !this.language.contains(book.language)) {
 			return false;
 		}
 		return true;

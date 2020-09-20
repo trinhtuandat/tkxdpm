@@ -5,7 +5,7 @@ import javax.swing.JTextField;
 
 import com.oms.bean.media.Book;
 import com.oms.bean.media.Media;
-import com.oms.gui.IDataActionListener;
+import com.oms.gui.abstractdata.IDataActionListener;
 import com.oms.gui.media.PhysicalMediaEditDialog;
 
 @SuppressWarnings("serial")

@@ -1,9 +1,12 @@
-package com.oms.gui;
+package com.oms.gui.media;
 
 import java.util.Map;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import com.oms.gui.abstractdata.ADataSearchPane;
+import com.oms.gui.abstractdata.IDataActionListener;
 
 @SuppressWarnings("serial")
 public class MediaSearchPane extends ADataSearchPane {

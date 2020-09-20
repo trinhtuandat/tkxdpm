@@ -4,8 +4,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import com.oms.bean.media.Media;
-import com.oms.gui.ADataEditDialog;
-import com.oms.gui.IDataActionListener;
+import com.oms.gui.abstractdata.ADataEditDialog;
+import com.oms.gui.abstractdata.IDataActionListener;
 
 @SuppressWarnings("serial")
 public class MediaEditDialog extends ADataEditDialog<Media>{

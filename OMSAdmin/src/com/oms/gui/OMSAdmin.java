@@ -8,6 +8,8 @@ import javax.swing.*;
 
 import com.oms.api.JerseyMediaApi;
 import com.oms.bean.media.Book;
+import com.oms.gui.abstractdata.IDataActionListener;
+import com.oms.gui.abstractdata.ListDataVisualizationPane;
 import com.oms.gui.book.BookSearchPane;
 
 @SuppressWarnings("serial")

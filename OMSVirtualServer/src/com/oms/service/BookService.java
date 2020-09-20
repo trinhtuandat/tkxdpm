@@ -12,9 +12,9 @@ import com.oms.db.JsonMediaDatabase;
 
 @Path("/books")
 public class BookService {
-	
+
 	private IMediaDatabase mediaDatabase;
-	
+
 	public BookService() {
 		mediaDatabase = JsonMediaDatabase.singleton();
 	}
@@ -23,13 +23,16 @@ public class BookService {
 	@Path("")
 	@Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<Media> getBooks(@QueryParam("id") String id, @QueryParam("title") String title,
-			@QueryParam("category") String category, @QueryParam("publisher") String publisher) {
+			@QueryParam("category") String category, @QueryParam("description") String description,
+			@QueryParam("publisher") String publisher, @QueryParam("language") String language) {
 		Book book = new Book(id, title, category, 0);
+		book.setDescription(description);
 		book.setPublisher(publisher);
+		book.setLanguage(language);
 		ArrayList<Media> res = mediaDatabase.searchMedia(book);
 		return res;
 	}
-	
+
 	@POST
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)

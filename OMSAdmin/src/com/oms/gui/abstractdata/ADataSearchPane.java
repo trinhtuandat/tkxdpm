@@ -1,4 +1,4 @@
-package com.oms.gui;
+package com.oms.gui.abstractdata;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
