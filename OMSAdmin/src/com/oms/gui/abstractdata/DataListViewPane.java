@@ -11,7 +11,7 @@ import javax.swing.JScrollPane;
 
 import com.oms.bean.media.Book;
 import com.oms.bean.media.Media;
-import com.oms.gui.media.MediaSingleViewPaneFactory;
+import com.oms.gui.media.factory.MediaSingleViewPaneFactory;
 
 @SuppressWarnings("serial")
 public class DataListViewPane<T> extends JScrollPane {

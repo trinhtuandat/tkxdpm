@@ -4,7 +4,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.*;
 
-import com.oms.gui.media.MediaPageFactory;
+import com.oms.gui.media.factory.MediaPageFactory;
 
 @SuppressWarnings("serial")
 public class OMSAdmin extends JFrame {

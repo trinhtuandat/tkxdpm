@@ -1,4 +1,4 @@
-package com.oms.gui.media;
+package com.oms.gui.media.factory;
 
 import java.util.List;
 import java.util.Map;
@@ -6,16 +6,16 @@ import java.util.Map;
 import com.oms.api.JerseyMediaApi;
 import com.oms.bean.media.Book;
 import com.oms.bean.media.Media;
-import com.oms.gui.abstractdata.ADataPageFactory;
 import com.oms.gui.abstractdata.ADataPagePane;
 import com.oms.gui.abstractdata.DataListViewPane;
 import com.oms.gui.abstractdata.IDataActionListener;
+import com.oms.gui.abstractdata.factory.ADataPageFactory;
 import com.oms.gui.book.BookSearchPane;
 
 public class MediaPageFactory extends ADataPageFactory<Media> {
-	private static MediaPageFactory singleton = new MediaPageFactory();
+	private static ADataPageFactory<Media> singleton = new MediaPageFactory();
 	
-	public static MediaPageFactory singleton() {
+	public static ADataPageFactory<Media> singleton() {
 		return singleton;
 	}
 	
