@@ -2,13 +2,13 @@ package com.oms.gui;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.swing.*;
 
 import com.oms.api.JerseyMediaApi;
 import com.oms.bean.media.Book;
-import com.oms.gui.search.BookSearchPane;
-import com.oms.gui.search.MediaSearchPane;
+import com.oms.gui.book.BookSearchPane;
 
 @SuppressWarnings("serial")
 public class OMSAdmin extends JFrame {
@@ -23,18 +23,23 @@ public class OMSAdmin extends JFrame {
 		rootPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		setContentPane(rootPanel);
 		
+		ListDataVisualizationPane dataVisualizationPane;
+		BookSearchPane mediaSearchPane;
 		
-		
-		
-		BookSearchPane mediaSearchPane = new BookSearchPane();
-		mediaSearchPane.setPreferredSize(new Dimension(-1, 100));
+		mediaSearchPane = new BookSearchPane(new IDataActionListener<Map<String,String>>() {
+			@Override
+			public void onAct(Map<String, String> t) {
+				ArrayList<Book> list = JerseyMediaApi.singleton().getBooks(t);
+				
+			}
+		});
 		rootPanel.add(mediaSearchPane);
 		mediaSearchPane.setBorder(BorderFactory.createLineBorder(Color.blue));
 		
 		
 		
 		ArrayList<Book> list = JerseyMediaApi.singleton().getBooks(null);
-		ListDataVisualizationPane dataVisualizationPane = new ListDataVisualizationPane(list);
+		dataVisualizationPane = new ListDataVisualizationPane(list);
 		dataVisualizationPane.visualize();
 		rootPanel.add(dataVisualizationPane);
 		dataVisualizationPane.setBorder(BorderFactory.createLineBorder(Color.red));

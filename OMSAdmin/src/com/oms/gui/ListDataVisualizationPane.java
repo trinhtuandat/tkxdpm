@@ -39,7 +39,6 @@ public class ListDataVisualizationPane<T> extends JScrollPane {
 	}
 
 	//TODO: Factory
-
 	@SuppressWarnings("unchecked")
 	public void visualize() {
 		for (T t: list) {
