@@ -45,7 +45,6 @@ public class ListDataVisualizationPane<T> extends JScrollPane {
 			
 			if (t instanceof Book) {
 				final ADataVisualizationPane visualizationPane = new BookVisualizationPane((Media) t);
-				visualizationPane.visualize();
 				visualizationPane.addAction("Edit", new IDataActionListener<T>() {
 					@Override
 					public void onAct(T t) {

@@ -11,13 +11,19 @@ import javax.swing.JPanel;
 public abstract class ADataVisualizationPane<T> extends JPanel {
 	protected T t;
 
-	public ADataVisualizationPane(T t) {
-		this.t = t;
-
+	public ADataVisualizationPane() {
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 	}
 	
-	public abstract void visualize();
+	public ADataVisualizationPane(T t) {
+		this();
+		this.t = t;
+		
+		displayData();
+	}
+	
+	
+	public abstract void displayData();
 	
 	public void addAction(String title, IDataActionListener<T> listener) {
 		JButton button = new JButton(title);
@@ -32,6 +38,6 @@ public abstract class ADataVisualizationPane<T> extends JPanel {
 	
 	public void updateData(T t) {
 		this.t = t;
-		visualize();
+		displayData();
 	}
 }

@@ -12,9 +12,9 @@ public class PhysicalMediaVisualizationPane extends MediaVisualizationPane{
 	private JLabel labelQuantity;
 	private JLabel labelWeight;
 	private JLabel labelDimension;
-
-	public PhysicalMediaVisualizationPane(Media media) {
-		super(media);
+	
+	public PhysicalMediaVisualizationPane() {
+		super();
 
 		labelBarcode = new JLabel();
 		add(labelBarcode);
@@ -32,9 +32,16 @@ public class PhysicalMediaVisualizationPane extends MediaVisualizationPane{
 		add(labelDimension);
 	}
 	
+	public PhysicalMediaVisualizationPane(Media media) {
+		this();
+		this.t = media;
+		
+		displayData();
+	}
+	
 	@Override
-	public void visualize() {
-		super.visualize();
+	public void displayData() {
+		super.displayData();
 		
 		if (t instanceof PhysicalMedia) {
 			PhysicalMedia pMedia = (PhysicalMedia) t;

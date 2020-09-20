@@ -14,8 +14,8 @@ public class BookVisualizationPane extends PhysicalMediaVisualizationPane {
 	private JLabel labelNumberOfPages;
 	private JLabel labelLanguage;
 	
-	public BookVisualizationPane(Media media) {
-		super(media);
+	public BookVisualizationPane() {
+		super();
 		
 		labelPublisher = new JLabel();
 		add(labelPublisher);
@@ -33,9 +33,16 @@ public class BookVisualizationPane extends PhysicalMediaVisualizationPane {
 		add(labelLanguage);
 	}
 	
+	public BookVisualizationPane(Media media) {
+		this();
+		this.t = media;
+
+		displayData();
+	}
+	
 	@Override
-	public void visualize() {
-		super.visualize();
+	public void displayData() {
+		super.displayData();
 		
 		if (t instanceof Book) {
 			Book book = (Book) t;

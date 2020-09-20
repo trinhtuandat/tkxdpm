@@ -11,8 +11,8 @@ public class MediaVisualizationPane extends ADataVisualizationPane<Media>{
 	private JLabel labelCagegory;
 	private JLabel labelCost;
 	
-	public MediaVisualizationPane(Media media) {
-		super(media);
+	public MediaVisualizationPane() {
+		super();
 
 		labelTitle = new JLabel();
 		add(labelTitle);
@@ -23,9 +23,16 @@ public class MediaVisualizationPane extends ADataVisualizationPane<Media>{
 		labelCost = new JLabel();
 		add(labelCost);
 	}
+	
+	public MediaVisualizationPane(Media media) {
+		this();
+		this.t = media;
+		
+		displayData();
+	}
 
 	@Override
-	public void visualize() {
+	public void displayData() {
 		labelTitle.setText("Title: " + t.getTitle());
 		labelCagegory.setText("Category: " + t.getCategory());
 		labelCost.setText("Cost: " + t.getCost() + "");
