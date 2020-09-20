@@ -15,6 +15,9 @@ public class OMSAdmin extends JFrame {
 
 	public static final int WINDOW_WIDTH = 800;
 	public static final int WINDOW_HEIGHT = 550;
+	
+	private ListDataVisualizationPane dataVisualizationPane;
+	private BookSearchPane mediaSearchPane;
 
 	public OMSAdmin() {
 		JPanel rootPanel = new JPanel();
@@ -23,14 +26,11 @@ public class OMSAdmin extends JFrame {
 		rootPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		setContentPane(rootPanel);
 		
-		ListDataVisualizationPane dataVisualizationPane;
-		BookSearchPane mediaSearchPane;
-		
 		mediaSearchPane = new BookSearchPane(new IDataActionListener<Map<String,String>>() {
 			@Override
 			public void onAct(Map<String, String> t) {
 				ArrayList<Book> list = JerseyMediaApi.singleton().getBooks(t);
-				
+				dataVisualizationPane.updateData(list);
 			}
 		});
 		rootPanel.add(mediaSearchPane);
@@ -40,7 +40,7 @@ public class OMSAdmin extends JFrame {
 		
 		ArrayList<Book> list = JerseyMediaApi.singleton().getBooks(null);
 		dataVisualizationPane = new ListDataVisualizationPane(list);
-		dataVisualizationPane.visualize();
+		dataVisualizationPane.displayData();
 		rootPanel.add(dataVisualizationPane);
 		dataVisualizationPane.setBorder(BorderFactory.createLineBorder(Color.red));
 		

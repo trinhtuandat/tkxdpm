@@ -42,8 +42,8 @@ public class MediaSearchPane extends ADataSearchPane {
 	public Map<String, String> getQueryParams() {
 		Map<String, String> res = super.getQueryParams();
 		
-		if (!categoryField.getText().trim().equals("")) {
-			res.put("title", categoryField.getText().trim());
+		if (!titleField.getText().trim().equals("")) {
+			res.put("title", titleField.getText().trim());
 		}
 		if (!categoryField.getText().trim().equals("")) {
 			res.put("category", categoryField.getText().trim());

@@ -2,7 +2,7 @@ package com.oms.gui;
 
 import java.awt.Dimension;
 import java.awt.LayoutManager;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -17,7 +17,7 @@ import com.oms.gui.book.BookVisualizationPane;
 
 @SuppressWarnings("serial")
 public class ListDataVisualizationPane<T> extends JScrollPane {
-	private ArrayList<T> list;
+	private List<T> list;
 	private LayoutManager layout;
 	private JPanel pane;
 
@@ -33,14 +33,14 @@ public class ListDataVisualizationPane<T> extends JScrollPane {
 		this.getHorizontalScrollBar().setUnitIncrement(20);
 	}
 	
-	public ListDataVisualizationPane(ArrayList<T> list) {
+	public ListDataVisualizationPane(List<T> list) {
 		this();
 		this.list = list;
 	}
 
 	//TODO: Factory
 	@SuppressWarnings("unchecked")
-	public void visualize() {
+	public void displayData() {
 		for (T t: list) {
 			
 			if (t instanceof Book) {
@@ -64,5 +64,13 @@ public class ListDataVisualizationPane<T> extends JScrollPane {
 			} else if (t instanceof Media) {
 			}
 		}
+	}
+	
+	public void updateData(List<T> list) {
+		this.list = list;
+		pane.removeAll();
+		pane.revalidate();
+		pane.repaint();
+		displayData();
 	}
 }
