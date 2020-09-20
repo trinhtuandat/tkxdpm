@@ -4,7 +4,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.*;
 
-import com.oms.gui.abstractdata.DataPageFactory;
+import com.oms.gui.media.MediaPageFactory;
 
 @SuppressWarnings("serial")
 public class OMSAdmin extends JFrame {
@@ -20,7 +20,7 @@ public class OMSAdmin extends JFrame {
 		rootPanel.setLayout(layout);
 
 		
-		JPanel bookPage = DataPageFactory.singleton().createDataManagePane("book");
+		JPanel bookPage = MediaPageFactory.singleton().createDataManagePane("book");
 		JTabbedPane tabbedPane = new JTabbedPane();
 		tabbedPane.addTab("Books", null, bookPage, "Books");
 		tabbedPane.addTab("Compact Discs", null, new JPanel(), "Compact Discs");
