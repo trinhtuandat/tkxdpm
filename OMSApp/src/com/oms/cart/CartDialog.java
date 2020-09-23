@@ -7,7 +7,6 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import com.oms.bean.Media;
 import com.oms.bean.Order;
 
 @SuppressWarnings("serial")
@@ -15,7 +14,7 @@ public class CartDialog extends JDialog{
 	private GridBagLayout layout;
 	private GridBagConstraints c;
 	
-	private Order<Media> order;
+	private Order order;
 	private JTextField customerNameField;
 	private JTextField customerPhoneField;
 	private JTextField customerAddressField;
@@ -53,16 +52,16 @@ public class CartDialog extends JDialog{
 		this.pack();
 		this.setResizable(false);
 	}
-	public CartDialog(Order<Media> order) {
+	
+	public CartDialog(Order order) {
 		this();
 		this.order = order;
 	}
 	
-	
-	public void updateData(Order<Media> order) {
+	public void updateData(Order order) {
 		this.order = order;
 	}
 	public String getPresentationText() {
-		return order.getItems().size() + " Items, Total Cost: " + order.getTotalCost();
+		return order.getOrderItems().size() + " Items, Total Cost: " + order.getTotalCost();
 	}
 }

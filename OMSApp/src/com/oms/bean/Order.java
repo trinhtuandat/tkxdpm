@@ -2,16 +2,17 @@ package com.oms.bean;
 
 import java.util.*;
 
-public class Order<T> {
+public class Order {
 	private String id;
 	private String code;
 	private String customerName;
 	private String customerPhoneNumber;
 	private String customerAddress;
-	private ArrayList<OrderItem<T>> items;
+	private ArrayList<OrderItem> orderItems;
 	private float totalCost;
 	
 	public Order() {
+		orderItems = new ArrayList<OrderItem>();
 	}
 	
 	public String getId() {
@@ -54,12 +55,12 @@ public class Order<T> {
 		this.customerAddress = customerAddress;
 	}
 
-	public ArrayList<OrderItem<T>> getItems() {
-		return items;
+	public ArrayList<OrderItem> getOrderItems() {
+		return orderItems;
 	}
 
-	public void setItems(ArrayList<OrderItem<T>> items) {
-		this.items = items;
+	public void setOrderItems(ArrayList<OrderItem> orderItems) {
+		this.orderItems = orderItems;
 	}
 
 	public void setTotalCost(float totalCost) {
@@ -68,20 +69,34 @@ public class Order<T> {
 
 	public float getTotalCost() {
 		float res = 0;
-		if (items!= null) {
-			Media mediaItem;
-			Iterator<OrderItem<T>> iter = items.iterator();
+		if (orderItems!= null) {
+			Iterator<OrderItem> iter = orderItems.iterator();
 			while (iter.hasNext()) {
-				OrderItem<T> oi = iter.next();
-				mediaItem = (Media) (oi.getItem());
-				res += mediaItem.getCost() * oi.getQuantity();
+				OrderItem oi = iter.next();
+				res +=  oi.getMedia().getCost() * oi.getQuantity();
 			}
 		}
 		return res;
 	}
 	
+	
+	
+	public void addOrderItem(OrderItem orderItem) {
+		boolean existed = false;
+		for (OrderItem oi: orderItems) {
+			if (oi.getMedia().getId().equals(orderItem.getMedia().getId())) {
+				oi.setQuantity(oi.getQuantity() + orderItem.getQuantity());
+				existed = true;
+				break;
+			}
+		}
+		
+		if (!existed) {
+			orderItems.add(orderItem);
+		}
+	}
 
-	public boolean search(Order<T> order) {
+	public boolean search(Order order) {
 		if (this.id != null && !this.id.equals("") && !this.id.contains(order.id)) {
 			return false;
 		}
@@ -97,11 +112,10 @@ public class Order<T> {
 		return true;
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Order) {
-			return this.code.equals(((Order<T>) obj).code);
+			return this.code.equals(((Order) obj).code);
 		}
 		return false;
 	}

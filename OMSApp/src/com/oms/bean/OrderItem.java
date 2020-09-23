@@ -1,24 +1,24 @@
 package com.oms.bean;
 
-public class OrderItem<T> {
-	private T item;
+public class OrderItem {
+	private Media media;
 	private int quantity;
 	
 	public OrderItem(){
 	}
 	
-	public OrderItem(T item, int quantity) {
+	public OrderItem(Media media, int quantity) {
 		super();
-		this.item = item;
+		this.media = media;
 		this.quantity = quantity;
 	}
 
-	public T getItem() {
-		return item;
+	public Media getMedia() {
+		return media;
 	}
 	
-	public void setItem(T item) {
-		this.item = item;
+	public void setMedia(Media media) {
+		this.media = media;
 	}
 	
 	public int getQuantity() {

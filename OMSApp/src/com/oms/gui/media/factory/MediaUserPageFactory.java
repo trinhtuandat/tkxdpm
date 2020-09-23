@@ -16,17 +16,17 @@ import com.oms.gui.abstractdata.factory.ADataPageFactory;
 import com.oms.gui.media.book.BookSearchPane;
 import com.oms.gui.media.book.BookSingleViewPane;
 
-public class MediaUserPageFactory extends ADataPageFactory<Media, OrderItem<Media>> {
-	private static ADataPageFactory<Media, OrderItem<Media>> singleton = new MediaUserPageFactory();
+public class MediaUserPageFactory extends ADataPageFactory<Media, OrderItem> {
+	private static ADataPageFactory<Media, OrderItem> singleton = new MediaUserPageFactory();
 	
-	public static ADataPageFactory<Media, OrderItem<Media>> singleton() {
+	public static ADataPageFactory<Media, OrderItem> singleton() {
 		return singleton;
 	}
 	
 	private MediaUserPageFactory() {
 	}
 	
-	public ADataPagePane<Media> createDataPagePane(String type, IDataActionListener<OrderItem<Media>> listener){
+	public ADataPagePane<Media> createDataPagePane(String type, IDataActionListener<OrderItem> listener){
 		if (type.equals("book")) {
 			ADataSearchPane searchPane = new BookSearchPane();
 			
@@ -41,7 +41,7 @@ public class MediaUserPageFactory extends ADataPageFactory<Media, OrderItem<Medi
 							System.out.println("Buy this!");
 							
 							if (listener!=null) {
-								listener.onAct(new OrderItem<Media>(t, 0));
+								listener.onAct(new OrderItem(t, 1));
 							}
 						}
 					});

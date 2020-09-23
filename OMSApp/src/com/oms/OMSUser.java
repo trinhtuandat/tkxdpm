@@ -4,7 +4,9 @@ import java.awt.BorderLayout;
 
 import javax.swing.*;
 
+import com.oms.bean.OrderItem;
 import com.oms.cart.CartPane;
+import com.oms.gui.abstractdata.IDataActionListener;
 import com.oms.gui.media.factory.MediaUserPageFactory;
 
 @SuppressWarnings("serial")
@@ -16,19 +18,24 @@ public class OMSUser extends JFrame {
 	public OMSUser() {
 		JPanel rootPanel = new JPanel();
 		setContentPane(rootPanel);
-		
 		BorderLayout layout = new BorderLayout();
 		rootPanel.setLayout(layout);
-
 		
-		JPanel bookPage = MediaUserPageFactory.singleton().createDataPagePane("book", null);
+		CartPane cartPane = new CartPane();
+		
+		JPanel bookPage = MediaUserPageFactory.singleton().createDataPagePane("book", new IDataActionListener<OrderItem>() {
+			@Override
+			public void onAct(OrderItem t) {
+				cartPane.addItem(t);
+			}
+		});
 		JTabbedPane tabbedPane = new JTabbedPane();
 		tabbedPane.addTab("Books", null, bookPage, "Books");
 		tabbedPane.addTab("Compact Discs", null, new JPanel(), "Compact Discs");
 		tabbedPane.addTab("Digital Video Discs", null, new JPanel(), "Digital Video Discs");
 
 		
-		rootPanel.add(new CartPane(), BorderLayout.NORTH);
+		rootPanel.add(cartPane, BorderLayout.NORTH);
 		rootPanel.add(tabbedPane, BorderLayout.CENTER);
 		
 
