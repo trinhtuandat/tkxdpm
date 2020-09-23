@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
@@ -27,6 +28,7 @@ public class CartDialog extends JDialog{
 		layout = new GridBagLayout();
 		this.setLayout(layout);
 		c = new GridBagConstraints();
+		
 		updateData(null);
 	}
 	
@@ -59,26 +61,43 @@ public class CartDialog extends JDialog{
 		customerAddressField = new JTextField(15);
 		add(customerAddressField, c);
 		
+
+		
 		if (order != null) {
 			for (int i=0; i<order.getOrderItems().size(); ++i) {
 				OrderItem oi = order.getOrderItems().get(i);
 				
+				int row = getLastRowIndex();
 				c.gridx = 0;
-				c.gridy = 3 + i;
+				c.gridy = row;
 				add(new JLabel(oi.getMedia().getTitle()), c);
 				
 				c.gridx = 1;
-				c.gridy = 3 + i;
+				c.gridy = row;
 				JSpinner spin = new JSpinner();
 				spin.setModel(new SpinnerNumberModel(oi.getQuantity(), 0, null, 1));
 				add(spin, c);
 				spin.setPreferredSize(new Dimension(190, 20));
 			}
+			
+			int row = getLastRowIndex();
+			c.gridx = 0;
+			c.gridy = row;
+			JButton button = new JButton("Check out!");
+			add(button, c);
 		}
 
 		this.revalidate();
 		this.repaint();
 		this.pack();
 		this.setResizable(false);
+	}
+	
+	
+	protected int getLastRowIndex() {
+		layout.layoutContainer(this.getContentPane());
+		int[][] dim = layout.getLayoutDimensions();
+	    int rows = dim[1].length;
+	    return rows;
 	}
 }
