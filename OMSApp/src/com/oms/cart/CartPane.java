@@ -15,6 +15,7 @@ import com.oms.bean.OrderItem;
 public class CartPane extends JPanel{
 	private Order order;
 	private JLabel cartStatusLabel;
+	private CartDialog dialog;
 	
 	public CartPane() {
 		order = new Order();
@@ -25,7 +26,7 @@ public class CartPane extends JPanel{
 		JButton detailButton = new JButton("Detail");
 		this.add(detailButton);
 		
-		CartDialog dialog = new CartDialog();
+		dialog = new CartDialog();
 		
 		detailButton.addActionListener(new ActionListener() {
 			@Override
@@ -41,6 +42,7 @@ public class CartPane extends JPanel{
 	
 	public void addItem(OrderItem orderItem) {
 		order.addOrderItem(orderItem);
+		dialog.updateData(order);
 		updateData();
 	}
 	
