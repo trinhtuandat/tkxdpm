@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.*;
 
+import com.oms.cart.CartPane;
 import com.oms.gui.media.factory.MediaPageFactory;
 
 @SuppressWarnings("serial")
@@ -25,8 +26,9 @@ public class OMSUser extends JFrame {
 		tabbedPane.addTab("Books", null, bookPage, "Books");
 		tabbedPane.addTab("Compact Discs", null, new JPanel(), "Compact Discs");
 		tabbedPane.addTab("Digital Video Discs", null, new JPanel(), "Digital Video Discs");
+
 		
-		
+		rootPanel.add(new CartPane(), BorderLayout.NORTH);
 		rootPanel.add(tabbedPane, BorderLayout.CENTER);
 		
 

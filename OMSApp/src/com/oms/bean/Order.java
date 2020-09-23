@@ -2,13 +2,13 @@ package com.oms.bean;
 
 import java.util.*;
 
-public class Order {
+public class Order<T> {
 	private String id;
 	private String code;
 	private String customerName;
 	private String customerPhoneNumber;
 	private String customerAddress;
-	private ArrayList<Media> medias;
+	private ArrayList<OrderItem<T>> items;
 	private float totalCost;
 	
 	public Order() {
@@ -54,12 +54,12 @@ public class Order {
 		this.customerAddress = customerAddress;
 	}
 
-	public ArrayList<Media> getMedias() {
-		return medias;
+	public ArrayList<OrderItem<T>> getItems() {
+		return items;
 	}
 
-	public void setMedias(ArrayList<Media> medias) {
-		this.medias = medias;
+	public void setItems(ArrayList<OrderItem<T>> items) {
+		this.items = items;
 	}
 
 	public void setTotalCost(float totalCost) {
@@ -67,19 +67,21 @@ public class Order {
 	}
 
 	public float getTotalCost() {
-		float total = 0;
-		Media mediaItem;
-		Iterator<Media> iter = medias.iterator();
-		while (iter.hasNext()) {
-			mediaItem = (Media) (iter.next());
-			total += mediaItem.getCost();
+		float res = 0;
+		if (items!= null) {
+			Media mediaItem;
+			Iterator<OrderItem<T>> iter = items.iterator();
+			while (iter.hasNext()) {
+				OrderItem<T> oi = iter.next();
+				mediaItem = (Media) (oi.getItem());
+				res += mediaItem.getCost() * oi.getQuantity();
+			}
 		}
-		return total;
+		return res;
 	}
 	
-	
-	
-	public boolean search(Order order) {
+
+	public boolean search(Order<T> order) {
 		if (this.id != null && !this.id.equals("") && !this.id.contains(order.id)) {
 			return false;
 		}
@@ -95,10 +97,11 @@ public class Order {
 		return true;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Order) {
-			return this.code.equals(((Order) obj).code);
+			return this.code.equals(((Order<T>) obj).code);
 		}
 		return false;
 	}
