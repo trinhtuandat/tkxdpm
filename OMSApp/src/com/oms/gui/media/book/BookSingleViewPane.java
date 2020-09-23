@@ -17,20 +17,35 @@ public class BookSingleViewPane extends PhysicalMediaSingleViewPane {
 	public BookSingleViewPane() {
 		super();
 		
+		int row = getLastRowIndex();
+		c.gridx = 0;
+		c.gridy = row;
 		labelPublisher = new JLabel();
-		add(labelPublisher);
+		add(labelPublisher, c);
 		
+		row = getLastRowIndex();
+		c.gridx = 0;
+		c.gridy = row;
 		labelPublicationDate = new JLabel();
-		add(labelPublicationDate);
+		add(labelPublicationDate, c);
 		
+		row = getLastRowIndex();
+		c.gridx = 0;
+		c.gridy = row;
 		labelAuthors = new JLabel();
-		add(labelAuthors);
+		add(labelAuthors, c);
 		
+		row = getLastRowIndex();
+		c.gridx = 0;
+		c.gridy = row;
 		labelNumberOfPages = new JLabel();
-		add(labelNumberOfPages);
+		add(labelNumberOfPages, c);
 		
+		row = getLastRowIndex();
+		c.gridx = 0;
+		c.gridy = row;
 		labelLanguage = new JLabel();
-		add(labelLanguage);
+		add(labelLanguage, c);
 	}
 	
 	public BookSingleViewPane(Media media) {

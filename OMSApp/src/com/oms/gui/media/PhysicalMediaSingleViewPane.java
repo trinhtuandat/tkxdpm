@@ -16,20 +16,35 @@ public class PhysicalMediaSingleViewPane extends MediaSingleViewPane{
 	public PhysicalMediaSingleViewPane() {
 		super();
 
+		int row = getLastRowIndex();
+		c.gridx = 0;
+		c.gridy = row;
 		labelBarcode = new JLabel();
-		add(labelBarcode);
+		add(labelBarcode, c);
 		
+		row = getLastRowIndex();
+		c.gridx = 0;
+		c.gridy = row;
 		labelDescription = new JLabel();
-		add(labelDescription);
+		add(labelDescription, c);
 		
+		row = getLastRowIndex();
+		c.gridx = 0;
+		c.gridy = row;
 		labelQuantity = new JLabel();
-		add(labelQuantity);
+		add(labelQuantity, c);
 		
+		row = getLastRowIndex();
+		c.gridx = 0;
+		c.gridy = row;
 		labelWeight = new JLabel();
-		add(labelWeight);
+		add(labelWeight, c);
 		
+		row = getLastRowIndex();
+		c.gridx = 0;
+		c.gridy = row;
 		labelDimension = new JLabel();
-		add(labelDimension);
+		add(labelDimension, c);
 	}
 	
 	public PhysicalMediaSingleViewPane(Media media) {

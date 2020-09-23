@@ -14,14 +14,23 @@ public class MediaSingleViewPane extends ADataSingleViewPane<Media>{
 	public MediaSingleViewPane() {
 		super();
 
+		int row = getLastRowIndex();
+		c.gridx = 0;
+		c.gridy = row;
 		labelTitle = new JLabel();
-		add(labelTitle);
+		add(labelTitle, c);
 		
+		row = getLastRowIndex();
+		c.gridx = 0;
+		c.gridy = row;
 		labelCagegory = new JLabel();
-		add(labelCagegory);
+		add(labelCagegory, c);
 		
+		row = getLastRowIndex();
+		c.gridx = 0;
+		c.gridy = row;
 		labelCost = new JLabel();
-		add(labelCost);
+		add(labelCost, c);
 	}
 	
 	public MediaSingleViewPane(Media media) {
