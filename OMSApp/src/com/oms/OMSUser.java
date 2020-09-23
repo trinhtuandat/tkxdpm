@@ -7,12 +7,12 @@ import javax.swing.*;
 import com.oms.gui.media.factory.MediaPageFactory;
 
 @SuppressWarnings("serial")
-public class OMSAdmin extends JFrame {
+public class OMSUser extends JFrame {
 
 	public static final int WINDOW_WIDTH = 800;
 	public static final int WINDOW_HEIGHT = 550;
 
-	public OMSAdmin() {
+	public OMSUser() {
 		JPanel rootPanel = new JPanel();
 		setContentPane(rootPanel);
 		
@@ -20,7 +20,7 @@ public class OMSAdmin extends JFrame {
 		rootPanel.setLayout(layout);
 
 		
-		JPanel bookPage = MediaPageFactory.singleton().createDataPagePane("admin.book");
+		JPanel bookPage = MediaPageFactory.singleton().createDataPagePane("user.book");
 		JTabbedPane tabbedPane = new JTabbedPane();
 		tabbedPane.addTab("Books", null, bookPage, "Books");
 		tabbedPane.addTab("Compact Discs", null, new JPanel(), "Compact Discs");
@@ -31,7 +31,7 @@ public class OMSAdmin extends JFrame {
 		
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("Online Media System for Administrator");
+		setTitle("Online Media System for User");
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 		setVisible(true);
 	}
@@ -51,7 +51,7 @@ public class OMSAdmin extends JFrame {
 		
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				new OMSAdmin(); // Let the constructor do the job
+				new OMSUser(); // Let the constructor do the job
 			}
 		});
 	}

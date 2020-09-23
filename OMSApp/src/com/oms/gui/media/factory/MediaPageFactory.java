@@ -7,7 +7,8 @@ import com.oms.api.JerseyMediaApi;
 import com.oms.bean.Book;
 import com.oms.bean.Media;
 import com.oms.gui.abstractdata.ADataPagePane;
-import com.oms.gui.abstractdata.DataListViewPane;
+import com.oms.gui.abstractdata.ADataSingleViewPane;
+import com.oms.gui.abstractdata.ADataListViewPane;
 import com.oms.gui.abstractdata.IDataActionListener;
 import com.oms.gui.abstractdata.factory.ADataPageFactory;
 import com.oms.gui.media.book.BookSearchPane;
@@ -22,11 +23,20 @@ public class MediaPageFactory extends ADataPageFactory<Media> {
 	private MediaPageFactory() {
 	}
 	
-	public ADataPagePane<Media> createDataManagePane(String type){
-		if (type.equals("book")) {
-			BookSearchPane searchPane = new BookSearchPane();
-			DataListViewPane<Media> viewPane = new DataListViewPane<Media>();
-			ADataPagePane<Media> managePane = new ADataPagePane<Media>(searchPane, viewPane);
+	public ADataPagePane<Media> createDataPagePane(String type){
+		BookSearchPane searchPane = new BookSearchPane();
+		
+		@SuppressWarnings("serial")
+		ADataListViewPane<Media> viewPane = new ADataListViewPane<Media>() {
+			@Override
+			public ADataSingleViewPane<Media> createDataSingleViewPane() {
+				return MediaSingleViewPaneFactory.singleton().createDataSingleViewPane(type);
+			}
+		};
+
+		ADataPagePane<Media> managePane = new ADataPagePane<Media>(searchPane, viewPane);
+		
+		if (type.equals("admin.book") || type.equals("user.book")) {
 			searchPane.setOnSearchListener(new IDataActionListener<Map<String,String>>() {
 				@Override
 				public void onAct(Map<String, String> queryParams) {

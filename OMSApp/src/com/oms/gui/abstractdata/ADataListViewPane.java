@@ -9,17 +9,13 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import com.oms.bean.Book;
-import com.oms.bean.Media;
-import com.oms.gui.media.factory.MediaSingleViewPaneFactory;
-
 @SuppressWarnings("serial")
-public class DataListViewPane<T> extends JScrollPane {
-	private List<T> list;
+public abstract class ADataListViewPane<T> extends JScrollPane {
 	private LayoutManager layout;
-	private JPanel pane;
+	protected JPanel pane;
+	protected List<T> list;
 
-	public DataListViewPane() {
+	public ADataListViewPane() {
 		pane = new JPanel();
 		layout = new BoxLayout(pane, BoxLayout.Y_AXIS);
 		pane.setLayout(layout);
@@ -31,7 +27,7 @@ public class DataListViewPane<T> extends JScrollPane {
 		this.getHorizontalScrollBar().setUnitIncrement(20);
 	}
 	
-	public DataListViewPane(List<T> list) {
+	public ADataListViewPane(List<T> list) {
 		this();
 		this.list = list;
 	}
@@ -39,15 +35,14 @@ public class DataListViewPane<T> extends JScrollPane {
 	
 	public void displayData() {
 		for (T t: list) {
-			if (t instanceof Book) {
-				ADataSingleViewPane<Media> visualizationPane = MediaSingleViewPaneFactory.singleton().createDataSingleViewPane("book");
-				visualizationPane.updateData((Book) t);
-				pane.add(visualizationPane);
-				pane.add(Box.createRigidArea(new Dimension(0, 40)));
-			} else if (t instanceof Media) {
-			}
+			ADataSingleViewPane<T> visualizationPane = createDataSingleViewPane();
+			visualizationPane.updateData(t);
+			pane.add(visualizationPane);
+			pane.add(Box.createRigidArea(new Dimension(0, 40)));
 		}
 	}
+	
+	public abstract ADataSingleViewPane<T> createDataSingleViewPane();
 	
 	@SuppressWarnings("unchecked")
 	public void updateData(List<? extends T> list) {

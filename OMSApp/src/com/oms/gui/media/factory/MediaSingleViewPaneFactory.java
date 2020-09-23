@@ -20,7 +20,7 @@ public class MediaSingleViewPaneFactory extends ADataSingleViewPaneFactory<Media
 	}
 	
 	public ADataSingleViewPane<Media> createDataSingleViewPane(String type){
-		if (type.equals("book")) {
+		if (type.equals("admin.book")) {
 			ADataSingleViewPane<Media> singlePane = new BookSingleViewPane();
 			singlePane.addAction("Edit", new IDataActionListener<Media>() {
 				@Override
@@ -33,6 +33,16 @@ public class MediaSingleViewPaneFactory extends ADataSingleViewPaneFactory<Media
 							singlePane.updateData(newBook);
 						}
 					});
+				}
+			});
+			return singlePane;
+		}
+		if (type.equals("user.book")) {
+			ADataSingleViewPane<Media> singlePane = new BookSingleViewPane();
+			singlePane.addAction("Buy", new IDataActionListener<Media>() {
+				@Override
+				public void onAct(Media t) {
+					System.out.println("Buy this!");
 				}
 			});
 			return singlePane;
