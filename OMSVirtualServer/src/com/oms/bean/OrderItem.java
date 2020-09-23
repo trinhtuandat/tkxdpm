@@ -7,6 +7,12 @@ public class OrderItem<T> {
 	public OrderItem(){
 	}
 	
+	public OrderItem(T item, int quantity) {
+		super();
+		this.item = item;
+		this.quantity = quantity;
+	}
+
 	public T getItem() {
 		return item;
 	}

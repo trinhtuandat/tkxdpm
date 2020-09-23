@@ -5,7 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.*;
 
 import com.oms.cart.CartPane;
-import com.oms.gui.media.factory.MediaPageFactory;
+import com.oms.gui.media.factory.MediaUserPageFactory;
 
 @SuppressWarnings("serial")
 public class OMSUser extends JFrame {
@@ -21,7 +21,7 @@ public class OMSUser extends JFrame {
 		rootPanel.setLayout(layout);
 
 		
-		JPanel bookPage = MediaPageFactory.singleton().createDataPagePane("user.book");
+		JPanel bookPage = MediaUserPageFactory.singleton().createDataPagePane("book", null);
 		JTabbedPane tabbedPane = new JTabbedPane();
 		tabbedPane.addTab("Books", null, bookPage, "Books");
 		tabbedPane.addTab("Compact Discs", null, new JPanel(), "Compact Discs");
