@@ -17,11 +17,7 @@ public abstract class ADataSingleViewPane<T> extends JPanel {
 	protected GridBagConstraints c;
 
 	public ADataSingleViewPane() {
-		layout = new GridBagLayout();
-		this.setLayout(layout);
-		c = new GridBagConstraints();
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 1;
+		buildControls();
 	}
 	
 	public ADataSingleViewPane(T t) {
@@ -31,6 +27,13 @@ public abstract class ADataSingleViewPane<T> extends JPanel {
 		displayData();
 	}
 	
+	public void buildControls() {
+		layout = new GridBagLayout();
+		this.setLayout(layout);
+		c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 1;
+	}
 	
 	public abstract void displayData();
 	

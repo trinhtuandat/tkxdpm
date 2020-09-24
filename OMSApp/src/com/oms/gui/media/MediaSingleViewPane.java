@@ -13,7 +13,20 @@ public class MediaSingleViewPane extends ADataSingleViewPane<Media>{
 	
 	public MediaSingleViewPane() {
 		super();
+	}
+		
+	
+	public MediaSingleViewPane(Media media) {
+		this();
+		this.t = media;
+		
+		displayData();
+	}
 
+	@Override
+	public void buildControls() {
+		super.buildControls();
+		
 		int row = getLastRowIndex();
 		c.gridx = 0;
 		c.gridy = row;
@@ -33,13 +46,7 @@ public class MediaSingleViewPane extends ADataSingleViewPane<Media>{
 		add(labelCost, c);
 	}
 	
-	public MediaSingleViewPane(Media media) {
-		this();
-		this.t = media;
-		
-		displayData();
-	}
-
+	
 	@Override
 	public void displayData() {
 		labelTitle.setText("Title: " + t.getTitle());

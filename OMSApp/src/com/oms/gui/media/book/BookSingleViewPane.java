@@ -16,6 +16,19 @@ public class BookSingleViewPane extends PhysicalMediaSingleViewPane {
 	
 	public BookSingleViewPane() {
 		super();
+	}
+	
+	public BookSingleViewPane(Media media) {
+		this();
+		this.t = media;
+
+		displayData();
+	}
+	
+	@Override
+	public void buildControls() {
+		super.buildControls();
+
 		
 		int row = getLastRowIndex();
 		c.gridx = 0;
@@ -48,12 +61,6 @@ public class BookSingleViewPane extends PhysicalMediaSingleViewPane {
 		add(labelLanguage, c);
 	}
 	
-	public BookSingleViewPane(Media media) {
-		this();
-		this.t = media;
-
-		displayData();
-	}
 	
 	@Override
 	public void displayData() {

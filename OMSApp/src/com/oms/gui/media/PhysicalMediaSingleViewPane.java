@@ -15,6 +15,18 @@ public class PhysicalMediaSingleViewPane extends MediaSingleViewPane{
 	
 	public PhysicalMediaSingleViewPane() {
 		super();
+	}
+	
+	public PhysicalMediaSingleViewPane(Media media) {
+		this();
+		this.t = media;
+		
+		displayData();
+	}
+	
+	@Override
+	public void buildControls() {
+		super.buildControls();
 
 		int row = getLastRowIndex();
 		c.gridx = 0;
@@ -45,13 +57,6 @@ public class PhysicalMediaSingleViewPane extends MediaSingleViewPane{
 		c.gridy = row;
 		labelDimension = new JLabel();
 		add(labelDimension, c);
-	}
-	
-	public PhysicalMediaSingleViewPane(Media media) {
-		this();
-		this.t = media;
-		
-		displayData();
 	}
 	
 	@Override
