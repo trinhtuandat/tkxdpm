@@ -35,9 +35,9 @@ public abstract class ADataListViewPane<T> extends JScrollPane {
 	
 	public void displayData() {
 		for (T t: list) {
-			ADataSingleViewPane<T> visualizationPane = createDataSingleViewPane();
-			visualizationPane.updateData(t);
-			pane.add(visualizationPane);
+			ADataSingleViewPane<T> singleViewPane = createDataSingleViewPane();
+			singleViewPane.updateData(t);
+			pane.add(singleViewPane);
 			pane.add(Box.createRigidArea(new Dimension(0, 40)));
 		}
 	}
