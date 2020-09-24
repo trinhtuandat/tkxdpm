@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -11,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import com.oms.bean.Order;
 import com.oms.bean.OrderItem;
@@ -53,6 +57,7 @@ public class CartDialog extends JDialog{
 		customerPhoneField = new JTextField(15);
 		add(customerPhoneField, c);
 		
+		
 		c.gridx = 0;
 		c.gridy = 2;
 		add(new JLabel("Customer address"), c);
@@ -63,6 +68,27 @@ public class CartDialog extends JDialog{
 		
 
 		
+		customerNameField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				order.setCustomerName(customerNameField.getText());
+			}
+		});
+		customerPhoneField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				order.setCustomerPhoneNumber(customerPhoneField.getText());
+			}
+		});
+		customerAddressField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				order.setCustomerAddress(customerAddressField.getText());
+			}
+		});
+		
+		
+		
 		if (order != null) {
 			for (int i=0; i<order.getOrderItems().size(); ++i) {
 				OrderItem oi = order.getOrderItems().get(i);
@@ -70,7 +96,8 @@ public class CartDialog extends JDialog{
 				int row = getLastRowIndex();
 				c.gridx = 0;
 				c.gridy = row;
-				add(new JLabel(oi.getMedia().getTitle()), c);
+				JLabel label = new JLabel(oi.getMedia().getTitle());
+				add(label, c);
 				
 				c.gridx = 1;
 				c.gridy = row;
@@ -78,6 +105,19 @@ public class CartDialog extends JDialog{
 				spin.setModel(new SpinnerNumberModel(oi.getQuantity(), 0, null, 1));
 				add(spin, c);
 				spin.setPreferredSize(new Dimension(190, 20));
+				
+				spin.addChangeListener(new ChangeListener() {
+					@Override
+					public void stateChanged(ChangeEvent e) {
+						oi.setQuantity((int) spin.getValue());
+						
+						if ((int) spin.getValue() == 0) { // Remove item with 0 quantity
+							remove(spin);
+							remove(label);
+							pack();
+						}
+					}
+				});
 			}
 			
 			int row = getLastRowIndex();
