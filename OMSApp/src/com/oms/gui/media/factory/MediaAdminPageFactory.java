@@ -1,7 +1,11 @@
 package com.oms.gui.media.factory;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Map;
+
+import javax.swing.JButton;
 
 import com.oms.api.JerseyMediaApi;
 import com.oms.bean.Book;
@@ -35,10 +39,15 @@ public class MediaAdminPageFactory extends ADataPageFactory<Media, Media> {
 				@Override
 				public ADataSingleViewPane<Media> createDataSingleViewPane() {
 					ADataSingleViewPane<Media> singlePane = new BookSingleViewPane();
-					singlePane.addAction("Edit", new IDataActionListener<Media>() {
+					
+					JButton button = new JButton("Edit");
+					singlePane.addDataHandlingComponent(button);
+					button.addActionListener(new ActionListener() {
 						@Override
-						public void onAct(Media t) {
-							new BookEditDialog((Book) t, new IDataActionListener<Media>() {
+						public void actionPerformed(ActionEvent e) {
+							Book book = (Book) singlePane.getData();
+							
+							new BookEditDialog(book, new IDataActionListener<Media>() {
 								@Override
 								public void onAct(Media t) {
 									System.out.println(t);
@@ -48,7 +57,7 @@ public class MediaAdminPageFactory extends ADataPageFactory<Media, Media> {
 							});
 							
 							if (listener!=null) {
-								listener.onAct(t);
+								listener.onAct(book);
 							}
 						}
 					});

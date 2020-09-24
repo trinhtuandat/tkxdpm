@@ -1,12 +1,9 @@
 package com.oms.gui.abstractdata;
 
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
@@ -15,6 +12,8 @@ public abstract class ADataSingleViewPane<T> extends JPanel {
 	
 	protected GridBagLayout layout;
 	protected GridBagConstraints c;
+	
+	protected JPanel panel;
 
 	public ADataSingleViewPane() {
 		buildControls();
@@ -37,27 +36,26 @@ public abstract class ADataSingleViewPane<T> extends JPanel {
 	
 	public abstract void displayData();
 	
-	public void addAction(String title, IDataActionListener<T> listener) {
-		int row = getLastRowIndex();
-		c.gridx = 0;
-		c.gridy = row;
-		JPanel panel = new JPanel();
-		this.add(panel, c);
-		panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+	public void addDataHandlingComponent(Component component) {
+		if (panel == null) {
+			int row = getLastRowIndex();
+			c.gridx = 0;
+			c.gridy = row;
+			panel = new JPanel();
+			this.add(panel, c);
+			panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		}
 		
-		JButton button = new JButton(title);
-		panel.add(button);
-		button.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				listener.onAct(t);
-			}
-		});
+		panel.add(component);
 	}
 	
 	public void updateData(T t) {
 		this.t = t;
 		displayData();
+	}
+	
+	public T getData() {
+		return this.t;
 	}
 	
 	protected int getLastRowIndex() {

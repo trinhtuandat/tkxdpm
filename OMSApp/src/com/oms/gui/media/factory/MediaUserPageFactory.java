@@ -1,7 +1,14 @@
 package com.oms.gui.media.factory;
 
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Map;
+
+import javax.swing.JButton;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 import com.oms.api.JerseyMediaApi;
 import com.oms.bean.Book;
@@ -35,13 +42,20 @@ public class MediaUserPageFactory extends ADataPageFactory<Media, OrderItem> {
 				@Override
 				public ADataSingleViewPane<Media> createDataSingleViewPane() {
 					ADataSingleViewPane<Media> singlePane = new BookSingleViewPane();
-					singlePane.addAction("Buy", new IDataActionListener<Media>() {
+					
+					JSpinner spin = new JSpinner();
+					spin.setModel(new SpinnerNumberModel(1, 0, null, 1));
+					singlePane.addDataHandlingComponent(spin);
+					spin.setPreferredSize(new Dimension(100, 20));
+					
+					JButton button = new JButton("Buy");
+					singlePane.addDataHandlingComponent(button);
+					
+					button.addActionListener(new ActionListener() {
 						@Override
-						public void onAct(Media t) {
-							System.out.println("Buy this!");
-							
+						public void actionPerformed(ActionEvent e) {
 							if (listener!=null) {
-								listener.onAct(new OrderItem(t, 1));
+								listener.onAct(new OrderItem(singlePane.getData(), (int)spin.getValue()));
 							}
 						}
 					});
