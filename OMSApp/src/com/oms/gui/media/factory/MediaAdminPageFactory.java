@@ -11,6 +11,7 @@ import com.oms.api.JerseyMediaApi;
 import com.oms.bean.Book;
 import com.oms.bean.Media;
 import com.oms.gui.abstractdata.ADataPagePane;
+import com.oms.gui.abstractdata.ADataSearchController;
 import com.oms.gui.abstractdata.ADataSearchPane;
 import com.oms.gui.abstractdata.ADataSingleViewPane;
 import com.oms.gui.abstractdata.ADataListViewPane;
@@ -65,10 +66,10 @@ public class MediaAdminPageFactory extends ADataPageFactory<Media, Media> {
 				}
 			};
 			
-			searchPane.setOnSearchListener(new IDataActionListener<Map<String,String>>() {
+			searchPane.setController(new ADataSearchController() {
 				@Override
-				public void onAct(Map<String, String> queryParams) {
-					List<Book> books = JerseyMediaApi.singleton().getBooks(queryParams);
+				public void search(Map<String, String> searchParams) {
+					List<Book> books = JerseyMediaApi.singleton().getBooks(searchParams);
 					viewPane.updateData(books);
 				}
 			});

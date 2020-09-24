@@ -6,7 +6,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import com.oms.gui.abstractdata.ADataSearchPane;
-import com.oms.gui.abstractdata.IDataActionListener;
 
 @SuppressWarnings("serial")
 public class MediaSearchPane extends ADataSearchPane {
@@ -15,10 +14,6 @@ public class MediaSearchPane extends ADataSearchPane {
 
 	public MediaSearchPane() {
 		super();
-	}
-	
-	public MediaSearchPane(IDataActionListener<Map<String, String>> onSearchListener) {
-		super(onSearchListener);
 	}
 	
 	@Override

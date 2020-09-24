@@ -5,7 +5,6 @@ import java.util.Map;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import com.oms.gui.abstractdata.IDataActionListener;
 import com.oms.gui.media.PhysicalMediaSearchPane;
 
 @SuppressWarnings("serial")
@@ -15,10 +14,6 @@ public class BookSearchPane extends PhysicalMediaSearchPane {
 
 	public BookSearchPane() {
 		super();
-	}
-	
-	public BookSearchPane(IDataActionListener<Map<String, String>> onSearchListener) {
-		super(onSearchListener);
 	}
 	
 	@Override

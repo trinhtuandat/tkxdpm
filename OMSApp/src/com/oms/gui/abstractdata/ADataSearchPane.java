@@ -16,7 +16,7 @@ public abstract class ADataSearchPane extends JPanel {
 	protected GridBagLayout layout;
 	protected GridBagConstraints c;
 	
-	private IDataActionListener<Map<String, String>> onSearchListener;
+	private ADataSearchController controller;
 
 	public ADataSearchPane() {
 		layout = new GridBagLayout();
@@ -35,7 +35,7 @@ public abstract class ADataSearchPane extends JPanel {
 		searchButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				onSearchListener.onAct(getQueryParams());
+				controller.search(getQueryParams());
 			}
 		});
 		
@@ -47,9 +47,9 @@ public abstract class ADataSearchPane extends JPanel {
 		add(new JLabel(), c);
 	}
 	
-	public ADataSearchPane(IDataActionListener<Map<String, String>> onSearchListener) {
+	public ADataSearchPane(ADataSearchController controller) {
 		this();
-		this.onSearchListener = onSearchListener;
+		this.controller = controller;
 	}
 	
 	public abstract void buildControls();
@@ -67,11 +67,11 @@ public abstract class ADataSearchPane extends JPanel {
 	}
 	
 	
-	public void setOnSearchListener(IDataActionListener<Map<String, String>> onSearchListener) {
-		this.onSearchListener = onSearchListener;
+	public void setController(ADataSearchController controller) {
+		this.controller = controller;
 	}
 	
 	public void fireSearchEvent() {
-		onSearchListener.onAct(getQueryParams());
+		controller.search(getQueryParams());
 	}
 }
