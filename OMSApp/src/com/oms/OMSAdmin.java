@@ -20,7 +20,7 @@ public class OMSAdmin extends JFrame {
 		rootPanel.setLayout(layout);
 
 		
-		JPanel bookPage = MediaAdminPageFactory.singleton().createDataPagePane("book", null);
+		JPanel bookPage = MediaAdminPageFactory.singleton().createDataPagePane("book");
 		JTabbedPane tabbedPane = new JTabbedPane();
 		tabbedPane.addTab("Books", null, bookPage, "Books");
 		tabbedPane.addTab("Compact Discs", null, new JPanel(), "Compact Discs");

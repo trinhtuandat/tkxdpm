@@ -6,7 +6,6 @@ import javax.swing.*;
 
 import com.oms.bean.OrderItem;
 import com.oms.cart.CartPane;
-import com.oms.gui.abstractdata.IDataActionListener;
 import com.oms.gui.media.factory.MediaUserPageFactory;
 
 @SuppressWarnings("serial")
@@ -23,10 +22,10 @@ public class OMSUser extends JFrame {
 		
 		CartPane cartPane = new CartPane();
 		
-		JPanel bookPage = MediaUserPageFactory.singleton().createDataPagePane("book", new IDataActionListener<OrderItem>() {
+		JPanel bookPage = MediaUserPageFactory.singleton().createDataPagePane("book", new UserMediaSingleViewController() {
 			@Override
-			public void onAct(OrderItem t) {
-				cartPane.addItem(t);
+			public void buy(OrderItem orderItem) {
+				cartPane.addItem(orderItem);
 			}
 		});
 		JTabbedPane tabbedPane = new JTabbedPane();
