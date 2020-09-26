@@ -9,12 +9,12 @@ import javax.swing.*;
 import com.oms.api.JerseyMediaApi;
 import com.oms.bean.Book;
 import com.oms.bean.Media;
-import com.oms.gui.media.AdminMediaPageController;
 import com.oms.gui.media.MediaSearchPane;
 import com.oms.gui.media.MediaSingleViewPane;
 import com.oms.gui.media.book.BookSearchPane;
 import com.oms.gui.media.book.BookSingleViewPane;
-import com.oms.gui.media.MediaPagePane;
+import com.oms.gui.page.AdminMediaPageController;
+import com.oms.gui.page.MediaPagePane;
 
 @SuppressWarnings("serial")
 public class OMSAdmin extends JFrame {

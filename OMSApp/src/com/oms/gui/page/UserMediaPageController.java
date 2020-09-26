@@ -1,4 +1,4 @@
-package com.oms.gui.media;
+package com.oms.gui.page;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;

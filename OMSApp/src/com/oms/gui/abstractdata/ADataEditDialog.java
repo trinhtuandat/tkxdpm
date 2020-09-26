@@ -16,7 +16,7 @@ public abstract class ADataEditDialog<T> extends JDialog {
 	protected GridBagLayout layout;
 	protected GridBagConstraints c = new GridBagConstraints();
 
-	public ADataEditDialog(T t, IDataActionListener<T> onSaveListener) {
+	public ADataEditDialog(T t, ADataEditController<T> controller) {
 		super((Frame) null, "Edit", true);
 		
 		this.t = t;
@@ -33,7 +33,7 @@ public abstract class ADataEditDialog<T> extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				T newT = getNewData();
-				onSaveListener.onAct(newT);
+				controller.save(newT);
 				ADataEditDialog.this.dispose();
 			}
 		});

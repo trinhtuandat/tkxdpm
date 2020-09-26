@@ -4,8 +4,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import com.oms.bean.Media;
+import com.oms.gui.abstractdata.ADataEditController;
 import com.oms.gui.abstractdata.ADataEditDialog;
-import com.oms.gui.abstractdata.IDataActionListener;
 
 @SuppressWarnings("serial")
 public class MediaEditDialog extends ADataEditDialog<Media>{
@@ -14,8 +14,8 @@ public class MediaEditDialog extends ADataEditDialog<Media>{
 	private JTextField categoryField;
 	private JTextField costField;
 	
-	public MediaEditDialog(Media media, IDataActionListener<Media> onSaveListener) {
-		super(media, onSaveListener);
+	public MediaEditDialog(Media media, ADataEditController<Media> controller) {
+		super(media, controller);
 	}
 
 	@Override

@@ -5,7 +5,7 @@ import javax.swing.JTextField;
 
 import com.oms.bean.Book;
 import com.oms.bean.Media;
-import com.oms.gui.abstractdata.IDataActionListener;
+import com.oms.gui.abstractdata.ADataEditController;
 import com.oms.gui.media.PhysicalMediaEditDialog;
 
 @SuppressWarnings("serial")
@@ -14,8 +14,8 @@ public class BookEditDialog extends PhysicalMediaEditDialog{
 	private JTextField publisherField;
 	private JTextField languageField;
 	
-	public BookEditDialog(Media media, IDataActionListener<Media> onSaveListener) {
-		super(media, onSaveListener);
+	public BookEditDialog(Media media, ADataEditController<Media> controller) {
+		super(media, controller);
 	}
 
 	@Override

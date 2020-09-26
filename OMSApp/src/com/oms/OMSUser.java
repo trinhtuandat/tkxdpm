@@ -11,10 +11,10 @@ import com.oms.bean.Media;
 import com.oms.cart.CartPane;
 import com.oms.gui.media.MediaSearchPane;
 import com.oms.gui.media.MediaSingleViewPane;
-import com.oms.gui.media.UserMediaPageController;
-import com.oms.gui.media.MediaPagePane;
 import com.oms.gui.media.book.BookSearchPane;
 import com.oms.gui.media.book.BookSingleViewPane;
+import com.oms.gui.page.MediaPagePane;
+import com.oms.gui.page.UserMediaPageController;
 
 @SuppressWarnings("serial")
 public class OMSUser extends JFrame {

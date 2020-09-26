@@ -1,4 +1,4 @@
-package com.oms.gui.media;
+package com.oms.gui.page;
 
 import java.util.List;
 import java.util.Map;
@@ -6,6 +6,8 @@ import java.util.Map;
 import com.oms.bean.Media;
 import com.oms.gui.abstractdata.ADataListViewPane;
 import com.oms.gui.abstractdata.ADataSearchController;
+import com.oms.gui.media.MediaSearchPane;
+import com.oms.gui.media.MediaSingleViewPane;
 
 public abstract class MediaPageController {
 	private MediaSearchPane searchPane;

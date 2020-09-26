@@ -6,7 +6,7 @@ import javax.swing.JTextField;
 import com.oms.bean.Dimension;
 import com.oms.bean.Media;
 import com.oms.bean.PhysicalMedia;
-import com.oms.gui.abstractdata.IDataActionListener;
+import com.oms.gui.abstractdata.ADataEditController;
 
 @SuppressWarnings("serial")
 public class PhysicalMediaEditDialog extends MediaEditDialog{
@@ -19,8 +19,8 @@ public class PhysicalMediaEditDialog extends MediaEditDialog{
 	private JTextField dimensionHeightField;
 	private JTextField dimensionDepthField;
 	
-	public PhysicalMediaEditDialog(Media media, IDataActionListener<Media> onSaveListener) {
-		super(media, onSaveListener);
+	public PhysicalMediaEditDialog(Media media, ADataEditController<Media> controller) {
+		super(media, controller);
 	}
 
 	@Override

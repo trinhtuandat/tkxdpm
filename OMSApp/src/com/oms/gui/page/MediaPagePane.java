@@ -1,4 +1,4 @@
-package com.oms.gui.media;
+package com.oms.gui.page;
 
 import com.oms.bean.Media;
 import com.oms.gui.abstractdata.ADataPagePane;
