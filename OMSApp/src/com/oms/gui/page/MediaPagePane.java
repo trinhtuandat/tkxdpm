@@ -6,6 +6,6 @@ import com.oms.gui.abstractdata.ADataPagePane;
 @SuppressWarnings("serial")
 public class MediaPagePane extends ADataPagePane<Media> {
 	public MediaPagePane(MediaPageController controller) {
-		buildControls(controller.getSearchPane(), controller.getListViewPane());
+		super(controller.getSearchPane(), controller.getListViewPane());
 	}
 }
