@@ -1,19 +1,12 @@
 package com.oms;
 
 import java.awt.BorderLayout;
-import java.util.List;
-import java.util.Map;
 
 import javax.swing.*;
 
 import com.oms.abstractdata.gui.ADataPagePane;
-import com.oms.api.JerseyMediaApi;
-import com.oms.bean.Book;
 import com.oms.bean.Media;
-import com.oms.media.book.gui.BookSearchPane;
-import com.oms.media.book.gui.BookSingleViewPane;
-import com.oms.media.gui.MediaSearchPane;
-import com.oms.media.gui.MediaSingleViewPane;
+import com.oms.media.book.controller.AdminBookPageController;
 
 @SuppressWarnings("serial")
 public class OMSAdmin extends JFrame {
@@ -29,27 +22,7 @@ public class OMSAdmin extends JFrame {
 		rootPanel.setLayout(layout);
 
 		
-		JPanel bookPage = new ADataPagePane<Media>(new AdminMediaPageController() {
-			@Override
-			public List<? extends Media> search(Map<String, String> searchParams) {
-				return JerseyMediaApi.singleton().getBooks(searchParams);
-			}
-			
-			@Override
-			public MediaSingleViewPane createSingleViewPane() {
-				return new BookSingleViewPane();
-			}
-			
-			@Override
-			public MediaSearchPane createSearchPane() {
-				return new BookSearchPane();
-			}
-			
-			@Override
-			public Media updateMedia(Media media) {
-				return JerseyMediaApi.singleton().updateBook((Book) media);
-			}
-		});
+		JPanel bookPage = new ADataPagePane<Media>(new AdminBookPageController());
 		JTabbedPane tabbedPane = new JTabbedPane();
 		tabbedPane.addTab("Books", null, bookPage, "Books");
 		tabbedPane.addTab("Compact Discs", null, new JPanel(), "Compact Discs");
@@ -80,7 +53,7 @@ public class OMSAdmin extends JFrame {
 		
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				new OMSAdmin(); // Let the constructor do the job
+				new OMSAdmin();
 			}
 		});
 	}

@@ -1,19 +1,13 @@
 package com.oms;
 
 import java.awt.BorderLayout;
-import java.util.List;
-import java.util.Map;
 
 import javax.swing.*;
 
 import com.oms.abstractdata.gui.ADataPagePane;
-import com.oms.api.JerseyMediaApi;
 import com.oms.bean.Media;
 import com.oms.cart.gui.CartPane;
-import com.oms.media.book.gui.BookSearchPane;
-import com.oms.media.book.gui.BookSingleViewPane;
-import com.oms.media.gui.MediaSearchPane;
-import com.oms.media.gui.MediaSingleViewPane;
+import com.oms.media.book.controller.UserBookPageController;
 
 @SuppressWarnings("serial")
 public class OMSUser extends JFrame {
@@ -29,20 +23,7 @@ public class OMSUser extends JFrame {
 		
 		CartPane cartPane = new CartPane();
 		
-		JPanel bookPage = new ADataPagePane<Media>(new UserMediaPageController(cartPane) {
-			@Override
-			public List<? extends Media> search(Map<String, String> searchParams) {
-				return JerseyMediaApi.singleton().getBooks(searchParams);
-			}
-			@Override
-			public MediaSingleViewPane createSingleViewPane() {
-				return new BookSingleViewPane();
-			}
-			@Override
-			public MediaSearchPane createSearchPane() {
-				return new BookSearchPane();
-			}
-		});
+		JPanel bookPage = new ADataPagePane<Media>(new UserBookPageController(cartPane));
 		JTabbedPane tabbedPane = new JTabbedPane();
 		tabbedPane.addTab("Books", null, bookPage, "Books");
 		tabbedPane.addTab("Compact Discs", null, new JPanel(), "Compact Discs");
@@ -74,7 +55,7 @@ public class OMSUser extends JFrame {
 		
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				new OMSUser(); // Let the constructor do the job
+				new OMSUser();
 			}
 		});
 	}

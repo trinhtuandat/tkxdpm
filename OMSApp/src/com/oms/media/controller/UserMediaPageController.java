@@ -1,44 +1,49 @@
-package com.oms;
+package com.oms.media.controller;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
-import com.oms.abstractdata.controller.ADataEditController;
 import com.oms.abstractdata.controller.ADataPageController;
 import com.oms.abstractdata.gui.ADataListViewPane;
 import com.oms.abstractdata.gui.ADataSingleViewPane;
 import com.oms.bean.Media;
-import com.oms.media.book.gui.BookEditDialog;
+import com.oms.bean.OrderItem;
+import com.oms.cart.gui.CartPane;
 
-public abstract class AdminMediaPageController extends ADataPageController<Media> {
-	public AdminMediaPageController() {
+public abstract class UserMediaPageController extends ADataPageController<Media> {
+	private CartPane cartPane;
+	
+	public UserMediaPageController(CartPane cartPane) {
 		super();
+		this.cartPane = cartPane;
 	}
 	
 	@Override
 	public ADataListViewPane<Media> createListViewPane() {
 		return new ADataListViewPane<Media>() {
 			private static final long serialVersionUID = 1L;
+
 			@Override
 			public ADataSingleViewPane<Media> createDataSingleViewPane() {
 				ADataSingleViewPane<Media> singleView = createSingleViewPane();
 				
-				JButton button = new JButton("Edit");
+				JSpinner spin = new JSpinner();
+				spin.setModel(new SpinnerNumberModel(1, 0, null, 1));
+				singleView.addDataHandlingComponent(spin);
+				spin.setPreferredSize(new Dimension(100, 20));
+				
+				JButton button = new JButton("Buy");
 				singleView.addDataHandlingComponent(button);
 				
 				button.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						new BookEditDialog(singleView.getData(), new ADataEditController<Media>() {
-							@Override
-							public void save(Media t) {
-								Media newBook = updateMedia(t);
-								singleView.updateData(newBook);
-							}
-						});
-						
+						cartPane.addItem(new OrderItem(singleView.getData(), (int)spin.getValue()));
 					}
 				});
 				
@@ -46,7 +51,5 @@ public abstract class AdminMediaPageController extends ADataPageController<Media
 			}
 		};
 	}
-	
-	public abstract Media updateMedia(Media media);
 	
 }
