@@ -3,7 +3,7 @@ package com.oms.media.gui;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import com.oms.abstractdata.controller.ADataEditController;
+import com.oms.abstractdata.controller.IDataManageController;
 import com.oms.abstractdata.gui.ADataEditDialog;
 import com.oms.bean.Media;
 
@@ -14,7 +14,7 @@ public class MediaEditDialog extends ADataEditDialog<Media>{
 	private JTextField categoryField;
 	private JTextField costField;
 	
-	public MediaEditDialog(Media media, ADataEditController<Media> controller) {
+	public MediaEditDialog(Media media, IDataManageController<Media> controller) {
 		super(media, controller);
 	}
 

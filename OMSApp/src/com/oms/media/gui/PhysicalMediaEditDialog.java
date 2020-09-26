@@ -3,7 +3,7 @@ package com.oms.media.gui;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import com.oms.abstractdata.controller.ADataEditController;
+import com.oms.abstractdata.controller.IDataManageController;
 import com.oms.bean.Dimension;
 import com.oms.bean.Media;
 import com.oms.bean.PhysicalMedia;
@@ -19,7 +19,7 @@ public class PhysicalMediaEditDialog extends MediaEditDialog{
 	private JTextField dimensionHeightField;
 	private JTextField dimensionDepthField;
 	
-	public PhysicalMediaEditDialog(Media media, ADataEditController<Media> controller) {
+	public PhysicalMediaEditDialog(Media media, IDataManageController<Media> controller) {
 		super(media, controller);
 	}
 

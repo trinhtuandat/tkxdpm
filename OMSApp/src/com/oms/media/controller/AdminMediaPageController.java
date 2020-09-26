@@ -5,7 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-import com.oms.abstractdata.controller.ADataEditController;
+import com.oms.abstractdata.controller.IDataManageController;
+import com.oms.abstractdata.controller.ADataManageController;
 import com.oms.abstractdata.controller.ADataPageController;
 import com.oms.abstractdata.gui.ADataListViewPane;
 import com.oms.abstractdata.gui.ADataSingleViewPane;
@@ -27,17 +28,18 @@ public abstract class AdminMediaPageController extends ADataPageController<Media
 				
 				JButton button = new JButton("Edit");
 				singleView.addDataHandlingComponent(button);
+				IDataManageController<Media> controller = new ADataManageController<Media>() {
+					@Override
+					public void update(Media t) {
+						Media newBook = updateMedia(t);
+						singleView.updateData(newBook);
+					}
+				};
 				
 				button.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						new BookEditDialog(singleView.getData(), new ADataEditController<Media>() {
-							@Override
-							public void save(Media t) {
-								Media newBook = updateMedia(t);
-								singleView.updateData(newBook);
-							}
-						});
+						new BookEditDialog(singleView.getData(), controller);
 						
 					}
 				});

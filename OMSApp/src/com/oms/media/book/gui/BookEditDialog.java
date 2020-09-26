@@ -3,7 +3,7 @@ package com.oms.media.book.gui;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import com.oms.abstractdata.controller.ADataEditController;
+import com.oms.abstractdata.controller.IDataManageController;
 import com.oms.bean.Book;
 import com.oms.bean.Media;
 import com.oms.media.gui.PhysicalMediaEditDialog;
@@ -14,7 +14,7 @@ public class BookEditDialog extends PhysicalMediaEditDialog{
 	private JTextField publisherField;
 	private JTextField languageField;
 	
-	public BookEditDialog(Media media, ADataEditController<Media> controller) {
+	public BookEditDialog(Media media, IDataManageController<Media> controller) {
 		super(media, controller);
 	}
 

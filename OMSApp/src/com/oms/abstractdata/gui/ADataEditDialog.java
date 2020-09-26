@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
-import com.oms.abstractdata.controller.ADataEditController;
+import com.oms.abstractdata.controller.IDataManageController;
 
 @SuppressWarnings("serial")
 public abstract class ADataEditDialog<T> extends JDialog {
@@ -18,7 +18,7 @@ public abstract class ADataEditDialog<T> extends JDialog {
 	protected GridBagLayout layout;
 	protected GridBagConstraints c = new GridBagConstraints();
 
-	public ADataEditDialog(T t, ADataEditController<T> controller) {
+	public ADataEditDialog(T t, IDataManageController<T> controller) {
 		super((Frame) null, "Edit", true);
 		
 		this.t = t;
@@ -35,7 +35,7 @@ public abstract class ADataEditDialog<T> extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				T newT = getNewData();
-				controller.save(newT);
+				controller.update(newT);
 				ADataEditDialog.this.dispose();
 			}
 		});

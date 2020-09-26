@@ -11,14 +11,14 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.oms.abstractdata.controller.ADataSearchController;
+import com.oms.abstractdata.controller.IDataSearchController;
 
 @SuppressWarnings("serial")
 public abstract class ADataSearchPane extends JPanel {
 	protected GridBagLayout layout;
 	protected GridBagConstraints c;
 	
-	private ADataSearchController controller;
+	private IDataSearchController controller;
 
 	public ADataSearchPane() {
 		layout = new GridBagLayout();
@@ -49,7 +49,7 @@ public abstract class ADataSearchPane extends JPanel {
 		add(new JLabel(), c);
 	}
 	
-	public ADataSearchPane(ADataSearchController controller) {
+	public ADataSearchPane(IDataSearchController controller) {
 		this();
 		this.controller = controller;
 	}
@@ -69,7 +69,7 @@ public abstract class ADataSearchPane extends JPanel {
 	}
 	
 	
-	public void setController(ADataSearchController controller) {
+	public void setController(IDataSearchController controller) {
 		this.controller = controller;
 	}
 	
