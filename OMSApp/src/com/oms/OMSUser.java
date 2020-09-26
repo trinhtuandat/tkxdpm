@@ -4,10 +4,8 @@ import java.awt.BorderLayout;
 
 import javax.swing.*;
 
-import com.oms.abstractdata.gui.ADataPagePane;
-import com.oms.bean.Media;
 import com.oms.cart.gui.CartPane;
-import com.oms.media.book.controller.UserBookPageController;
+import com.oms.factory.PageFactory;
 
 @SuppressWarnings("serial")
 public class OMSUser extends JFrame {
@@ -23,7 +21,8 @@ public class OMSUser extends JFrame {
 		
 		CartPane cartPane = new CartPane();
 		
-		JPanel bookPage = new ADataPagePane<Media>(new UserBookPageController(cartPane));
+		
+		JPanel bookPage = PageFactory.singleton().createUserPage("book", cartPane);
 		JTabbedPane tabbedPane = new JTabbedPane();
 		tabbedPane.addTab("Books", null, bookPage, "Books");
 		tabbedPane.addTab("Compact Discs", null, new JPanel(), "Compact Discs");
