@@ -1,4 +1,4 @@
-package com.oms.gui.abstractdata;
+package com.oms.abstractdata.gui;
 
 import java.awt.Frame;
 import java.awt.GridBagConstraints;
@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
+
+import com.oms.abstractdata.controller.ADataEditController;
 
 @SuppressWarnings("serial")
 public abstract class ADataEditDialog<T> extends JDialog {

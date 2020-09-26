@@ -1,4 +1,4 @@
-package com.oms.gui.abstractdata;
+package com.oms.abstractdata.gui;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -10,6 +10,8 @@ import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import com.oms.abstractdata.controller.ADataSearchController;
 
 @SuppressWarnings("serial")
 public abstract class ADataSearchPane extends JPanel {

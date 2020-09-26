@@ -6,14 +6,14 @@ import java.util.Map;
 
 import javax.swing.*;
 
+import com.oms.abstractdata.gui.ADataPagePane;
 import com.oms.api.JerseyMediaApi;
 import com.oms.bean.Book;
 import com.oms.bean.Media;
-import com.oms.gui.abstractdata.ADataPagePane;
-import com.oms.gui.media.MediaSearchPane;
-import com.oms.gui.media.MediaSingleViewPane;
-import com.oms.gui.media.book.BookSearchPane;
-import com.oms.gui.media.book.BookSingleViewPane;
+import com.oms.media.book.gui.BookSearchPane;
+import com.oms.media.book.gui.BookSingleViewPane;
+import com.oms.media.gui.MediaSearchPane;
+import com.oms.media.gui.MediaSingleViewPane;
 
 @SuppressWarnings("serial")
 public class OMSAdmin extends JFrame {

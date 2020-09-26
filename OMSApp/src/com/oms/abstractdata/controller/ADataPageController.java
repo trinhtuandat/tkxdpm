@@ -1,10 +1,11 @@
-package com.oms.gui.abstractdata;
+package com.oms.abstractdata.controller;
 
 import java.util.List;
 import java.util.Map;
 
-import com.oms.gui.media.MediaSearchPane;
-import com.oms.gui.media.MediaSingleViewPane;
+import com.oms.abstractdata.gui.ADataListViewPane;
+import com.oms.media.gui.MediaSearchPane;
+import com.oms.media.gui.MediaSingleViewPane;
 
 public abstract class ADataPageController<T> {
 	private MediaSearchPane searchPane;

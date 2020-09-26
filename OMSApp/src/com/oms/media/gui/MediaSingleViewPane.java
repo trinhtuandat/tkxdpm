@@ -1,9 +1,9 @@
-package com.oms.gui.media;
+package com.oms.media.gui;
 
 import javax.swing.JLabel;
 
+import com.oms.abstractdata.gui.ADataSingleViewPane;
 import com.oms.bean.Media;
-import com.oms.gui.abstractdata.ADataSingleViewPane;
 
 @SuppressWarnings("serial")
 public class MediaSingleViewPane extends ADataSingleViewPane<Media>{

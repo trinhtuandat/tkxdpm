@@ -1,4 +1,4 @@
-package com.oms.gui.abstractdata;
+package com.oms.abstractdata.gui;
 
 import java.awt.Component;
 import java.awt.FlowLayout;

@@ -5,12 +5,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import com.oms.abstractdata.controller.ADataEditController;
+import com.oms.abstractdata.controller.ADataPageController;
+import com.oms.abstractdata.gui.ADataListViewPane;
+import com.oms.abstractdata.gui.ADataSingleViewPane;
 import com.oms.bean.Media;
-import com.oms.gui.abstractdata.ADataEditController;
-import com.oms.gui.abstractdata.ADataListViewPane;
-import com.oms.gui.abstractdata.ADataPageController;
-import com.oms.gui.abstractdata.ADataSingleViewPane;
-import com.oms.gui.media.book.BookEditDialog;
+import com.oms.media.book.gui.BookEditDialog;
 
 public abstract class AdminMediaPageController extends ADataPageController<Media> {
 	public AdminMediaPageController() {

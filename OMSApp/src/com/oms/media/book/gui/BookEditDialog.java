@@ -1,12 +1,12 @@
-package com.oms.gui.media.book;
+package com.oms.media.book.gui;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import com.oms.abstractdata.controller.ADataEditController;
 import com.oms.bean.Book;
 import com.oms.bean.Media;
-import com.oms.gui.abstractdata.ADataEditController;
-import com.oms.gui.media.PhysicalMediaEditDialog;
+import com.oms.media.gui.PhysicalMediaEditDialog;
 
 @SuppressWarnings("serial")
 public class BookEditDialog extends PhysicalMediaEditDialog{

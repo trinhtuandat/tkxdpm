@@ -1,4 +1,4 @@
-package com.oms.cart;
+package com.oms.cart.gui;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;

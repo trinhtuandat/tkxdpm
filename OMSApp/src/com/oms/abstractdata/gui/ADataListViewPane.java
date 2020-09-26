@@ -1,4 +1,4 @@
-package com.oms.gui.abstractdata;
+package com.oms.abstractdata.gui;
 
 import java.awt.Dimension;
 import java.awt.LayoutManager;

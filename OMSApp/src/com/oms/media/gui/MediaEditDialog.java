@@ -1,11 +1,11 @@
-package com.oms.gui.media;
+package com.oms.media.gui;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import com.oms.abstractdata.controller.ADataEditController;
+import com.oms.abstractdata.gui.ADataEditDialog;
 import com.oms.bean.Media;
-import com.oms.gui.abstractdata.ADataEditController;
-import com.oms.gui.abstractdata.ADataEditDialog;
 
 @SuppressWarnings("serial")
 public class MediaEditDialog extends ADataEditDialog<Media>{

@@ -1,7 +1,9 @@
-package com.oms.gui.abstractdata;
+package com.oms.abstractdata.gui;
 
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
+
+import com.oms.abstractdata.controller.ADataPageController;
 
 @SuppressWarnings("serial")
 public class ADataPagePane<T> extends JPanel{

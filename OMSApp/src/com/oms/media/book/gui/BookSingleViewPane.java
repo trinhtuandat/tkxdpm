@@ -1,10 +1,10 @@
-package com.oms.gui.media.book;
+package com.oms.media.book.gui;
 
 import javax.swing.JLabel;
 
 import com.oms.bean.Book;
 import com.oms.bean.Media;
-import com.oms.gui.media.PhysicalMediaSingleViewPane;
+import com.oms.media.gui.PhysicalMediaSingleViewPane;
 
 @SuppressWarnings("serial")
 public class BookSingleViewPane extends PhysicalMediaSingleViewPane {

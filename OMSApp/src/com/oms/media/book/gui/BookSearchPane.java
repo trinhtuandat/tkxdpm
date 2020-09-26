@@ -1,11 +1,11 @@
-package com.oms.gui.media.book;
+package com.oms.media.book.gui;
 
 import java.util.Map;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import com.oms.gui.media.PhysicalMediaSearchPane;
+import com.oms.media.gui.PhysicalMediaSearchPane;
 
 @SuppressWarnings("serial")
 public class BookSearchPane extends PhysicalMediaSearchPane {

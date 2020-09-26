@@ -8,12 +8,12 @@ import javax.swing.JButton;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
+import com.oms.abstractdata.controller.ADataPageController;
+import com.oms.abstractdata.gui.ADataListViewPane;
+import com.oms.abstractdata.gui.ADataSingleViewPane;
 import com.oms.bean.Media;
 import com.oms.bean.OrderItem;
-import com.oms.cart.CartPane;
-import com.oms.gui.abstractdata.ADataListViewPane;
-import com.oms.gui.abstractdata.ADataPageController;
-import com.oms.gui.abstractdata.ADataSingleViewPane;
+import com.oms.cart.gui.CartPane;
 
 public abstract class UserMediaPageController extends ADataPageController<Media> {
 	private CartPane cartPane;

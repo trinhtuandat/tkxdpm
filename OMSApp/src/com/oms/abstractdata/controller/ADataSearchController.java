@@ -1,4 +1,4 @@
-package com.oms.gui.abstractdata;
+package com.oms.abstractdata.controller;
 
 import java.util.Map;
 
