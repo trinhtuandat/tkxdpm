@@ -1,12 +1,20 @@
 package com.oms;
 
 import java.awt.BorderLayout;
+import java.util.List;
+import java.util.Map;
 
 import javax.swing.*;
 
-import com.oms.bean.OrderItem;
+import com.oms.api.JerseyMediaApi;
+import com.oms.bean.Media;
 import com.oms.cart.CartPane;
-import com.oms.gui.media.factory.MediaUserPageFactory;
+import com.oms.gui.media.MediaSearchPane;
+import com.oms.gui.media.MediaSingleViewPane;
+import com.oms.gui.media.UserMediaPageController;
+import com.oms.gui.media.MediaPagePane;
+import com.oms.gui.media.book.BookSearchPane;
+import com.oms.gui.media.book.BookSingleViewPane;
 
 @SuppressWarnings("serial")
 public class OMSUser extends JFrame {
@@ -22,10 +30,18 @@ public class OMSUser extends JFrame {
 		
 		CartPane cartPane = new CartPane();
 		
-		JPanel bookPage = MediaUserPageFactory.singleton().createDataPagePane("book", new UserMediaSingleViewController() {
+		JPanel bookPage = new MediaPagePane(new UserMediaPageController(cartPane) {
 			@Override
-			public void buy(OrderItem orderItem) {
-				cartPane.addItem(orderItem);
+			public List<? extends Media> searchMedias(Map<String, String> searchParams) {
+				return JerseyMediaApi.singleton().getBooks(searchParams);
+			}
+			@Override
+			public MediaSingleViewPane createSingleViewPane() {
+				return new BookSingleViewPane();
+			}
+			@Override
+			public MediaSearchPane createSearchPane() {
+				return new BookSearchPane();
 			}
 		});
 		JTabbedPane tabbedPane = new JTabbedPane();

@@ -1,10 +1,20 @@
 package com.oms;
 
 import java.awt.BorderLayout;
+import java.util.List;
+import java.util.Map;
 
 import javax.swing.*;
 
-import com.oms.gui.media.factory.MediaAdminPageFactory;
+import com.oms.api.JerseyMediaApi;
+import com.oms.bean.Book;
+import com.oms.bean.Media;
+import com.oms.gui.media.AdminMediaPageController;
+import com.oms.gui.media.MediaSearchPane;
+import com.oms.gui.media.MediaSingleViewPane;
+import com.oms.gui.media.book.BookSearchPane;
+import com.oms.gui.media.book.BookSingleViewPane;
+import com.oms.gui.media.MediaPagePane;
 
 @SuppressWarnings("serial")
 public class OMSAdmin extends JFrame {
@@ -20,7 +30,27 @@ public class OMSAdmin extends JFrame {
 		rootPanel.setLayout(layout);
 
 		
-		JPanel bookPage = MediaAdminPageFactory.singleton().createDataPagePane("book");
+		JPanel bookPage = new MediaPagePane(new AdminMediaPageController() {
+			@Override
+			public List<? extends Media> searchMedias(Map<String, String> searchParams) {
+				return JerseyMediaApi.singleton().getBooks(searchParams);
+			}
+			
+			@Override
+			public MediaSingleViewPane createSingleViewPane() {
+				return new BookSingleViewPane();
+			}
+			
+			@Override
+			public MediaSearchPane createSearchPane() {
+				return new BookSearchPane();
+			}
+			
+			@Override
+			public Media updateMedia(Media media) {
+				return JerseyMediaApi.singleton().updateBook((Book) media);
+			}
+		});
 		JTabbedPane tabbedPane = new JTabbedPane();
 		tabbedPane.addTab("Books", null, bookPage, "Books");
 		tabbedPane.addTab("Compact Discs", null, new JPanel(), "Compact Discs");
