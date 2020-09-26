@@ -1,25 +1,22 @@
-package com.oms.gui.page;
+package com.oms.gui.abstractdata;
 
 import java.util.List;
 import java.util.Map;
 
-import com.oms.bean.Media;
-import com.oms.gui.abstractdata.ADataListViewPane;
-import com.oms.gui.abstractdata.ADataSearchController;
 import com.oms.gui.media.MediaSearchPane;
 import com.oms.gui.media.MediaSingleViewPane;
 
-public abstract class MediaPageController {
+public abstract class ADataPageController<T> {
 	private MediaSearchPane searchPane;
-	private ADataListViewPane<Media> listViewPane;
+	private ADataListViewPane<T> listViewPane;
 	
-	public MediaPageController() {
+	public ADataPageController() {
 		searchPane = createSearchPane();
 		
 		searchPane.setController(new ADataSearchController() {
 			@Override
 			public void search(Map<String, String> searchParams) {
-				List<? extends Media> list = searchMedias(searchParams);
+				List<? extends T> list = ADataPageController.this.search(searchParams);
 				listViewPane.updateData(list);
 			}
 		});
@@ -33,23 +30,19 @@ public abstract class MediaPageController {
 		return searchPane;
 	}
 
-	public ADataListViewPane<Media> getListViewPane() {
+	public ADataListViewPane<T> getListViewPane() {
 		return listViewPane;
 	}
 	
 	
-
-	
 	
 	public abstract MediaSearchPane createSearchPane();
 
-	public abstract List<? extends Media> searchMedias(Map<String, String> searchParams);
-	
-	
+	public abstract List<? extends T> search(Map<String, String> searchParams);
 	
 	
 	
 	public abstract MediaSingleViewPane createSingleViewPane();
 	
-	public abstract ADataListViewPane<Media> createListViewPane();
+	public abstract ADataListViewPane<T> createListViewPane();
 }

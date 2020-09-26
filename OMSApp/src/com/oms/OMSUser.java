@@ -9,12 +9,11 @@ import javax.swing.*;
 import com.oms.api.JerseyMediaApi;
 import com.oms.bean.Media;
 import com.oms.cart.CartPane;
+import com.oms.gui.abstractdata.ADataPagePane;
 import com.oms.gui.media.MediaSearchPane;
 import com.oms.gui.media.MediaSingleViewPane;
 import com.oms.gui.media.book.BookSearchPane;
 import com.oms.gui.media.book.BookSingleViewPane;
-import com.oms.gui.page.MediaPagePane;
-import com.oms.gui.page.UserMediaPageController;
 
 @SuppressWarnings("serial")
 public class OMSUser extends JFrame {
@@ -30,9 +29,9 @@ public class OMSUser extends JFrame {
 		
 		CartPane cartPane = new CartPane();
 		
-		JPanel bookPage = new MediaPagePane(new UserMediaPageController(cartPane) {
+		JPanel bookPage = new ADataPagePane<Media>(new UserMediaPageController(cartPane) {
 			@Override
-			public List<? extends Media> searchMedias(Map<String, String> searchParams) {
+			public List<? extends Media> search(Map<String, String> searchParams) {
 				return JerseyMediaApi.singleton().getBooks(searchParams);
 			}
 			@Override

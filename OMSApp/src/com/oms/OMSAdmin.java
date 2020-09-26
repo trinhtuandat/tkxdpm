@@ -9,12 +9,11 @@ import javax.swing.*;
 import com.oms.api.JerseyMediaApi;
 import com.oms.bean.Book;
 import com.oms.bean.Media;
+import com.oms.gui.abstractdata.ADataPagePane;
 import com.oms.gui.media.MediaSearchPane;
 import com.oms.gui.media.MediaSingleViewPane;
 import com.oms.gui.media.book.BookSearchPane;
 import com.oms.gui.media.book.BookSingleViewPane;
-import com.oms.gui.page.AdminMediaPageController;
-import com.oms.gui.page.MediaPagePane;
 
 @SuppressWarnings("serial")
 public class OMSAdmin extends JFrame {
@@ -30,9 +29,9 @@ public class OMSAdmin extends JFrame {
 		rootPanel.setLayout(layout);
 
 		
-		JPanel bookPage = new MediaPagePane(new AdminMediaPageController() {
+		JPanel bookPage = new ADataPagePane<Media>(new AdminMediaPageController() {
 			@Override
-			public List<? extends Media> searchMedias(Map<String, String> searchParams) {
+			public List<? extends Media> search(Map<String, String> searchParams) {
 				return JerseyMediaApi.singleton().getBooks(searchParams);
 			}
 			
