@@ -18,7 +18,7 @@ public class CartController {
 		cartPane.setController(this);
 		dialog.setController(this);
 		
-		cartPane.updatePresentationText(getPresentationText());
+		cartPane.updateData(getPresentationText());
 	}
 	
 	public CartPane getCartPane() {
@@ -29,11 +29,11 @@ public class CartController {
 		dialog.setVisible(true);
 	}
 	
-	public void addItem(OrderItem orderItem) {
+	public void addOrderItem(OrderItem orderItem) {
 		order.addOrderItem(orderItem);
 		
 		dialog.updateData(order);
-		cartPane.updatePresentationText(getPresentationText());
+		cartPane.updateData(getPresentationText());
 	}
 	
 	public String getPresentationText() {

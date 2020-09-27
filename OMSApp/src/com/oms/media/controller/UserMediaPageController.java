@@ -61,6 +61,6 @@ public abstract class UserMediaPageController extends ADataPageController<Media>
 	}
 	
 	private void buy(OrderItem orderItem) {
-		cartController.addItem(orderItem);
+		cartController.addOrderItem(orderItem);
 	}
 }

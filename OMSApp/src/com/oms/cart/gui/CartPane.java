@@ -34,8 +34,8 @@ public class CartPane extends JPanel{
 	public void setController(CartController controller) {
 		this.controller = controller;
 	}
-
-	public void updatePresentationText(String text) {
+	
+	public void updateData(String text) {
 		cartStatusLabel.setText(text);
 	}
 }
