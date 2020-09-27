@@ -45,13 +45,13 @@ public abstract class UserMediaPageController extends ADataPageController<Media>
 				singleView.addDataHandlingComponent(spin);
 				spin.setPreferredSize(new Dimension(100, 20));
 				
-				JButton button = new JButton("Buy");
+				JButton button = new JButton("Add to cart");
 				singleView.addDataHandlingComponent(button);
 				
 				button.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						buy(new OrderItem(singleView.getData(), (int)spin.getValue()));
+						addToCart(new OrderItem(singleView.getData(), (int)spin.getValue()));
 					}
 				});
 				
@@ -60,7 +60,7 @@ public abstract class UserMediaPageController extends ADataPageController<Media>
 		};
 	}
 	
-	private void buy(OrderItem orderItem) {
+	private void addToCart(OrderItem orderItem) {
 		cartController.addOrderItem(orderItem);
 	}
 }
