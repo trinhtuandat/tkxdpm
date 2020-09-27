@@ -5,7 +5,7 @@ import com.oms.abstractdata.gui.ADataListViewPane;
 import com.oms.bean.Media;
 import com.oms.bean.OrderItem;
 import com.oms.cart.controller.CartController;
-import com.oms.media.gui.MediaListViewUserPane;
+import com.oms.media.gui.UserMediaListViewPane;
 
 public abstract class UserMediaPageController extends ADataPageController<Media> {
 	private CartController cartController;
@@ -25,7 +25,7 @@ public abstract class UserMediaPageController extends ADataPageController<Media>
 	
 	@Override
 	public ADataListViewPane<Media> createListViewPane() {
-		return new MediaListViewUserPane(this);
+		return new UserMediaListViewPane(this);
 	}
 	
 	public void addToCart(OrderItem orderItem) {

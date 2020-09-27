@@ -15,11 +15,11 @@ import com.oms.bean.OrderItem;
 import com.oms.media.controller.UserMediaPageController;
 
 @SuppressWarnings("serial")
-public class MediaListViewUserPane extends ADataListViewPane<Media>{
+public class UserMediaListViewPane extends ADataListViewPane<Media>{
 	private UserMediaPageController controller;
 	
 	
-	public MediaListViewUserPane(UserMediaPageController controller) {
+	public UserMediaListViewPane(UserMediaPageController controller) {
 		this.controller = controller;
 	}
 	

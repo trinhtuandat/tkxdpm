@@ -14,10 +14,10 @@ import com.oms.media.book.gui.BookEditDialog;
 import com.oms.media.controller.AdminMediaPageController;
 
 @SuppressWarnings("serial")
-public class MediaListViewAdminPane extends ADataListViewPane<Media>{
+public class AdminMediaListViewPane extends ADataListViewPane<Media>{
 	private AdminMediaPageController pageController;
 	
-	public MediaListViewAdminPane(AdminMediaPageController pageController) {
+	public AdminMediaListViewPane(AdminMediaPageController pageController) {
 		this.pageController = pageController;
 	}
 	
