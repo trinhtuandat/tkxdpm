@@ -8,53 +8,34 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.oms.bean.Order;
-import com.oms.bean.OrderItem;
+import com.oms.cart.controller.CartController;
 
 @SuppressWarnings("serial")
 public class CartPane extends JPanel{
-	private Order order;
 	private JLabel cartStatusLabel;
-	private CartDialog dialog;
+	private CartController controller;
 	
 	public CartPane() {
-		order = new Order();
-		
 		this.setLayout(new FlowLayout(FlowLayout.RIGHT));
-		cartStatusLabel = new JLabel(getPresentationText());
+		cartStatusLabel = new JLabel();
 		this.add(cartStatusLabel);
 		JButton detailButton = new JButton("Detail");
 		this.add(detailButton);
 		
-		dialog = new CartDialog();
 		
 		detailButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dialog.setVisible(true);
+				controller.showCartDialog();
 			}
 		});
 	}
-	public CartPane(Order order) {
-		this();
-		this.order = order;
-	}
 	
-	public void addItem(OrderItem orderItem) {
-		order.addOrderItem(orderItem);
-		dialog.updateData(order);
-		updateData();
-	}
-	
-	public void updateData() {
-		cartStatusLabel.setText(getPresentationText());
+	public void setController(CartController controller) {
+		this.controller = controller;
 	}
 
-	public String getPresentationText() {
-		int numberOfItems = 0;
-		if ( order.getOrderItems() != null) {
-			numberOfItems = order.getOrderItems().size();
-		}
-		return "Your cart has " + numberOfItems + " items. Total Cost: " + order.getTotalCost();
+	public void updatePresentationText(String text) {
+		cartStatusLabel.setText(text);
 	}
 }

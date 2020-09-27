@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -18,6 +20,7 @@ import javax.swing.event.ChangeListener;
 
 import com.oms.bean.Order;
 import com.oms.bean.OrderItem;
+import com.oms.cart.controller.CartController;
 
 @SuppressWarnings("serial")
 public class CartDialog extends JDialog{
@@ -28,12 +31,18 @@ public class CartDialog extends JDialog{
 	private JTextField customerPhoneField;
 	private JTextField customerAddressField;
 	
+	private CartController controller;
+	
 	public CartDialog() {
 		layout = new GridBagLayout();
 		this.setLayout(layout);
 		c = new GridBagConstraints();
 		
 		updateData(null);
+	}
+	
+	public void setController(CartController controller) {
+		this.controller = controller;
 	}
 	
 	public void updateData(Order order) {
@@ -109,7 +118,7 @@ public class CartDialog extends JDialog{
 				spin.addChangeListener(new ChangeListener() {
 					@Override
 					public void stateChanged(ChangeEvent e) {
-						oi.setQuantity((int) spin.getValue());
+						controller.setOrderItemQuantity(oi, (int) spin.getValue());
 						
 						if ((int) spin.getValue() == 0) { // Remove item with 0 quantity
 							remove(spin);
@@ -125,6 +134,12 @@ public class CartDialog extends JDialog{
 			c.gridy = row;
 			JButton button = new JButton("Check out!");
 			add(button, c);
+			button.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					controller.checkOut();
+				}
+			});
 		}
 
 		this.revalidate();

@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 
 import com.oms.abstractdata.gui.ADataPagePane;
 import com.oms.bean.Media;
-import com.oms.cart.gui.CartPane;
+import com.oms.cart.controller.CartController;
 import com.oms.media.book.controller.AdminBookPageController;
 import com.oms.media.book.controller.UserBookPageController;
 
@@ -18,10 +18,10 @@ public class PageFactory {
 	private PageFactory() {
 	}
 	
-	public JPanel createUserPage(String type, CartPane cartPane) {
+	public JPanel createUserPage(String type, CartController cartController) {
 		switch (type) {
 		case "book":
-			return new ADataPagePane<Media>(new UserBookPageController(cartPane));
+			return new ADataPagePane<Media>(new UserBookPageController(cartController));
 		default:
 			return null;
 		}

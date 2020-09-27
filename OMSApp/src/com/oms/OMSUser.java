@@ -4,7 +4,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.*;
 
-import com.oms.cart.gui.CartPane;
+import com.oms.cart.controller.CartController;
 import com.oms.factory.PageFactory;
 
 @SuppressWarnings("serial")
@@ -19,19 +19,23 @@ public class OMSUser extends JFrame {
 		BorderLayout layout = new BorderLayout();
 		rootPanel.setLayout(layout);
 		
-		CartPane cartPane = new CartPane();
+		
+		CartController cartController = new CartController();
+		rootPanel.add(cartController.getCartPane(), BorderLayout.NORTH);
 		
 		
-		JPanel bookPage = PageFactory.singleton().createUserPage("book", cartPane);
 		JTabbedPane tabbedPane = new JTabbedPane();
+		rootPanel.add(tabbedPane, BorderLayout.CENTER);
+		
+		
+		JPanel bookPage = PageFactory.singleton().createUserPage("book", cartController);
 		tabbedPane.addTab("Books", null, bookPage, "Books");
+		
+		
 		tabbedPane.addTab("Compact Discs", null, new JPanel(), "Compact Discs");
 		tabbedPane.addTab("Digital Video Discs", null, new JPanel(), "Digital Video Discs");
 
-		
-		rootPanel.add(cartPane, BorderLayout.NORTH);
-		rootPanel.add(tabbedPane, BorderLayout.CENTER);
-		
+
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Online Media System for User");

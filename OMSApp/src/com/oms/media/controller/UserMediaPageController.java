@@ -13,14 +13,22 @@ import com.oms.abstractdata.gui.ADataListViewPane;
 import com.oms.abstractdata.gui.ADataSingleViewPane;
 import com.oms.bean.Media;
 import com.oms.bean.OrderItem;
-import com.oms.cart.gui.CartPane;
+import com.oms.cart.controller.CartController;
 
 public abstract class UserMediaPageController extends ADataPageController<Media> {
-	private CartPane cartPane;
+	private CartController cartController;
 	
-	public UserMediaPageController(CartPane cartPane) {
+	public UserMediaPageController() {
 		super();
-		this.cartPane = cartPane;
+	}
+	
+	public UserMediaPageController(CartController cartController) {
+		this();
+		setCartController(cartController);
+	}
+	
+	public void setCartController(CartController cartController) {
+		this.cartController = cartController;
 	}
 	
 	@Override
@@ -43,7 +51,7 @@ public abstract class UserMediaPageController extends ADataPageController<Media>
 				button.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						cartPane.addItem(new OrderItem(singleView.getData(), (int)spin.getValue()));
+						cartController.addItem(new OrderItem(singleView.getData(), (int)spin.getValue()));
 					}
 				});
 				
