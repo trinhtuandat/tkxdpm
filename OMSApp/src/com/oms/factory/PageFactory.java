@@ -5,8 +5,8 @@ import javax.swing.JPanel;
 import com.oms.abstractdata.gui.ADataPagePane;
 import com.oms.bean.Media;
 import com.oms.cart.controller.CartController;
-import com.oms.media.book.controller.AdminBookPageController;
-import com.oms.media.book.controller.UserBookPageController;
+import com.oms.media.book.controller.BookPageAdminController;
+import com.oms.media.book.controller.BookPageUserController;
 
 public class PageFactory {
 	private static PageFactory singleton = new PageFactory();
@@ -21,7 +21,7 @@ public class PageFactory {
 	public JPanel createUserPage(String type, CartController cartController) {
 		switch (type) {
 		case "book":
-			return new ADataPagePane<Media>(new UserBookPageController(cartController));
+			return new ADataPagePane<Media>(new BookPageUserController(cartController));
 		default:
 			return null;
 		}
@@ -30,7 +30,7 @@ public class PageFactory {
 	public JPanel createAdminPage(String type) {
 		switch (type) {
 		case "book":
-			return new ADataPagePane<Media>(new AdminBookPageController());
+			return new ADataPagePane<Media>(new BookPageAdminController());
 		default:
 			return null;
 		}
