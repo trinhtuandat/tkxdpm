@@ -51,7 +51,7 @@ public abstract class UserMediaPageController extends ADataPageController<Media>
 				button.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						cartController.addItem(new OrderItem(singleView.getData(), (int)spin.getValue()));
+						buy(new OrderItem(singleView.getData(), (int)spin.getValue()));
 					}
 				});
 				
@@ -60,4 +60,7 @@ public abstract class UserMediaPageController extends ADataPageController<Media>
 		};
 	}
 	
+	private void buy(OrderItem orderItem) {
+		cartController.addItem(orderItem);
+	}
 }
