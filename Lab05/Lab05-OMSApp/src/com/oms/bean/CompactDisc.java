@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 
-public class CompactDisc extends PhysicalMedia implements Playable {
+public class CompactDisc extends PhysicalMedia {
 
 	private String artist;
 
@@ -39,28 +39,6 @@ public class CompactDisc extends PhysicalMedia implements Playable {
 			total += nextTrack.getLength();
 		}
 		return total;
-	}
-
-	public void play() throws PlayerException {
-		if (this.getLength() <= 0) {
-			System.err.println("ERROR: CD length is 0");
-			throw (new PlayerException());
-		}
-		
-		System.out.println("Playing CD: " + this.getTitle());
-		System.out.println("CD length:" + this.getLength());
-
-		Iterator<Track> iter = tracks.iterator();
-		Track nextTrack;
-
-		while (iter.hasNext()) {
-			nextTrack = (Track) iter.next();
-			try {
-				nextTrack.play();
-			} catch (PlayerException e) {
-				e.printStackTrace();
-			}
-		}
 	}
 
 

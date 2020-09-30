@@ -2,11 +2,11 @@ package com.oms.factory;
 
 import javax.swing.JPanel;
 
-import com.oms.abstractdata.gui.ADataPagePane;
 import com.oms.bean.Media;
-import com.oms.cart.controller.CartController;
-import com.oms.media.book.controller.AdminBookPageController;
-import com.oms.media.book.controller.UserBookPageController;
+import com.oms.components.abstractdata.gui.ADataPagePane;
+import com.oms.components.cart.controller.CartController;
+import com.oms.components.media.book.controller.AdminBookPageController;
+import com.oms.components.media.book.controller.UserBookPageController;
 
 public class PageFactory {
 	private static PageFactory singleton = new PageFactory();

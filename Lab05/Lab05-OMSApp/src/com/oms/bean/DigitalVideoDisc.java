@@ -1,6 +1,6 @@
 package com.oms.bean;
 
-public class DigitalVideoDisc extends PhysicalMedia implements Playable {
+public class DigitalVideoDisc extends PhysicalMedia {
 
 	private String director;
 	private String studio;
@@ -24,16 +24,6 @@ public class DigitalVideoDisc extends PhysicalMedia implements Playable {
 		this.length = length;
 	}
 
-
-
-	public void play() throws PlayerException {
-		if (this.getLength() <= 0) {
-			System.err.println("ERROR: DVD length is 0");
-			throw (new PlayerException());
-		}
-		System.out.println("Playing DVD: " + this.getTitle());
-		System.out.println("DVD length: " + this.getLength());
-	}
 
 	public String getDirector() {
 		return director;
