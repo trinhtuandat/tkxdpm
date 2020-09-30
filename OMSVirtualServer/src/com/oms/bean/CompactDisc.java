@@ -99,12 +99,12 @@ public class CompactDisc extends PhysicalMedia implements Playable {
 	}
 	
 	@Override
-	public boolean search(Media media) {
+	public boolean match(Media media) {
 		if (media == null)
 			return true;
 		
 		
-		boolean res = super.search(media);
+		boolean res = super.match(media);
 		if (!res) {
 			return false;
 		}

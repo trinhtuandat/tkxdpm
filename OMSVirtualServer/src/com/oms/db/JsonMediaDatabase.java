@@ -23,7 +23,7 @@ public class JsonMediaDatabase implements IMediaDatabase{
 	public ArrayList<Media> searchMedia(Media media) {
 		ArrayList<Media> res = new ArrayList<Media>();
 		for (Media b: medias) {
-			if (b.search(media)) {
+			if (b.match(media)) {
 				res.add(b);
 			}
 		}

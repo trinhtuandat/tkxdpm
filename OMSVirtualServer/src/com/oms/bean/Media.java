@@ -67,7 +67,7 @@ public class Media {
 	}
 	
 	
-	public boolean search(Media media) {
+	public boolean match(Media media) {
 		if (media == null)
 			return true;
 		
