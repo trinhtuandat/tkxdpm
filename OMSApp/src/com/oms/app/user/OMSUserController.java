@@ -3,7 +3,7 @@ package com.oms.app.user;
 import javax.swing.JPanel;
 
 import com.oms.components.cart.controller.CartController;
-import com.oms.factory.PageFactory;
+import com.oms.factory.UserPageFactory;
 
 public class OMSUserController {
 	private CartController cartController;
@@ -17,6 +17,6 @@ public class OMSUserController {
 	}
 	
 	public JPanel getPage(String type) {
-		return PageFactory.singleton().createUserPage(type, cartController);
+		return UserPageFactory.singleton().createPage(type, cartController);
 	}
 }
