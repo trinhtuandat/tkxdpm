@@ -1,5 +1,6 @@
 package com.oms.db.seed;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,9 +26,9 @@ public class Seed {
 	
 	private void start() {
 		medias = new ArrayList<Media>();
-		medias.addAll(generateDataFromFile(getClass().getResource("./books.json").getPath()));
-		medias.addAll(generateDataFromFile(getClass().getResource("./cds.json").getPath()));
-		medias.addAll(generateDataFromFile(getClass().getResource("./dvds.json").getPath()));
+		medias.addAll(generateDataFromFile( new File(getClass().getResource("./books.json").getPath()).toString()));
+		medias.addAll(generateDataFromFile( new File(getClass().getResource("./cds.json").getPath()).toString()));
+		medias.addAll(generateDataFromFile( new File(getClass().getResource("./dvds.json").getPath()).toString()));
 		
 		orders = new ArrayList<Order>();
 	}
