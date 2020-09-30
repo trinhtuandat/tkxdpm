@@ -10,11 +10,13 @@ import com.oms.service.DigitalVideoDiscService;
 import com.oms.service.MediaService;
 
 public class OMSServer {
+	public static final int PORT = 8080;
+	
 	public static void main(String[] args) throws Exception {
 		ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 		context.setContextPath("/");
 
-		Server jettyServer = new Server(8080);
+		Server jettyServer = new Server(PORT);
 		jettyServer.setHandler(context);
 
 		ServletHolder jerseyServlet = context.addServlet(org.glassfish.jersey.servlet.ServletContainer.class, "/*");
@@ -22,9 +24,11 @@ public class OMSServer {
 
 		
 		jerseyServlet.setInitParameter("jersey.config.server.provider.classnames",
-				MediaService.class.getCanonicalName() + ", " + BookService.class.getCanonicalName() + ", "
-						+ CompactDiscService.class.getCanonicalName() + ", "
-						+ DigitalVideoDiscService.class.getCanonicalName());
+				MediaService.class.getCanonicalName() + ", " + 
+				BookService.class.getCanonicalName() + ", " +
+				CompactDiscService.class.getCanonicalName() + ", " +
+				DigitalVideoDiscService.class.getCanonicalName()
+		);
 
 		
 		try {

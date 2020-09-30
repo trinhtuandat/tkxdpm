@@ -66,7 +66,7 @@ public class JsonMediaDatabase implements IMediaDatabase{
 	}
 
 	@Override
-	public boolean checkOutOrder(Media media) {
+	public boolean checkOutOrder(Order order) {
 		return false;
 	}
 

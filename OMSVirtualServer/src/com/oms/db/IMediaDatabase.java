@@ -10,5 +10,5 @@ public interface IMediaDatabase {
 	public Media updateMedia(Media media);
 	public Media addMedia(Media media);
 	public ArrayList<Order> searchOrder(Order order);
-	public boolean checkOutOrder(Media media);
+	public boolean checkOutOrder(Order order);
 }
