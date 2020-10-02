@@ -25,6 +25,14 @@ public class CartController {
 		cartPane.updateData(getPresentationText());
 	}
 	
+	private String getPresentationText() {
+		int numberOfItems = 0;
+		if ( order.getOrderItems() != null) {
+			numberOfItems = order.getOrderItems().size();
+		}
+		return "Your cart has " + numberOfItems + " items. Total Cost: " + order.getTotalCost();
+	}
+	
 	public CartPane getCartPane() {
 		return cartPane;
 	}
@@ -38,14 +46,6 @@ public class CartController {
 		
 		dialog.updateData(order);
 		updateCartPane();
-	}
-	
-	public String getPresentationText() {
-		int numberOfItems = 0;
-		if ( order.getOrderItems() != null) {
-			numberOfItems = order.getOrderItems().size();
-		}
-		return "Your cart has " + numberOfItems + " items. Total Cost: " + order.getTotalCost();
 	}
 	
 	public void checkOut() {
