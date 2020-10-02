@@ -18,6 +18,10 @@ public class CartController {
 		cartPane.setController(this);
 		dialog.setController(this);
 		
+		updateCartPane();
+	}
+	
+	private void updateCartPane() {
 		cartPane.updateData(getPresentationText());
 	}
 	
@@ -33,7 +37,7 @@ public class CartController {
 		order.addOrderItem(orderItem);
 		
 		dialog.updateData(order);
-		cartPane.updateData(getPresentationText());
+		updateCartPane();
 	}
 	
 	public String getPresentationText() {
@@ -51,8 +55,14 @@ public class CartController {
 	public void setOrderItemQuantity(OrderItem orderItem, int quantity) {
 		for (OrderItem oi: order.getOrderItems()) {
 			if (oi == orderItem) {
+				if (quantity == 0) {
+					order.getOrderItems().remove(oi);
+					break;
+				}
 				oi.setQuantity(quantity);
 			}
 		}
+		
+		updateCartPane();
 	}
 }
