@@ -22,7 +22,7 @@ public class OMSAdmin extends JFrame {
 		rootPanel.add(tabbedPane, BorderLayout.CENTER);
 		
 		
-		JPanel bookPage = controller.getPage("book");
+		JPanel bookPage = controller.getBookPage();
 		tabbedPane.addTab("Books", null, bookPage, "Books");
 		
 		

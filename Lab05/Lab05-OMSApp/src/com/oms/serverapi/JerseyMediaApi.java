@@ -17,22 +17,16 @@ import com.oms.bean.CompactDisc;
 import com.oms.bean.DigitalVideoDisc;
 import com.oms.bean.Media;
 
-public class JerseyMediaApi implements IMediaApi{
+public class JerseyMediaApi {
 	public static final String PATH = "http://localhost:8080/";
 	
-	private static IMediaApi singleton = new JerseyMediaApi();
+	private Client client;
 	
-	private JerseyMediaApi() {
+	public JerseyMediaApi() {
+		client = ClientBuilder.newClient();
 	}
 	
-	public static IMediaApi singleton() {
-		return singleton;
-	}
-	
-	
-	@Override
 	public ArrayList<Media> getAllMedias() {
-		Client client = ClientBuilder.newClient();
 		WebTarget webTarget = client.target(PATH).path("medias");
 
 		Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
@@ -43,9 +37,7 @@ public class JerseyMediaApi implements IMediaApi{
 		return res;
 	}
 
-	@Override
 	public ArrayList<Book> getBooks(Map<String, String> queryParams) {
-		Client client = ClientBuilder.newClient();
 		WebTarget webTarget = client.target(PATH).path("books");
 		
 		
@@ -65,9 +57,7 @@ public class JerseyMediaApi implements IMediaApi{
 	}
 	
 
-	@Override
 	public Book updateBook(Book book) {
-		Client client = ClientBuilder.newClient();
 		WebTarget webTarget = client.target(PATH).path("books").path(book.getId());
 		
 		Invocation.Builder invocationBuilder =  webTarget.request(MediaType.APPLICATION_JSON);
@@ -77,10 +67,8 @@ public class JerseyMediaApi implements IMediaApi{
 		return res;
 	}
 	
-
-	@Override
+	
 	public ArrayList<CompactDisc> getCds(Map<String, String> queryParams) {
-		Client client = ClientBuilder.newClient();
 		WebTarget webTarget = client.target(PATH).path("cds");
 
 		
@@ -99,9 +87,8 @@ public class JerseyMediaApi implements IMediaApi{
 		return res;
 	}
 
-	@Override
+	
 	public ArrayList<DigitalVideoDisc> getDvds(Map<String, String> queryParams) {
-		Client client = ClientBuilder.newClient();
 		WebTarget webTarget = client.target(PATH).path("dvds");
 
 		
@@ -118,15 +105,5 @@ public class JerseyMediaApi implements IMediaApi{
 		ArrayList<DigitalVideoDisc> res = response.readEntity(new GenericType<ArrayList<DigitalVideoDisc>>() {});
 		System.out.println(res);
 		return res;
-	}
-	
-
-	
-	public static void main(String[] args) {
-		JerseyMediaApi apiConnector = new JerseyMediaApi();
-		apiConnector.getAllMedias();
-		apiConnector.getBooks(null);
-		apiConnector.getCds(null);
-		apiConnector.getDvds(null);
 	}
 }

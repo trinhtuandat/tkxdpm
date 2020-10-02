@@ -2,8 +2,10 @@ package com.oms.app.user;
 
 import javax.swing.JPanel;
 
+import com.oms.bean.Media;
+import com.oms.components.abstractdata.gui.ADataPagePane;
 import com.oms.components.cart.controller.CartController;
-import com.oms.factory.PageFactory;
+import com.oms.components.media.book.controller.UserBookPageController;
 
 public class OMSUserController {
 	private CartController cartController;
@@ -16,7 +18,7 @@ public class OMSUserController {
 		return cartController.getCartPane();
 	}
 	
-	public JPanel getPage(String type) {
-		return PageFactory.singleton().createUserPage(type, cartController);
+	public JPanel getBookPage() {
+		return new ADataPagePane<Media>(new UserBookPageController(cartController));
 	}
 }

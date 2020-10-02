@@ -15,7 +15,7 @@ import com.oms.serverapi.JerseyMediaApi;
 public class AdminBookPageController extends AdminMediaPageController{
 	@Override
 	public List<? extends Media> search(Map<String, String> searchParams) {
-		return JerseyMediaApi.singleton().getBooks(searchParams);
+		return new JerseyMediaApi().getBooks(searchParams);
 	}
 	
 	@Override
@@ -30,6 +30,6 @@ public class AdminBookPageController extends AdminMediaPageController{
 	
 	@Override
 	public Media updateMedia(Media media) {
-		return JerseyMediaApi.singleton().updateBook((Book) media);
+		return new JerseyMediaApi().updateBook((Book) media);
 	}
 }

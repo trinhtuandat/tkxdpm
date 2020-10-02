@@ -21,7 +21,7 @@ public class UserBookPageController extends UserMediaPageController{
 	}
 	@Override
 	public List<? extends Media> search(Map<String, String> searchParams) {
-		return JerseyMediaApi.singleton().getBooks(searchParams);
+		return new JerseyMediaApi().getBooks(searchParams);
 	}
 	@Override
 	public MediaSingleViewPane createSingleViewPane() {

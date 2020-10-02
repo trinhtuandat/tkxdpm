@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import com.oms.bean.Media;
-import com.oms.components.abstractdata.controller.ADataManageController;
 import com.oms.components.abstractdata.controller.IDataManageController;
 import com.oms.components.abstractdata.gui.ADataListViewPane;
 import com.oms.components.abstractdata.gui.ADataSingleViewPane;
@@ -27,11 +26,24 @@ public class AdminMediaListViewPane extends ADataListViewPane<Media>{
 		
 		JButton button = new JButton("Edit");
 		singleView.addDataHandlingComponent(button);
-		IDataManageController<Media> controller = new ADataManageController<Media>() {
+		IDataManageController<Media> controller = new IDataManageController<Media>() {
 			@Override
 			public void update(Media t) {
 				Media newMedia = pageController.updateMedia(t);
 				singleView.updateData(newMedia);
+			}
+
+			@Override
+			public void create(Media t) {
+			}
+
+			@Override
+			public void read(Media t) {
+			}
+
+			@Override
+			public void delete(Media t) {
+				
 			}
 		};
 		
