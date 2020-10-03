@@ -35,14 +35,14 @@ public abstract class ADataListPane<T> extends JScrollPane {
 	
 	public void displayData() {
 		for (T t: list) {
-			ADataSinglePane<T> singleViewPane = createDataSingleViewPane();
-			singleViewPane.updateData(t);
-			pane.add(singleViewPane);
+			ADataSinglePane<T> singlePane = createDataSinglePane();
+			singlePane.updateData(t);
+			pane.add(singlePane);
 			pane.add(Box.createRigidArea(new Dimension(0, 40)));
 		}
 	}
 	
-	public abstract ADataSinglePane<T> createDataSingleViewPane();
+	public abstract ADataSinglePane<T> createDataSinglePane();
 	
 	@SuppressWarnings("unchecked")
 	public void updateData(List<? extends T> list) {

@@ -11,7 +11,7 @@ public abstract class AdminMediaPageController extends ADataPageController<Media
 	}
 	
 	@Override
-	public ADataListPane<Media> createListViewPane() {
+	public ADataListPane<Media> createListPane() {
 		return new AdminMediaListPane(this);
 	}
 	

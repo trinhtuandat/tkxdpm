@@ -22,27 +22,27 @@ public class AdminMediaListPane extends ADataListPane<Media>{
 	}
 	
 	@Override
-	public ADataSinglePane<Media> createDataSingleViewPane() {
-		ADataSinglePane<Media> singleView = pageController.createSingleViewPane();
+	public ADataSinglePane<Media> createDataSinglePane() {
+		ADataSinglePane<Media> singlePane = pageController.createSinglePane();
 		
 		JButton button = new JButton("Edit");
-		singleView.addDataHandlingComponent(button);
+		singlePane.addDataHandlingComponent(button);
 		IDataManageController<Media> controller = new ADataManageController<Media>() {
 			@Override
 			public void update(Media t) {
 				Media newMedia = pageController.updateMedia(t);
-				singleView.updateData(newMedia);
+				singlePane.updateData(newMedia);
 			}
 		};
 		
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new BookEditDialog(singleView.getData(), controller);
+				new BookEditDialog(singlePane.getData(), controller);
 				
 			}
 		});
 		
-		return singleView;
+		return singlePane;
 	}
 }

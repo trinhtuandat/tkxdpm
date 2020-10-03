@@ -25,24 +25,24 @@ public class UserMediaListPane extends ADataListPane<Media>{
 	
 
 	@Override
-	public ADataSinglePane<Media> createDataSingleViewPane() {
-		ADataSinglePane<Media> singleView = controller.createSingleViewPane();
+	public ADataSinglePane<Media> createDataSinglePane() {
+		ADataSinglePane<Media> singlePane = controller.createSinglePane();
 		
 		JSpinner spin = new JSpinner();
 		spin.setModel(new SpinnerNumberModel(1, 0, null, 1));
-		singleView.addDataHandlingComponent(spin);
+		singlePane.addDataHandlingComponent(spin);
 		spin.setPreferredSize(new Dimension(100, 20));
 		
 		JButton button = new JButton("Add to cart");
-		singleView.addDataHandlingComponent(button);
+		singlePane.addDataHandlingComponent(button);
 		
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.addToCart(new OrderItem(singleView.getData(), (int)spin.getValue()));
+				controller.addToCart(new OrderItem(singlePane.getData(), (int)spin.getValue()));
 			}
 		});
 		
-		return singleView;
+		return singlePane;
 	}
 }

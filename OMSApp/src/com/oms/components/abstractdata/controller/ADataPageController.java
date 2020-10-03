@@ -9,7 +9,7 @@ import com.oms.components.media.gui.MediaSinglePane;
 
 public abstract class ADataPageController<T> {
 	private MediaSearchPane searchPane;
-	private ADataListPane<T> listViewPane;
+	private ADataListPane<T> listPane;
 	
 	public ADataPageController() {
 		searchPane = createSearchPane();
@@ -18,11 +18,11 @@ public abstract class ADataPageController<T> {
 			@Override
 			public void search(Map<String, String> searchParams) {
 				List<? extends T> list = ADataPageController.this.search(searchParams);
-				listViewPane.updateData(list);
+				listPane.updateData(list);
 			}
 		});
 		
-		listViewPane = createListViewPane();
+		listPane = createListPane();
 		
 		searchPane.fireSearchEvent();
 	}
@@ -31,8 +31,8 @@ public abstract class ADataPageController<T> {
 		return searchPane;
 	}
 
-	public ADataListPane<T> getListViewPane() {
-		return listViewPane;
+	public ADataListPane<T> getListPane() {
+		return listPane;
 	}
 	
 	
@@ -43,7 +43,7 @@ public abstract class ADataPageController<T> {
 	
 	
 	
-	public abstract MediaSinglePane createSingleViewPane();
+	public abstract MediaSinglePane createSinglePane();
 	
-	public abstract ADataListPane<T> createListViewPane();
+	public abstract ADataListPane<T> createListPane();
 }

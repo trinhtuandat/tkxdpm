@@ -19,7 +19,7 @@ public class AdminBookPageController extends AdminMediaPageController{
 	}
 	
 	@Override
-	public MediaSinglePane createSingleViewPane() {
+	public MediaSinglePane createSinglePane() {
 		return new BookSinglePane();
 	}
 	

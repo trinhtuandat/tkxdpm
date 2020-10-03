@@ -24,7 +24,7 @@ public class UserBookPageController extends UserMediaPageController{
 		return new JerseyMediaApi().getBooks(searchParams);
 	}
 	@Override
-	public MediaSinglePane createSingleViewPane() {
+	public MediaSinglePane createSinglePane() {
 		return new BookSinglePane();
 	}
 	@Override
