@@ -3,9 +3,9 @@ package com.oms.components.media.controller;
 import com.oms.bean.Media;
 import com.oms.bean.OrderItem;
 import com.oms.components.abstractdata.controller.ADataPageController;
-import com.oms.components.abstractdata.gui.ADataListViewPane;
+import com.oms.components.abstractdata.gui.ADataListPane;
 import com.oms.components.cart.controller.CartController;
-import com.oms.components.media.gui.UserMediaListViewPane;
+import com.oms.components.media.gui.UserMediaListPane;
 
 public abstract class UserMediaPageController extends ADataPageController<Media> {
 	private CartController cartController;
@@ -24,8 +24,8 @@ public abstract class UserMediaPageController extends ADataPageController<Media>
 	}
 	
 	@Override
-	public ADataListViewPane<Media> createListViewPane() {
-		return new UserMediaListViewPane(this);
+	public ADataListPane<Media> createListViewPane() {
+		return new UserMediaListPane(this);
 	}
 	
 	public void addToCart(OrderItem orderItem) {

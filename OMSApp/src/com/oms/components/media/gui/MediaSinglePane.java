@@ -3,20 +3,20 @@ package com.oms.components.media.gui;
 import javax.swing.JLabel;
 
 import com.oms.bean.Media;
-import com.oms.components.abstractdata.gui.ADataSingleViewPane;
+import com.oms.components.abstractdata.gui.ADataSinglePane;
 
 @SuppressWarnings("serial")
-public class MediaSingleViewPane extends ADataSingleViewPane<Media>{
+public class MediaSinglePane extends ADataSinglePane<Media>{
 	private JLabel labelTitle;
 	private JLabel labelCagegory;
 	private JLabel labelCost;
 	
-	public MediaSingleViewPane() {
+	public MediaSinglePane() {
 		super();
 	}
 		
 	
-	public MediaSingleViewPane(Media media) {
+	public MediaSinglePane(Media media) {
 		this();
 		this.t = media;
 		

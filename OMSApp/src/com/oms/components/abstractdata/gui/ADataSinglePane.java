@@ -7,7 +7,7 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public abstract class ADataSingleViewPane<T> extends JPanel {
+public abstract class ADataSinglePane<T> extends JPanel {
 	protected T t;
 	
 	protected GridBagLayout layout;
@@ -15,11 +15,11 @@ public abstract class ADataSingleViewPane<T> extends JPanel {
 	
 	protected JPanel panel;
 
-	public ADataSingleViewPane() {
+	public ADataSinglePane() {
 		buildControls();
 	}
 	
-	public ADataSingleViewPane(T t) {
+	public ADataSinglePane(T t) {
 		this();
 		this.t = t;
 		

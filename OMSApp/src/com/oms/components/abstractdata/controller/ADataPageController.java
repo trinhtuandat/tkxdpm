@@ -3,13 +3,13 @@ package com.oms.components.abstractdata.controller;
 import java.util.List;
 import java.util.Map;
 
-import com.oms.components.abstractdata.gui.ADataListViewPane;
+import com.oms.components.abstractdata.gui.ADataListPane;
 import com.oms.components.media.gui.MediaSearchPane;
-import com.oms.components.media.gui.MediaSingleViewPane;
+import com.oms.components.media.gui.MediaSinglePane;
 
 public abstract class ADataPageController<T> {
 	private MediaSearchPane searchPane;
-	private ADataListViewPane<T> listViewPane;
+	private ADataListPane<T> listViewPane;
 	
 	public ADataPageController() {
 		searchPane = createSearchPane();
@@ -31,7 +31,7 @@ public abstract class ADataPageController<T> {
 		return searchPane;
 	}
 
-	public ADataListViewPane<T> getListViewPane() {
+	public ADataListPane<T> getListViewPane() {
 		return listViewPane;
 	}
 	
@@ -43,7 +43,7 @@ public abstract class ADataPageController<T> {
 	
 	
 	
-	public abstract MediaSingleViewPane createSingleViewPane();
+	public abstract MediaSinglePane createSingleViewPane();
 	
-	public abstract ADataListViewPane<T> createListViewPane();
+	public abstract ADataListPane<T> createListViewPane();
 }

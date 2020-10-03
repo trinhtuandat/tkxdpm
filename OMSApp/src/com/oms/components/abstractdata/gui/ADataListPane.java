@@ -10,12 +10,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 @SuppressWarnings("serial")
-public abstract class ADataListViewPane<T> extends JScrollPane {
+public abstract class ADataListPane<T> extends JScrollPane {
 	private LayoutManager layout;
 	protected JPanel pane;
 	protected List<T> list;
 
-	public ADataListViewPane() {
+	public ADataListPane() {
 		pane = new JPanel();
 		layout = new BoxLayout(pane, BoxLayout.Y_AXIS);
 		pane.setLayout(layout);
@@ -27,7 +27,7 @@ public abstract class ADataListViewPane<T> extends JScrollPane {
 		this.getHorizontalScrollBar().setUnitIncrement(20);
 	}
 	
-	public ADataListViewPane(List<T> list) {
+	public ADataListPane(List<T> list) {
 		this();
 		this.list = list;
 	}
@@ -35,14 +35,14 @@ public abstract class ADataListViewPane<T> extends JScrollPane {
 	
 	public void displayData() {
 		for (T t: list) {
-			ADataSingleViewPane<T> singleViewPane = createDataSingleViewPane();
+			ADataSinglePane<T> singleViewPane = createDataSingleViewPane();
 			singleViewPane.updateData(t);
 			pane.add(singleViewPane);
 			pane.add(Box.createRigidArea(new Dimension(0, 40)));
 		}
 	}
 	
-	public abstract ADataSingleViewPane<T> createDataSingleViewPane();
+	public abstract ADataSinglePane<T> createDataSingleViewPane();
 	
 	@SuppressWarnings("unchecked")
 	public void updateData(List<? extends T> list) {

@@ -6,18 +6,18 @@ import com.oms.bean.Media;
 import com.oms.bean.PhysicalMedia;
 
 @SuppressWarnings("serial")
-public class PhysicalMediaSingleViewPane extends MediaSingleViewPane{
+public class PhysicalMediaSinglePane extends MediaSinglePane{
 	private JLabel labelBarcode;
 	private JLabel labelDescription;
 	private JLabel labelQuantity;
 	private JLabel labelWeight;
 	private JLabel labelDimension;
 	
-	public PhysicalMediaSingleViewPane() {
+	public PhysicalMediaSinglePane() {
 		super();
 	}
 	
-	public PhysicalMediaSingleViewPane(Media media) {
+	public PhysicalMediaSinglePane(Media media) {
 		this();
 		this.t = media;
 		

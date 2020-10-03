@@ -4,21 +4,21 @@ import javax.swing.JLabel;
 
 import com.oms.bean.Book;
 import com.oms.bean.Media;
-import com.oms.components.media.gui.PhysicalMediaSingleViewPane;
+import com.oms.components.media.gui.PhysicalMediaSinglePane;
 
 @SuppressWarnings("serial")
-public class BookSingleViewPane extends PhysicalMediaSingleViewPane {
+public class BookSinglePane extends PhysicalMediaSinglePane {
 	private JLabel labelPublisher;
 	private JLabel labelPublicationDate;
 	private JLabel labelAuthors;
 	private JLabel labelNumberOfPages;
 	private JLabel labelLanguage;
 	
-	public BookSingleViewPane() {
+	public BookSinglePane() {
 		super();
 	}
 	
-	public BookSingleViewPane(Media media) {
+	public BookSinglePane(Media media) {
 		this();
 		this.t = media;
 

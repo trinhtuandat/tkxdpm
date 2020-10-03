@@ -10,23 +10,23 @@ import javax.swing.SpinnerNumberModel;
 
 import com.oms.bean.Media;
 import com.oms.bean.OrderItem;
-import com.oms.components.abstractdata.gui.ADataListViewPane;
-import com.oms.components.abstractdata.gui.ADataSingleViewPane;
+import com.oms.components.abstractdata.gui.ADataListPane;
+import com.oms.components.abstractdata.gui.ADataSinglePane;
 import com.oms.components.media.controller.UserMediaPageController;
 
 @SuppressWarnings("serial")
-public class UserMediaListViewPane extends ADataListViewPane<Media>{
+public class UserMediaListPane extends ADataListPane<Media>{
 	private UserMediaPageController controller;
 	
 	
-	public UserMediaListViewPane(UserMediaPageController controller) {
+	public UserMediaListPane(UserMediaPageController controller) {
 		this.controller = controller;
 	}
 	
 
 	@Override
-	public ADataSingleViewPane<Media> createDataSingleViewPane() {
-		ADataSingleViewPane<Media> singleView = controller.createSingleViewPane();
+	public ADataSinglePane<Media> createDataSingleViewPane() {
+		ADataSinglePane<Media> singleView = controller.createSingleViewPane();
 		
 		JSpinner spin = new JSpinner();
 		spin.setModel(new SpinnerNumberModel(1, 0, null, 1));
