@@ -13,7 +13,6 @@ import javax.swing.JScrollPane;
 public abstract class ADataListPane<T> extends JScrollPane {
 	private LayoutManager layout;
 	protected JPanel pane;
-	protected List<T> list;
 
 	public ADataListPane() {
 		pane = new JPanel();
@@ -26,14 +25,9 @@ public abstract class ADataListPane<T> extends JScrollPane {
 		this.getVerticalScrollBar().setUnitIncrement(20);
 		this.getHorizontalScrollBar().setUnitIncrement(20);
 	}
-	
-	public ADataListPane(List<T> list) {
-		this();
-		this.list = list;
-	}
 
 	
-	public void displayData() {
+	public void displayData(List<? extends T> list) {
 		for (T t: list) {
 			ADataSinglePane<T> singlePane = createDataSinglePane();
 			singlePane.updateData(t);
@@ -44,12 +38,11 @@ public abstract class ADataListPane<T> extends JScrollPane {
 	
 	public abstract ADataSinglePane<T> createDataSinglePane();
 	
-	@SuppressWarnings("unchecked")
+
 	public void updateData(List<? extends T> list) {
-		this.list = (List<T>) list;
 		pane.removeAll();
 		pane.revalidate();
 		pane.repaint();
-		displayData();
+		displayData(list);
 	}
 }
