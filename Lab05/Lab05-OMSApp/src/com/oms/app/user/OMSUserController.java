@@ -19,6 +19,8 @@ public class OMSUserController {
 	}
 	
 	public JPanel getBookPage() {
-		return new ADataPagePane<Media>(new UserBookPageController(cartController));
+		UserBookPageController controller = new UserBookPageController();
+		controller.setCartController(cartController);
+		return new ADataPagePane<Media>(controller);
 	}
 }
