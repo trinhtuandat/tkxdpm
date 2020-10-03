@@ -17,12 +17,12 @@ import com.oms.bean.CompactDisc;
 import com.oms.bean.DigitalVideoDisc;
 import com.oms.bean.Media;
 
-public class JerseyMediaApi {
+public class MediaApi {
 	public static final String PATH = "http://localhost:8080/";
 	
 	private Client client;
 	
-	public JerseyMediaApi() {
+	public MediaApi() {
 		client = ClientBuilder.newClient();
 	}
 	

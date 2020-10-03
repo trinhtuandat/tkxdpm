@@ -10,12 +10,12 @@ import com.oms.components.media.book.gui.BookSinglePane;
 import com.oms.components.media.controller.AdminMediaPageController;
 import com.oms.components.media.gui.MediaSearchPane;
 import com.oms.components.media.gui.MediaSinglePane;
-import com.oms.serverapi.JerseyMediaApi;
+import com.oms.serverapi.MediaApi;
 
 public class AdminBookPageController extends AdminMediaPageController{
 	@Override
 	public List<? extends Media> search(Map<String, String> searchParams) {
-		return new JerseyMediaApi().getBooks(searchParams);
+		return new MediaApi().getBooks(searchParams);
 	}
 	
 	@Override
@@ -30,6 +30,6 @@ public class AdminBookPageController extends AdminMediaPageController{
 	
 	@Override
 	public Media updateMedia(Media media) {
-		return new JerseyMediaApi().updateBook((Book) media);
+		return new MediaApi().updateBook((Book) media);
 	}
 }

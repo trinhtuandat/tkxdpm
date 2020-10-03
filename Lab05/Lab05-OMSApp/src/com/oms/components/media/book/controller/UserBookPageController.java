@@ -10,7 +10,7 @@ import com.oms.components.media.book.gui.BookSinglePane;
 import com.oms.components.media.controller.UserMediaPageController;
 import com.oms.components.media.gui.MediaSearchPane;
 import com.oms.components.media.gui.MediaSinglePane;
-import com.oms.serverapi.JerseyMediaApi;
+import com.oms.serverapi.MediaApi;
 
 public class UserBookPageController extends UserMediaPageController{
 	public UserBookPageController() {
@@ -21,7 +21,7 @@ public class UserBookPageController extends UserMediaPageController{
 	}
 	@Override
 	public List<? extends Media> search(Map<String, String> searchParams) {
-		return new JerseyMediaApi().getBooks(searchParams);
+		return new MediaApi().getBooks(searchParams);
 	}
 	@Override
 	public MediaSinglePane createSinglePane() {
