@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 import com.oms.components.abstractdata.gui.ADataListPane;
-import com.oms.components.media.gui.MediaSearchPane;
-import com.oms.components.media.gui.MediaSinglePane;
+import com.oms.components.abstractdata.gui.ADataSearchPane;
+import com.oms.components.abstractdata.gui.ADataSinglePane;
 
 public abstract class ADataPageController<T> {
-	private MediaSearchPane searchPane;
+	private ADataSearchPane searchPane;
 	private ADataListPane<T> listPane;
 	
 	public ADataPageController() {
@@ -27,7 +27,7 @@ public abstract class ADataPageController<T> {
 		searchPane.fireSearchEvent();
 	}
 
-	public MediaSearchPane getSearchPane() {
+	public ADataSearchPane getSearchPane() {
 		return searchPane;
 	}
 
@@ -37,13 +37,13 @@ public abstract class ADataPageController<T> {
 	
 	
 	
-	public abstract MediaSearchPane createSearchPane();
+	public abstract ADataSearchPane createSearchPane();
 
 	public abstract List<? extends T> search(Map<String, String> searchParams);
 	
 	
 	
-	public abstract MediaSinglePane createSinglePane();
+	public abstract ADataSinglePane<T> createSinglePane();
 	
 	public abstract ADataListPane<T> createListPane();
 }
