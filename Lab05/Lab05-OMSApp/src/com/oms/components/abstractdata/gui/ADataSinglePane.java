@@ -13,7 +13,7 @@ public abstract class ADataSinglePane<T> extends JPanel {
 	protected GridBagLayout layout;
 	protected GridBagConstraints c;
 	
-	protected JPanel panel;
+	private JPanel panel;
 
 	public ADataSinglePane() {
 		buildControls();
