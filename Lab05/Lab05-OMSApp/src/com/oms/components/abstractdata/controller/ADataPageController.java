@@ -14,9 +14,9 @@ public abstract class ADataPageController<T> {
 	public ADataPageController() {
 		searchPane = createSearchPane();
 		
-		searchPane.setController(new DataSearchController<T>(listPane, this));
-		
 		listPane = createListPane();
+		
+		searchPane.setController(new DataSearchController<T>(listPane, this));
 		
 		searchPane.fireSearchEvent();
 	}

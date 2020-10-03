@@ -14,6 +14,8 @@ public abstract class ADataPageController<T> {
 	public ADataPageController() {
 		searchPane = createSearchPane();
 		
+		listPane = createListPane();
+		
 		searchPane.setController(new IDataSearchController() {
 			@Override
 			public void search(Map<String, String> searchParams) {
@@ -21,8 +23,6 @@ public abstract class ADataPageController<T> {
 				listPane.updateData(list);
 			}
 		});
-		
-		listPane = createListPane();
 		
 		searchPane.fireSearchEvent();
 	}
