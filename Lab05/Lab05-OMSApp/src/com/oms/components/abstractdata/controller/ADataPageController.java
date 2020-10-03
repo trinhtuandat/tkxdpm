@@ -14,13 +14,7 @@ public abstract class ADataPageController<T> {
 	public ADataPageController() {
 		searchPane = createSearchPane();
 		
-		searchPane.setController(new IDataSearchController() {
-			@Override
-			public void search(Map<String, String> searchParams) {
-				List<? extends T> list = ADataPageController.this.search(searchParams);
-				listViewPane.updateData(list);
-			}
-		});
+		searchPane.setController(new DataSearchController<T>(listViewPane, this));
 		
 		listViewPane = createListViewPane();
 		
