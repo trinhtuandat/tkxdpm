@@ -11,7 +11,7 @@ public class ADataPagePane<T> extends JPanel{
 		this(controller.getSearchPane(), controller.getListPane());
 	}
 	
-	public ADataPagePane(ADataSearchPane searchPane, ADataListPane<T> listPane) {
+	private ADataPagePane(ADataSearchPane searchPane, ADataListPane<T> listPane) {
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
 		
