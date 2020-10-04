@@ -11,13 +11,12 @@ import com.oms.components.abstractdata.gui.ADataSearchPane;
 import com.oms.components.abstractdata.gui.ADataSinglePane;
 
 public abstract class ADataPageController<T> {
-	private ADataSearchPane searchPane;
-	private ADataListPane<T> listPane;
+	private ADataPagePane<T> pagePane;
 	
 	public ADataPageController() {
-		searchPane = createSearchPane();
+		ADataSearchPane searchPane = createSearchPane();
 		
-		listPane = createListPane();
+		ADataListPane<T> listPane = createListPane();
 		
 		searchPane.setController(new IDataSearchController() {
 			@Override
@@ -28,10 +27,12 @@ public abstract class ADataPageController<T> {
 		});
 		
 		searchPane.fireSearchEvent();
+		
+		pagePane = new ADataPagePane<T>(searchPane, listPane);
 	}
 	
 	public JPanel getDataPagePane() {
-		return new ADataPagePane<T>(searchPane, listPane);
+		return pagePane;
 	}
 	
 	
