@@ -29,14 +29,6 @@ public abstract class ADataPageController<T> {
 		
 		searchPane.fireSearchEvent();
 	}
-
-	public ADataSearchPane getSearchPane() {
-		return searchPane;
-	}
-
-	public ADataListPane<T> getListPane() {
-		return listPane;
-	}
 	
 	public JPanel getDataPagePane() {
 		return new ADataPagePane<T>(searchPane, listPane);
