@@ -21,6 +21,6 @@ public class OMSUserController {
 	public JPanel getBookPage() {
 		UserBookPageController controller = new UserBookPageController();
 		controller.setCartController(cartController);
-		return new ADataPagePane<Media>(controller);
+		return new ADataPagePane<Media>(controller.getSearchPane(), controller.getListPane());
 	}
 }

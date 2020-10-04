@@ -3,15 +3,10 @@ package com.oms.components.abstractdata.gui;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
-import com.oms.components.abstractdata.controller.ADataPageController;
-
 @SuppressWarnings("serial")
 public class ADataPagePane<T> extends JPanel{
-	public ADataPagePane(ADataPageController<T> controller) {
-		this(controller.getSearchPane(), controller.getListPane());
-	}
 	
-	private ADataPagePane(ADataSearchPane searchPane, ADataListPane<T> listPane) {
+	public ADataPagePane(ADataSearchPane searchPane, ADataListPane<T> listPane) {
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
 		
