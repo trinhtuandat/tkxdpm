@@ -3,7 +3,10 @@ package com.oms.components.abstractdata.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.JPanel;
+
 import com.oms.components.abstractdata.gui.ADataListPane;
+import com.oms.components.abstractdata.gui.ADataPagePane;
 import com.oms.components.abstractdata.gui.ADataSearchPane;
 import com.oms.components.abstractdata.gui.ADataSinglePane;
 
@@ -35,6 +38,9 @@ public abstract class ADataPageController<T> {
 		return listPane;
 	}
 	
+	public JPanel getDataPagePane() {
+		return new ADataPagePane<T>(searchPane, listPane);
+	}
 	
 	
 	public abstract ADataSearchPane createSearchPane();

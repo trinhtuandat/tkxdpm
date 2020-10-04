@@ -4,7 +4,6 @@ import javax.swing.JPanel;
 
 import com.oms.bean.Media;
 import com.oms.components.abstractdata.controller.ADataPageController;
-import com.oms.components.abstractdata.gui.ADataPagePane;
 import com.oms.components.cart.controller.CartController;
 import com.oms.components.media.book.controller.UserBookPageController;
 
@@ -22,7 +21,7 @@ public class UserPageFactory {
 		switch (type) {
 		case "book":
 			ADataPageController<Media> controller = new UserBookPageController(cartController);
-			return new ADataPagePane<Media>(controller.getSearchPane(), controller.getListPane());
+			return controller.getDataPagePane();
 		default:
 			return null;
 		}

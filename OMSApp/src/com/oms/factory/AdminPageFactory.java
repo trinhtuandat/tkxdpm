@@ -4,7 +4,6 @@ import javax.swing.JPanel;
 
 import com.oms.bean.Media;
 import com.oms.components.abstractdata.controller.ADataPageController;
-import com.oms.components.abstractdata.gui.ADataPagePane;
 import com.oms.components.media.book.controller.AdminBookPageController;
 
 public class AdminPageFactory {
@@ -21,7 +20,7 @@ public class AdminPageFactory {
 		switch (type) {
 		case "book":
 			ADataPageController<Media> controller = new AdminBookPageController();
-			return new ADataPagePane<Media>(controller.getSearchPane(), controller.getListPane());
+			return controller.getDataPagePane();
 		default:
 			return null;
 		}
