@@ -9,10 +9,14 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import com.oms.components.abstractdata.controller.ADataPageController;
+
 @SuppressWarnings("serial")
 public abstract class ADataListPane<T> extends JScrollPane {
 	private LayoutManager layout;
 	protected JPanel pane;
+
+	protected ADataPageController<T> controller;
 
 	public ADataListPane() {
 		pane = new JPanel();

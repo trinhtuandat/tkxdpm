@@ -10,16 +10,15 @@ import javax.swing.SpinnerNumberModel;
 
 import com.oms.bean.Media;
 import com.oms.bean.OrderItem;
+import com.oms.components.abstractdata.controller.ADataPageController;
 import com.oms.components.abstractdata.gui.ADataListPane;
 import com.oms.components.abstractdata.gui.ADataSinglePane;
 import com.oms.components.media.controller.UserMediaPageController;
 
 @SuppressWarnings("serial")
 public class UserMediaListPane extends ADataListPane<Media>{
-	private UserMediaPageController controller;
 	
-	
-	public UserMediaListPane(UserMediaPageController controller) {
+	public UserMediaListPane(ADataPageController<Media> controller) {
 		this.controller = controller;
 	}
 	
@@ -39,7 +38,9 @@ public class UserMediaListPane extends ADataListPane<Media>{
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.addToCart(new OrderItem(singlePane.getData(), (int)spin.getValue()));
+				if (controller instanceof UserMediaPageController) {
+					((UserMediaPageController) controller).addToCart(new OrderItem(singlePane.getData(), (int)spin.getValue()));
+				}
 			}
 		});
 		

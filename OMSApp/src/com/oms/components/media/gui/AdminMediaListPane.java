@@ -7,6 +7,7 @@ import javax.swing.JButton;
 
 import com.oms.bean.Media;
 import com.oms.components.abstractdata.controller.ADataManageController;
+import com.oms.components.abstractdata.controller.ADataPageController;
 import com.oms.components.abstractdata.controller.IDataManageController;
 import com.oms.components.abstractdata.gui.ADataListPane;
 import com.oms.components.abstractdata.gui.ADataSinglePane;
@@ -15,30 +16,31 @@ import com.oms.components.media.controller.AdminMediaPageController;
 
 @SuppressWarnings("serial")
 public class AdminMediaListPane extends ADataListPane<Media>{
-	private AdminMediaPageController pageController;
 	
-	public AdminMediaListPane(AdminMediaPageController pageController) {
-		this.pageController = pageController;
+	public AdminMediaListPane(ADataPageController<Media> controller) {
+		this.controller = controller;
 	}
 	
 	@Override
 	public ADataSinglePane<Media> createDataSinglePane() {
-		ADataSinglePane<Media> singlePane = pageController.createSinglePane();
+		ADataSinglePane<Media> singlePane = controller.createSinglePane();
 		
 		JButton button = new JButton("Edit");
 		singlePane.addDataHandlingComponent(button);
-		IDataManageController<Media> controller = new ADataManageController<Media>() {
+		IDataManageController<Media> manageController = new ADataManageController<Media>() {
 			@Override
 			public void update(Media t) {
-				Media newMedia = pageController.updateMedia(t);
-				singlePane.updateData(newMedia);
+				if (controller instanceof AdminMediaPageController) {
+					Media newMedia = ((AdminMediaPageController) controller).updateMedia(t);
+					singlePane.updateData(newMedia);
+				}
 			}
 		};
 		
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new BookEditDialog(singlePane.getData(), controller);
+				new BookEditDialog(singlePane.getData(), manageController);
 				
 			}
 		});
