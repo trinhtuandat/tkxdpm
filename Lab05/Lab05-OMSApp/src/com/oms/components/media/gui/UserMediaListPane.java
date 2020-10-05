@@ -23,9 +23,7 @@ public class UserMediaListPane extends ADataListPane<Media>{
 	
 
 	@Override
-	public ADataSinglePane<Media> createDataSinglePane() {
-		ADataSinglePane<Media> singlePane = controller.createSinglePane();
-		
+	public void decorateSinglePane(ADataSinglePane<Media> singlePane) {
 		JSpinner spin = new JSpinner();
 		spin.setModel(new SpinnerNumberModel(1, 0, null, 1));
 		singlePane.addDataHandlingComponent(spin);
@@ -42,7 +40,5 @@ public class UserMediaListPane extends ADataListPane<Media>{
 				}
 			}
 		});
-		
-		return singlePane;
 	}
 }

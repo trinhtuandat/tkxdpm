@@ -22,9 +22,7 @@ public class AdminMediaListPane extends ADataListPane<Media>{
 	}
 	
 	@Override
-	public ADataSinglePane<Media> createDataSinglePane() {
-		ADataSinglePane<Media> singlePane = controller.createSinglePane();
-		
+	public void decorateSinglePane(ADataSinglePane<Media> singlePane) {
 		JButton button = new JButton("Edit");
 		singlePane.addDataHandlingComponent(button);
 		IDataManageController<Media> manageController = new ADataManageController<Media>() {
@@ -44,7 +42,5 @@ public class AdminMediaListPane extends ADataListPane<Media>{
 				
 			}
 		});
-		
-		return singlePane;
 	}
 }
