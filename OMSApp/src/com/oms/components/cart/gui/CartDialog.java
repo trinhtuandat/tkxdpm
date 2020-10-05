@@ -19,7 +19,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import com.oms.bean.Order;
-import com.oms.bean.OrderItem;
+import com.oms.bean.OrderLine;
 import com.oms.components.cart.controller.CartController;
 
 @SuppressWarnings("serial")
@@ -99,26 +99,26 @@ public class CartDialog extends JDialog{
 		
 		
 		if (order != null) {
-			for (int i=0; i<order.getOrderItems().size(); ++i) {
-				OrderItem oi = order.getOrderItems().get(i);
+			for (int i=0; i<order.getOrderLines().size(); ++i) {
+				OrderLine ol = order.getOrderLines().get(i);
 				
 				int row = getLastRowIndex();
 				c.gridx = 0;
 				c.gridy = row;
-				JLabel label = new JLabel(oi.getMedia().getTitle());
+				JLabel label = new JLabel(ol.getProductTitle());
 				add(label, c);
 				
 				c.gridx = 1;
 				c.gridy = row;
 				JSpinner spin = new JSpinner();
-				spin.setModel(new SpinnerNumberModel(oi.getQuantity(), 0, null, 1));
+				spin.setModel(new SpinnerNumberModel(ol.getProductQuantity(), 0, null, 1));
 				add(spin, c);
 				spin.setPreferredSize(new Dimension(190, 20));
 				
 				spin.addChangeListener(new ChangeListener() {
 					@Override
 					public void stateChanged(ChangeEvent e) {
-						controller.setOrderItemQuantity(oi, (int) spin.getValue());
+						controller.setOrderLineQuantity(ol, (int) spin.getValue());
 						
 						if ((int) spin.getValue() == 0) { // Remove item with 0 quantity
 							remove(spin);

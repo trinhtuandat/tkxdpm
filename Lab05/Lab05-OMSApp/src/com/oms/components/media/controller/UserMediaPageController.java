@@ -1,7 +1,6 @@
 package com.oms.components.media.controller;
 
 import com.oms.bean.Media;
-import com.oms.bean.OrderItem;
 import com.oms.components.abstractdata.controller.ADataPageController;
 import com.oms.components.abstractdata.gui.ADataListPane;
 import com.oms.components.cart.controller.CartController;
@@ -28,7 +27,7 @@ public abstract class UserMediaPageController extends ADataPageController<Media>
 		return new UserMediaListPane(this);
 	}
 	
-	public void addToCart(OrderItem orderItem) {
-		cartController.addOrderItem(orderItem);
+	public void addToCart(String productId, String productTitle, float productCost, int productQuantity) {
+		cartController.addToCart(productId, productTitle, productCost, productQuantity);
 	}
 }

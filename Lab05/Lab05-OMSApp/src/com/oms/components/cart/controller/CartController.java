@@ -1,7 +1,7 @@
 package com.oms.components.cart.controller;
 
 import com.oms.bean.Order;
-import com.oms.bean.OrderItem;
+import com.oms.bean.OrderLine;
 import com.oms.components.cart.gui.CartDialog;
 import com.oms.components.cart.gui.CartPane;
 
@@ -27,8 +27,8 @@ public class CartController {
 	
 	private String getPresentationText() {
 		int numberOfItems = 0;
-		if ( order.getOrderItems() != null) {
-			numberOfItems = order.getOrderItems().size();
+		if ( order.getOrderLines() != null) {
+			numberOfItems = order.getOrderLines().size();
 		}
 		return "Your cart has " + numberOfItems + " items. Total Cost: " + order.getTotalCost();
 	}
@@ -41,8 +41,8 @@ public class CartController {
 		dialog.setVisible(true);
 	}
 	
-	public void addOrderItem(OrderItem orderItem) {
-		order.addOrderItem(orderItem);
+	public void addToCart(String productId, String productTitle, float productCost, int productQuantity) {
+		order.addOrderLine(new OrderLine(productId, productTitle, productQuantity, productCost));
 		
 		dialog.updateData(order);
 		updateCartPane();
@@ -52,14 +52,14 @@ public class CartController {
 		System.out.println("Checkout!!!");
 	}
 	
-	public void setOrderItemQuantity(OrderItem orderItem, int quantity) {
-		for (OrderItem oi: order.getOrderItems()) {
-			if (oi == orderItem) {
+	public void setOrderLineQuantity(OrderLine orderLine, int quantity) {
+		for (OrderLine ol: order.getOrderLines()) {
+			if (ol == orderLine) {
 				if (quantity == 0) {
-					order.getOrderItems().remove(oi);
+					order.getOrderLines().remove(ol);
 					break;
 				}
-				oi.setQuantity(quantity);
+				ol.setProductQuantity(quantity);
 			}
 		}
 		

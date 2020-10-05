@@ -8,11 +8,11 @@ public class Order {
 	private String customerName;
 	private String customerPhoneNumber;
 	private String customerAddress;
-	private ArrayList<OrderItem> orderItems;
+	private ArrayList<OrderLine> orderLines;
 	private float totalCost;
 	
 	public Order() {
-		orderItems = new ArrayList<OrderItem>();
+		orderLines = new ArrayList<OrderLine>();
 	}
 	
 	public String getId() {
@@ -55,12 +55,12 @@ public class Order {
 		this.customerAddress = customerAddress;
 	}
 
-	public ArrayList<OrderItem> getOrderItems() {
-		return orderItems;
+	public ArrayList<OrderLine> getOrderLines() {
+		return orderLines;
 	}
 
-	public void setOrderItems(ArrayList<OrderItem> orderItems) {
-		this.orderItems = orderItems;
+	public void setOrderLines(ArrayList<OrderLine> orderLines) {
+		this.orderLines = orderLines;
 	}
 
 	public void setTotalCost(float totalCost) {
@@ -69,11 +69,11 @@ public class Order {
 
 	public float getTotalCost() {
 		float res = 0;
-		if (orderItems!= null) {
-			Iterator<OrderItem> iter = orderItems.iterator();
+		if (orderLines!= null) {
+			Iterator<OrderLine> iter = orderLines.iterator();
 			while (iter.hasNext()) {
-				OrderItem oi = iter.next();
-				res +=  oi.getMedia().getCost() * oi.getQuantity();
+				OrderLine ol = iter.next();
+				res +=  ol.getProductCost() * ol.getProductQuantity();
 			}
 		}
 		return res;
@@ -81,18 +81,18 @@ public class Order {
 	
 	
 	
-	public void addOrderItem(OrderItem orderItem) {
+	public void addOrderLine(OrderLine orderLine) {
 		boolean existed = false;
-		for (OrderItem oi: orderItems) {
-			if (oi.getMedia().getId().equals(orderItem.getMedia().getId())) {
-				oi.setQuantity(oi.getQuantity() + orderItem.getQuantity());
+		for (OrderLine ol: orderLines) {
+			if (ol.getProductId().equals(orderLine.getProductId())) {
+				ol.setProductQuantity(ol.getProductQuantity() + orderLine.getProductQuantity());
 				existed = true;
 				break;
 			}
 		}
 		
 		if (!existed) {
-			orderItems.add(orderItem);
+			orderLines.add(orderLine);
 		}
 	}
 
