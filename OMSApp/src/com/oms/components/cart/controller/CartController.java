@@ -30,7 +30,7 @@ public class CartController {
 		if ( order.getOrderLines() != null) {
 			numberOfItems = order.getOrderLines().size();
 		}
-		return "Your cart has " + numberOfItems + " items. Total Cost: " + order.getTotalCost();
+		return "Your cart has " + numberOfItems + " products. Total Cost: " + order.getTotalCost();
 	}
 	
 	public CartPane getCartPane() {
