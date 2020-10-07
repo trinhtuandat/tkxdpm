@@ -16,7 +16,7 @@ import com.oms.bean.Book;
 import com.oms.serverapi.interfaces.IBookApi;
 
 public class BookApi implements IBookApi{
-	private String rootPath = JerseyMediaApi.PATH;
+	private String rootPath = MediaApi.PATH;
 
 	private static IBookApi singleton = new BookApi();
 	public static IBookApi singleton() {

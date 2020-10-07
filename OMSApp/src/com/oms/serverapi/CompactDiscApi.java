@@ -15,7 +15,7 @@ import com.oms.bean.CompactDisc;
 import com.oms.serverapi.interfaces.ICompactDiscApi;
 
 public class CompactDiscApi implements ICompactDiscApi {
-	private String rootPath = JerseyMediaApi.PATH;
+	private String rootPath = MediaApi.PATH;
 
 	private static ICompactDiscApi singleton = new CompactDiscApi();
 	public static ICompactDiscApi singleton() {

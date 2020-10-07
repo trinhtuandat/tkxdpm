@@ -15,7 +15,7 @@ import com.oms.bean.DigitalVideoDisc;
 import com.oms.serverapi.interfaces.IDigitalVideoDiscApi;
 
 public class DigitalVideoDiscApi implements IDigitalVideoDiscApi {
-	private String rootPath = JerseyMediaApi.PATH;
+	private String rootPath = MediaApi.PATH;
 
 	private static IDigitalVideoDiscApi singleton = new DigitalVideoDiscApi();
 	public static IDigitalVideoDiscApi singleton() {

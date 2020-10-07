@@ -13,15 +13,15 @@ import javax.ws.rs.core.Response;
 import com.oms.bean.Media;
 import com.oms.serverapi.interfaces.IMediaApi;
 
-public class JerseyMediaApi implements IMediaApi{
+public class MediaApi implements IMediaApi{
 	public static final String PATH = "http://localhost:8080/";
 	
-	private static IMediaApi singleton = new JerseyMediaApi();
+	private static IMediaApi singleton = new MediaApi();
 	public static IMediaApi singleton() {
 		return singleton;
 	}
 	
-	private JerseyMediaApi() {
+	private MediaApi() {
 	}
 	
 	@Override
