@@ -24,6 +24,7 @@ public class AdminMediaListPane extends ADataListPane<Media>{
 	public void decorateSinglePane(ADataSinglePane<Media> singlePane) {
 		JButton button = new JButton("Edit");
 		singlePane.addDataHandlingComponent(button);
+		
 		IDataManageController<Media> manageController = new IDataManageController<Media>() {
 			@Override
 			public void update(Media t) {
