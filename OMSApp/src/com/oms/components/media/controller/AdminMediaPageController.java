@@ -1,8 +1,12 @@
 package com.oms.components.media.controller;
 
 import com.oms.bean.Media;
+import com.oms.components.abstractdata.controller.ADataManageController;
 import com.oms.components.abstractdata.controller.ADataPageController;
+import com.oms.components.abstractdata.controller.IDataManageController;
 import com.oms.components.abstractdata.gui.ADataListPane;
+import com.oms.components.abstractdata.gui.ADataSinglePane;
+import com.oms.components.media.book.gui.BookEditDialog;
 import com.oms.components.media.gui.AdminMediaListPane;
 
 public abstract class AdminMediaPageController extends ADataPageController<Media> {
@@ -16,5 +20,17 @@ public abstract class AdminMediaPageController extends ADataPageController<Media
 	}
 	
 	public abstract Media updateMedia(Media media);
+	
+	public void onEdit(ADataSinglePane<Media> singlePane) {
+		IDataManageController<Media> manageController = new ADataManageController<Media>() {
+			@Override
+			public void update(Media t) {
+				Media newMedia = AdminMediaPageController.this.updateMedia(t);
+				singlePane.updateData(newMedia);
+			}
+		};
+		
+		new BookEditDialog(singlePane.getData(), manageController);
+	}
 	
 }
