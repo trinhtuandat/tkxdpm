@@ -39,7 +39,6 @@ public class AdminMediaListPane extends ADataListPane<Media>{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new BookEditDialog(singlePane.getData(), manageController);
-				
 			}
 		});
 	}
