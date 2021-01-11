@@ -4,9 +4,9 @@ import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
 @SuppressWarnings("serial")
-public class ADataPagePane<T> extends JPanel{
+public class DataPagePane<T> extends JPanel{
 	
-	public ADataPagePane(ADataSearchPane searchPane, ADataListPane<T> listPane) {
+	public DataPagePane(ADataSearchPane searchPane, ADataListPane<T> listPane) {
 		SpringLayout layout = new SpringLayout();
 		this.setLayout(layout);
 		

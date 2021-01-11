@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.swing.JPanel;
 
 public abstract class ADataPageController<T> {
-	private ADataPagePane<T> pagePane;
+	private DataPagePane<T> pagePane;
 	
 	public ADataPageController() {
 		ADataSearchPane searchPane = createSearchPane();
@@ -23,7 +23,7 @@ public abstract class ADataPageController<T> {
 		
 		searchPane.fireSearchEvent();
 		
-		pagePane = new ADataPagePane<T>(searchPane, listPane);
+		pagePane = new DataPagePane<T>(searchPane, listPane);
 	}
 	
 	public JPanel getDataPagePane() {

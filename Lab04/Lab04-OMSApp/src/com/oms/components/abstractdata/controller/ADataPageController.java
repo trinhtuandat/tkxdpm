@@ -6,12 +6,12 @@ import java.util.Map;
 import javax.swing.JPanel;
 
 import com.oms.components.abstractdata.gui.ADataListPane;
-import com.oms.components.abstractdata.gui.ADataPagePane;
+import com.oms.components.abstractdata.gui.DataPagePane;
 import com.oms.components.abstractdata.gui.ADataSearchPane;
 import com.oms.components.abstractdata.gui.ADataSinglePane;
 
 public abstract class ADataPageController<T> {
-	private ADataPagePane<T> pagePane;
+	private DataPagePane<T> pagePane;
 	
 	public ADataPageController() {
 		ADataSearchPane searchPane = createSearchPane();
@@ -28,7 +28,7 @@ public abstract class ADataPageController<T> {
 		
 		searchPane.fireSearchEvent();
 		
-		pagePane = new ADataPagePane<T>(searchPane, listPane);
+		pagePane = new DataPagePane<T>(searchPane, listPane);
 	}
 	
 	public JPanel getDataPagePane() {
